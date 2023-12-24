@@ -245,7 +245,7 @@ document.addEventListener("DOMContentLoaded", function () {
           fill: false,
         },
         {
-          label: "Valuation as of 31 Dec, 2021",
+          label: "Valuation as of 31 Dec, 2022",
           borderColor: "#2F455C",
           data: data2,
           fill: false,
