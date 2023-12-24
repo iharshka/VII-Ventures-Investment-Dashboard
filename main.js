@@ -330,114 +330,98 @@ function drawChart() {
 //Code for Pie Chart - 1 ENDED
 
 //Code for Table - 1 STARTED
-google.charts.load("current", { packages: ["table"] });
-google.charts.setOnLoadCallback(drawTable);
+// google.charts.load("current", { packages: ["table"] });
+// google.charts.setOnLoadCallback(drawTable);
 
-function drawTable() {
-  var data = new google.visualization.DataTable();
-  data.addColumn("string", "Date");
-  data.addColumn("string", "Company Name");
-  data.addColumn("number", "Amount Invested");
-  data.addColumn("number", "Cost per share");
-  data.addColumn("number", "Entry Valuation as on 31 Dec 22");
-  data.addRows([
-    [
-      "29-Sep-21",
-      "Alcazar Alpha Fund I (CEIC Ltd)",
-      { v: 1000000, f: " 10,00,000" },
-      0.01,
-      { v: 1372250, f: " 13,72,250" },
-    ],
-    [
-      "29-Sep-21",
-      "Tribe Capital V, LLC- Series 2-A",
-      { v: 714000, f: " 7,14,000" },
-      0.01,
-      { v: 1757588, f: "17,57,588" },
-    ],
-    [
-      "13-Dec-21",
-      "Summer Pipe LLC",
-      { v: 12500, f: "15,00,000" },
-      0.01,
-      { v: 1500000, f: " 15,00,000" },
-    ],
-    [
-      "02-Feb-22",
-      "HOF Capital Growth Opportunity XXI, LLC",
-      { v: 1000000, f: " 10,00,000" },
-      0.01,
-      { v: 684877, f: " 6,84,877" },
-    ],
-    [
-      "16-Mar-22",
-      "Project SAM Productions LLC- Equity investment (initial purchase USD 250K+ second purchase USD 250k)",
-      { v: 500000, f: " 5,00,000" },
-      0.01,
-      { v: 500000, f: "5,00,000" },
-    ],
-    [
-      "14-Apr-22",
-      "Koinz Holding B.V. - Inv. Cost",
-      { v: 250000, f: "2,50,000" },
-      0.01,
-      { v: 250000, f: "2,50,000" },
-    ],
-  ]);
+// function drawTable() {
+//   var data = new google.visualization.DataTable();
+//   data.addColumn("string", "Date");
+//   data.addColumn("string", "Company Name");
+//   data.addColumn("number", "Amount Invested");
+//   data.addColumn("number", "Cost per share");
+//   data.addColumn("number", "Entry Valuation as on 31 Dec 22");
+//   data.addRows([
+//     [
+//       "29-Sep-21",
+//       "Alcazar Alpha Fund I (CEIC Ltd)",
+//       { v: 1000000, f: " 10,00,000" },
+//       0.01,
+//       { v: 1372250, f: " 13,72,250" },
+//     ],
+//     [
+//       "29-Sep-21",
+//       "Tribe Capital V, LLC- Series 2-A",
+//       { v: 714000, f: " 7,14,000" },
+//       0.01,
+//       { v: 1757588, f: "17,57,588" },
+//     ],
+//     [
+//       "13-Dec-21",
+//       "Summer Pipe LLC",
+//       { v: 12500, f: "15,00,000" },
+//       0.01,
+//       { v: 1500000, f: " 15,00,000" },
+//     ],
+//     [
+//       "02-Feb-22",
+//       "HOF Capital Growth Opportunity XXI, LLC",
+//       { v: 1000000, f: " 10,00,000" },
+//       0.01,
+//       { v: 684877, f: " 6,84,877" },
+//     ],
+//     [
+//       "16-Mar-22",
+//       "Project SAM Productions LLC- Equity investment (initial purchase USD 250K+ second purchase USD 250k)",
+//       { v: 500000, f: " 5,00,000" },
+//       0.01,
+//       { v: 500000, f: "5,00,000" },
+//     ],
+//     [
+//       "14-Apr-22",
+//       "Koinz Holding B.V. - Inv. Cost",
+//       { v: 250000, f: "2,50,000" },
+//       0.01,
+//       { v: 250000, f: "2,50,000" },
+//     ],
+//   ]);
 
-  var table = new google.visualization.Table(
-    document.getElementById("table_div")
-  );
+//   var table = new google.visualization.Table(
+//     document.getElementById("table_div")
+//   );
 
-  table.draw(data, { showRowNumber: true, width: "100%", height: "100%" });
-}
+//   table.draw(data, { showRowNumber: true, width: "100%", height: "100%" });
+// }
 //Code for Table - 1 ENDED
 
 // TABLE Alternate - 1 START
-$(document).ready(function () {
-  $("#myTable").DataTable();
-});
-var tableData = [];
-$("#myTable tbody tr").each(function () {
-  var rowData = [];
-  $(this)
-    .find("td")
-    .each(function () {
-      rowData.push($(this).text());
-    });
-  tableData.push(rowData);
+document.addEventListener("DOMContentLoaded", function () {
+  // Your data array
+  var data = [
+    { name: "John Doe", email: "john@example.com", phone: "555-1234" },
+    { name: "Jane Smith", email: "jane@example.com", phone: "555-5678" },
+    // Add more data objects as needed
+  ];
+
+  // Reference to the table body
+  var tbody = document.querySelector("#myTable tbody");
+
+  // Populate the table with data
+  data.forEach(function (item) {
+    var row = document.createElement("tr");
+    var nameCell = document.createElement("td");
+    var emailCell = document.createElement("td");
+    var phoneCell = document.createElement("td");
+
+    nameCell.textContent = item.name;
+    emailCell.textContent = item.email;
+    phoneCell.textContent = item.phone;
+
+    row.appendChild(nameCell);
+    row.appendChild(emailCell);
+    row.appendChild(phoneCell);
+
+    tbody.appendChild(row);
+  });
 });
 
-// Extract labels and values
-var labels = tableData.map(function (row) {
-  return row[0];
-});
-var values = tableData.map(function (row) {
-  return parseInt(row[1], 10);
-});
-
-// Create a bar chart using Chart.js
-var ctx = document.getElementById("myChart").getContext("2d");
-var myChart = new Chart(ctx, {
-  type: "bar",
-  data: {
-    labels: labels,
-    datasets: [
-      {
-        label: "Age",
-        data: values,
-        backgroundColor: "rgba(75, 192, 192, 0.2)",
-        borderColor: "rgba(75, 192, 192, 1)",
-        borderWidth: 1,
-      },
-    ],
-  },
-  options: {
-    scales: {
-      y: {
-        beginAtZero: true,
-      },
-    },
-  },
-});
 // TABLE Alternate - 1 ENDED

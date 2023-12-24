@@ -37,6 +37,27 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.js">
     </script>
     <script type="text/javascript" src="main.js"></script>
+    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
+    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script type="text/javascript" charset="utf8"
+        src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
+    <style>
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+
+        th,
+        td {
+            border: 1px solid #2f455c27;
+            text-align: left;
+            padding: 8px;
+        }
+
+        th {
+            background-color: #2f455c27;
+        }
+    </style>
 </head>
 
 <body>
@@ -87,12 +108,16 @@
 
                     <div class="navbar-logo">
                         <a class="mobile-menu" id="mobile-collapse" href="#">
-                            <i class="feather icon-menu"></i>
+                            <!-- <i class=" feather icon-menu" style="margin-left: -7vw;"></i> -->
+                            <i class=" feather icon-menu" style="margin-left: 70vw;"></i>
                         </a>
                         <a href="index.html">
-                            <img class=" img-fluid" src="viiLogo.png" alt="Vii-Logo" width="55px" />
+                            <!-- <img class=" img-fluid" src="viiLogo.png" alt="Vii-Logo" width="40vh"
+                                style="margin-left: 3vh; margin-top: -1vh;" /> -->
+                            <img class=" img-fluid" src="viiLogo.png" alt="Vii-Logo" width="45vh"
+                                style="margin-top: -1vh;" />
                         </a>
-                        <a class="mobile-options">
+                        <a class=" mobile-options">
                             <i class="feather icon-more-horizontal"></i>
                         </a>
                     </div>
@@ -1759,7 +1784,8 @@
 
                                     <div class="page-body">
                                         <div class="row">
-                                            <section id="portfolio" style="background-color: white; padding: 25px">
+                                            <section id="portfolio"
+                                                style="background-color: white; padding: 25px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
                                                 <h1
                                                     style="color: #2F455C; font-weight: 900; font-size: 25px; font-family: Poppins;">
                                                     Portfolio Value</h1>
@@ -1773,7 +1799,7 @@
                                             </section>
 
                                             <section id="moic"
-                                                style="background-color: white; padding: 25px; margin-top: 30px;">
+                                                style="background-color: white; padding: 25px; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
                                                 <h1
                                                     style="color: #2F455C; font-weight: 900; font-size: 25px; font-family: Poppins;">
                                                     MOIC</h1>
@@ -1783,12 +1809,12 @@
                                             </section>
 
                                             <section id="companylevel"
-                                                style="background-color: white; padding: 25px; margin-top: 30px;">
+                                                style="background-color: white; padding: 25px; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
                                                 <h1
                                                     style="color: #2F455C; font-weight: 900; font-size: 25px; font-family: Poppins;">
                                                     Each Portfolio Company Level Performance</h1>
                                                 <h6
-                                                    style="color: #59d79e; font-weight: 900; font-size: 15px; font-family: Poppins; margin: 30px 0;">
+                                                    style="color: #59d79e; font-weight: 900; font-size: 15px; font-family: Poppins; margin-bottom: 30px;">
                                                     : [Total Invested Capital vs. NAV end of December for 2021]
                                                 </h6>
                                                 <center>
@@ -1804,7 +1830,7 @@
                                             </section>
 
                                             <section id="geographies"
-                                                style="background-color: white; padding: 25px; margin-top: 30px;">
+                                                style="background-color: white; padding: 25px; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
                                                 <h1
                                                     style="color: #2F455C; font-weight: 900; font-size: 25px; font-family: Poppins;">
                                                     Investment Geographies</h1>
@@ -1813,36 +1839,28 @@
                                                     : Investment Geographies for 2022
                                                 </h6>
                                                 <center>
-                                                    <div id="piechart" style="width: 900px; height: 500px;"></div>
+                                                    <div id="piechart" style="width: 65vw ; height: 60vh;"></div>
+                                                    <!-- <canvas id="piechart" width="400" height="400"></canvas> -->
                                                 </center>
                                             </section>
 
                                             <section id="table"
-                                                style="background-color: white; padding: 25px; margin-top: 30px;">
+                                                style="background-color: white; padding: 25px; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
                                                 <h1
                                                     style="color: #2F455C; font-weight: 900; font-size: 25px; font-family: Poppins;">
                                                     Fund SPC Transactions - 2022</h1>
-                                                <center>
-                                                    <div id="table_div"></div>
-                                                </center>
                                                 <table id="myTable">
                                                     <thead>
                                                         <tr>
                                                             <th>Name</th>
-                                                            <th>Age</th>
-                                                            <th>City</th>
+                                                            <th>Email</th>
+                                                            <th>Phone</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        <tr>
-                                                            <td>John Doe</td>
-                                                            <td>25</td>
-                                                            <td>New York</td>
-                                                        </tr>
-                                                        <!-- Add more rows as needed -->
+                                                        <!-- Data will be dynamically added here -->
                                                     </tbody>
                                                 </table>
-                                                <canvas id="myChart" width="400" height="200"></canvas>
                                             </section>
                                             <!-- task, page, download counter  start -->
                                             <!-- <div class="col-xl-3 col-md-6">
