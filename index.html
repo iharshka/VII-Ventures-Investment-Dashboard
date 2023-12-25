@@ -20,7 +20,8 @@
     <!-- Favicon icon -->
     <link rel="icon" href="Favicon.svg" type="image/x-icon">
     <!-- Google font-->
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family='Open Sans'" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
     <!-- Required Fremwork -->
     <link rel="stylesheet" type="text/css" href="../files/bower_components/bootstrap/dist/css/bootstrap.min.css">
     <!-- feather Awesome -->
@@ -28,7 +29,6 @@
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="../files\assets\css\style.css">
     <link rel="stylesheet" type="text/css" href="../files\assets\css\jquery.mCustomScrollbar.css">
-    <link href="https://fonts.googleapis.com/css?family=Poppins" rel="stylesheet">
     <!-- Graph plots -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -37,10 +37,6 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.1.2/chart.umd.js">
     </script>
     <script type="text/javascript" src="main.js"></script>
-    <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/1.10.24/css/jquery.dataTables.css">
-    <script type="text/javascript" charset="utf8" src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-    <script type="text/javascript" charset="utf8"
-        src="https://cdn.datatables.net/1.10.24/js/jquery.dataTables.js"></script>
     <style>
         table {
             border-collapse: collapse;
@@ -52,10 +48,22 @@
             border: 1px solid #2f455c27;
             text-align: left;
             padding: 8px;
+            white-space: pre-line;
+            /* Allow line breaks in the text */
+            overflow-wrap: break-word;
+            /* Allow long words to break and wrap */
+            max-width: 200px;
         }
 
         th {
             background-color: #2f455c27;
+        }
+
+        #myBarChart {
+            max-width: 100%;
+            /* Ensure the chart doesn't exceed the width of its container */
+            height: 400px;
+            /* Make the height adjust accordingly */
         }
     </style>
 </head>
@@ -217,7 +225,7 @@
                                     <div class="dropdown-toggle" data-bs-toggle="dropdown">
                                         <!-- <img src="../files/assets/images/avatar-4.jpg" class="img-radius"
                                             alt="User-Profile-Image"> -->
-                                        <span>John Doe</span>
+                                        <span style="font-family: 'Nunito';">John Doe</span>
                                         <i class="feather icon-chevron-down"></i>
                                     </div>
                                     <ul class="show-notification profile-notification dropdown-menu"
@@ -244,7 +252,8 @@
                                                     </li> -->
                                         <li>
                                             <a href="auth-normal-sign-in.html">
-                                                <i class="feather icon-log-out"></i> Logout
+                                                <i class="feather icon-log-out" style="font-family: 'Nunito';"></i>
+                                                Logout
                                             </a>
                                         </li>
                                     </ul>
@@ -386,9 +395,9 @@
                 <div class="pcoded-wrapper">
                     <nav class="pcoded-navbar">
                         <div class="pcoded-inner-navbar main-menu">
-                            <div class="pcoded-navigatio-lavel">Dashboard</div>
+                            <div class="pcoded-navigatio-lavel" style="font-family: 'Nunito';">Dashboard</div>
                             <ul class="pcoded-item pcoded-left-item">
-                                <li class="pcoded-hasmenu active pcoded-trigger">
+                                <li class="pcoded-hasmenu active pcoded-trigger" style="font-family: 'Nunito';">
                                     <a href="javascript:void(0)">
                                         <span class="pcoded-micon"><i class="feather icon-home"></i></span>
                                         <span class="pcoded-mtext">Fund-Level Data</span>
@@ -425,7 +434,7 @@
                             <li class="pcoded-hasmenu">
                                 <a href="index2.html">
                                     <span class="pcoded-micon"><i class="feather icon-sidebar"></i></span>
-                                    <span class="pcoded-mtext">Investor Level Data</span>
+                                    <span class="pcoded-mtext" style="font-family: 'Nunito';">Investor Level Data</span>
                                     <!-- <span class="pcoded-badge label label-warning">NEW</span> -->
                                 </a>
                                 <!-- <ul class="pcoded-submenu">
@@ -1785,57 +1794,58 @@
                                     <div class="page-body">
                                         <div class="row">
                                             <section id="portfolio"
-                                                style="background-color: white; padding: 25px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
+                                                style="background-color: white; padding: 1em; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
                                                 <h1
-                                                    style="color: #2F455C; font-weight: 900; font-size: 25px; font-family: Poppins;">
+                                                    style="color: #2F455C; font-weight: 900; font-size: 1.9em; font-family: 'Open Sans';">
                                                     Portfolio Value</h1>
                                                 <h6
-                                                    style="color: #59d79e; font-weight: 900; font-size: 15px; font-family: Poppins;">
+                                                    style="color: #59d79e; font-weight: 900; font-size: 1em; font-family: 'Open Sans';">
                                                     : VII Ventures Fund SPC
                                                 </h6>
                                                 <center>
-                                                    <canvas id="myBarChart" width="400" height="200"></canvas>
+                                                    <canvas id="myBarChart" width="900" height="400"></canvas>
+                                                    <!-- <canvas id="myBarChart" style="width: ;"></canvas> -->
                                                 </center>
                                             </section>
 
                                             <section id="moic"
-                                                style="background-color: white; padding: 25px; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
+                                                style="background-color: white; padding: 1em; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
                                                 <h1
-                                                    style="color: #2F455C; font-weight: 900; font-size: 25px; font-family: Poppins;">
+                                                    style="color: #2F455C; font-weight: 900; font-size: 1.9em; font-family: 'Open Sans';">
                                                     MOIC</h1>
                                                 <center>
-                                                    <canvas id="moicchart" width="300" height="300"></canvas>
+                                                    <canvas id="moicchart" width="300" height="370"></canvas>
                                                 </center>
                                             </section>
 
                                             <section id="companylevel"
-                                                style="background-color: white; padding: 25px; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
+                                                style="background-color: white; padding: 1em; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
                                                 <h1
-                                                    style="color: #2F455C; font-weight: 900; font-size: 25px; font-family: Poppins;">
+                                                    style="color: #2F455C; font-weight: 900; font-size: 1.9em; font-family: 'Open Sans';">
                                                     Each Portfolio Company Level Performance</h1>
                                                 <h6
-                                                    style="color: #59d79e; font-weight: 900; font-size: 15px; font-family: Poppins; margin-bottom: 30px;">
+                                                    style="color: #59d79e; font-weight: 900; font-size: 1em; font-family: 'Open Sans'; margin-bottom: 30px;">
                                                     : [Total Invested Capital vs. NAV end of December for 2021]
                                                 </h6>
                                                 <center>
-                                                    <canvas id="linechart1" width="300" height="400"></canvas>
+                                                    <canvas id="linechart1" width="300" height="450"></canvas>
                                                 </center>
                                                 <h6
-                                                    style="color: #59d79e; font-weight: 900; font-size: 15px; font-family: Poppins; margin: 30px 0;">
+                                                    style="color: #59d79e; font-weight: 900; font-size: 1em; font-family: 'Open Sans'; margin: 30px 0;">
                                                     : [Total Invested Capital vs. NAV end of December for 2022]
                                                 </h6>
                                                 <center>
-                                                    <canvas id="linechart2" width="300" height="500"></canvas>
+                                                    <canvas id="linechart2" width="300" height="600"></canvas>
                                                 </center>
                                             </section>
 
                                             <section id="geographies"
-                                                style="background-color: white; padding: 25px; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
+                                                style="background-color: white; padding: 1em; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
                                                 <h1
-                                                    style="color: #2F455C; font-weight: 900; font-size: 25px; font-family: Poppins;">
+                                                    style="color: #2F455C; font-weight: 900; font-size: 1.9em; font-family: 'Open Sans';">
                                                     Investment Geographies</h1>
                                                 <h6
-                                                    style="color: #59d79e; font-weight: 900; font-size: 15px; font-family: Poppins;">
+                                                    style="color: #59d79e; font-weight: 900; font-size: 1em; font-family: 'Open Sans';">
                                                     : Investment Geographies for 2022
                                                 </h6>
                                                 <center>
@@ -1845,16 +1855,18 @@
                                             </section>
 
                                             <section id="table"
-                                                style="background-color: white; padding: 25px; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
+                                                style="background-color: white; padding: 1em; margin-top: 2em; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
                                                 <h1
-                                                    style="color: #2F455C; font-weight: 900; font-size: 25px; font-family: Poppins;">
+                                                    style="color: #2F455C; font-weight: 900; font-size: 1.9em; font-family: 'Open Sans';">
                                                     Fund SPC Transactions - 2022</h1>
                                                 <table id="myTable">
                                                     <thead>
                                                         <tr>
-                                                            <th>Name</th>
-                                                            <th>Email</th>
-                                                            <th>Phone</th>
+                                                            <th>Date</th>
+                                                            <th>Company Name</th>
+                                                            <th>Amount Invested</th>
+                                                            <th>Cost per share</th>
+                                                            <th>Entry Valuation as on 31 Dec 22</th>
                                                         </tr>
                                                     </thead>
                                                     <tbody>

@@ -54,6 +54,7 @@
 // //ALTERNATE BARGRAPH START
 document.addEventListener("DOMContentLoaded", function () {
   var ctx = document.getElementById("myBarChart").getContext("2d");
+
   var myChart = new Chart(ctx, {
     type: "bar",
     data: {
@@ -76,6 +77,8 @@ document.addEventListener("DOMContentLoaded", function () {
       ],
     },
     options: {
+      responsive: true, // Set to false to use fixed size
+      maintainAspectRatio: false, // Set to false to allow changing the aspect ratio
       scales: {
         x: {
           stacked: false, // Set to false for side-by-side bars
@@ -340,50 +343,50 @@ function drawChart() {
 //   data.addColumn("number", "Amount Invested");
 //   data.addColumn("number", "Cost per share");
 //   data.addColumn("number", "Entry Valuation as on 31 Dec 22");
-//   data.addRows([
-//     [
-//       "29-Sep-21",
-//       "Alcazar Alpha Fund I (CEIC Ltd)",
-//       { v: 1000000, f: " 10,00,000" },
-//       0.01,
-//       { v: 1372250, f: " 13,72,250" },
-//     ],
-//     [
-//       "29-Sep-21",
-//       "Tribe Capital V, LLC- Series 2-A",
-//       { v: 714000, f: " 7,14,000" },
-//       0.01,
-//       { v: 1757588, f: "17,57,588" },
-//     ],
-//     [
-//       "13-Dec-21",
-//       "Summer Pipe LLC",
-//       { v: 12500, f: "15,00,000" },
-//       0.01,
-//       { v: 1500000, f: " 15,00,000" },
-//     ],
-//     [
-//       "02-Feb-22",
-//       "HOF Capital Growth Opportunity XXI, LLC",
-//       { v: 1000000, f: " 10,00,000" },
-//       0.01,
-//       { v: 684877, f: " 6,84,877" },
-//     ],
-//     [
-//       "16-Mar-22",
-//       "Project SAM Productions LLC- Equity investment (initial purchase USD 250K+ second purchase USD 250k)",
-//       { v: 500000, f: " 5,00,000" },
-//       0.01,
-//       { v: 500000, f: "5,00,000" },
-//     ],
-//     [
-//       "14-Apr-22",
-//       "Koinz Holding B.V. - Inv. Cost",
-//       { v: 250000, f: "2,50,000" },
-//       0.01,
-//       { v: 250000, f: "2,50,000" },
-//     ],
-//   ]);
+// data.addRows([
+//   [
+//     "29-Sep-21",
+//     "Alcazar Alpha Fund I (CEIC Ltd)",
+//     { v: 1000000, f: " 10,00,000" },
+//     0.01,
+//     { v: 1372250, f: " 13,72,250" },
+//   ],
+//   [
+//     "29-Sep-21",
+//     "Tribe Capital V, LLC- Series 2-A",
+//     { v: 714000, f: " 7,14,000" },
+//     0.01,
+//     { v: 1757588, f: "17,57,588" },
+//   ],
+//   [
+//     "13-Dec-21",
+//     "Summer Pipe LLC",
+//     { v: 12500, f: "15,00,000" },
+//     0.01,
+//     { v: 1500000, f: " 15,00,000" },
+//   ],
+//   [
+//     "02-Feb-22",
+//     "HOF Capital Growth Opportunity XXI, LLC",
+//     { v: 1000000, f: " 10,00,000" },
+//     0.01,
+//     { v: 684877, f: " 6,84,877" },
+//   ],
+//   [
+//     "16-Mar-22",
+//     "Project SAM Productions LLC- Equity investment (initial purchase USD 250K+ second purchase USD 250k)",
+//     { v: 500000, f: " 5,00,000" },
+//     0.01,
+//     { v: 500000, f: "5,00,000" },
+//   ],
+//   [
+//     "14-Apr-22",
+//     "Koinz Holding B.V. - Inv. Cost",
+//     { v: 250000, f: "2,50,000" },
+//     0.01,
+//     { v: 250000, f: "2,50,000" },
+//   ],
+// ]);
 
 //   var table = new google.visualization.Table(
 //     document.getElementById("table_div")
@@ -395,11 +398,55 @@ function drawChart() {
 
 // TABLE Alternate - 1 START
 document.addEventListener("DOMContentLoaded", function () {
-  // Your data array
+  function formatIndianNumber(number) {
+    // Format numbers in the Indian numbering system (lakh-crore system)
+    const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
+    return formattedNumber;
+  }
   var data = [
-    { name: "John Doe", email: "john@example.com", phone: "555-1234" },
-    { name: "Jane Smith", email: "jane@example.com", phone: "555-5678" },
-    // Add more data objects as needed
+    {
+      date: "29-Sep-21",
+      company: "Alcazar Alpha Fund I (CEIC Ltd)",
+      amount: 1000000,
+      cost: 0.01,
+      entry: 1372250,
+    },
+    {
+      date: "29-Sep-21",
+      company: "Tribe Capital V, LLC- Series 2-A",
+      amount: 714000,
+      cost: 0.01,
+      entry: 1757588,
+    },
+    {
+      date: "13-Dec-21",
+      company: "Summer Pipe LLC",
+      amount: 1500000,
+      cost: 0.01,
+      entry: 1500000,
+    },
+    {
+      date: "02-Feb-22",
+      company: "HOF Capital Growth Opportunity XXI, LLC",
+      amount: 1000000,
+      cost: 0.01,
+      entry: 684877,
+    },
+    {
+      date: "16-Mar-22",
+      company:
+        "Project SAM Productions LLC- Equity investment (initial purchase USD 250K+ second purchase USD 250k)",
+      amount: 500000,
+      cost: 0.01,
+      entry: 500000,
+    },
+    {
+      date: "14-Apr-22",
+      company: "Koinz Holding B.V. - Inv. Cost",
+      amount: 250000,
+      cost: 0.01,
+      entry: 250000,
+    },
   ];
 
   // Reference to the table body
@@ -408,17 +455,23 @@ document.addEventListener("DOMContentLoaded", function () {
   // Populate the table with data
   data.forEach(function (item) {
     var row = document.createElement("tr");
-    var nameCell = document.createElement("td");
-    var emailCell = document.createElement("td");
-    var phoneCell = document.createElement("td");
+    var dateCell = document.createElement("td");
+    var companyCell = document.createElement("td");
+    var amountCell = document.createElement("td");
+    var costCell = document.createElement("td");
+    var entryCell = document.createElement("td");
 
-    nameCell.textContent = item.name;
-    emailCell.textContent = item.email;
-    phoneCell.textContent = item.phone;
+    dateCell.textContent = item.date;
+    companyCell.textContent = item.company;
+    amountCell.textContent = formatIndianNumber(item.amount);
+    costCell.textContent = item.cost;
+    entryCell.textContent = formatIndianNumber(item.entry);
 
-    row.appendChild(nameCell);
-    row.appendChild(emailCell);
-    row.appendChild(phoneCell);
+    row.appendChild(dateCell);
+    row.appendChild(companyCell);
+    row.appendChild(amountCell);
+    row.appendChild(costCell);
+    row.appendChild(entryCell);
 
     tbody.appendChild(row);
   });

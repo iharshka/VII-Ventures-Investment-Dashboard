@@ -18,7 +18,7 @@ function drawChart() {
       color: "white", // Set the color of the text
       fontSize: 12, // Set the font size
     },
-    colors: ["#59d79e", "#2F455C", "#1d4166"],
+    colors: ["#59d79e", "#2F455C", "#acd6e0"],
     pieStartAngle: 100,
     pieSliceText: "percentage",
     // tooltip: {
