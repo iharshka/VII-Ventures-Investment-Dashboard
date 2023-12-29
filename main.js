@@ -63,13 +63,13 @@ document.addEventListener("DOMContentLoaded", function () {
         {
           label: "Total Capital Invested",
           data: [5214015, 5964000, 5964000],
-          backgroundColor: "#2F455C",
+          backgroundColor: "#59d79e",
           borderRadius: 10,
         },
         {
           label: "NAV end of the year",
           data: [7668124, 7064715, 6189715],
-          backgroundColor: "#59d79e",
+          backgroundColor: "#ACD6E0",
           borderRadius: 10,
           barPercentage: 0.9, // Adjust the width of the bars
           categoryPercentage: 0.7, // Adjust the spacing between bars
@@ -83,16 +83,32 @@ document.addEventListener("DOMContentLoaded", function () {
         x: {
           stacked: false, // Set to false for side-by-side bars
           grid: {
-            color: "#ffffff", // Set the color of the horizontal grid lines
+            // color: "#DFDFDF", // Set the color of the horizontal grid lines
             display: false,
             // drawBorder: false, // Hide the vertical grid lines
+          },
+          ticks: {
+            // Change x-axis label color
+            color: "#DFDFDF",
           },
         },
         y: {
           stacked: false,
           grid: {
-            display: true, // Hide the vertical grid lines
-            // drawBorder: false,
+            color: "#dcdcdc9a",
+            display: true,
+          },
+          ticks: {
+            // Change x-axis label color
+            color: "#DFDFDF",
+          },
+        },
+      },
+      plugins: {
+        legend: {
+          labels: {
+            // Change legend text color
+            color: "#DFDFDF",
           },
         },
       },
@@ -118,7 +134,8 @@ document.addEventListener("DOMContentLoaded", function () {
       datasets: [
         {
           label: "MOIC",
-          borderColor: "#2F455C",
+          borderColor: "#59D79E",
+          backgroundColor: "#59D79E",
           data: data,
           fill: false,
         },
@@ -132,7 +149,12 @@ document.addEventListener("DOMContentLoaded", function () {
           type: "category",
           labels: labels,
           grid: {
+            // color: "white",
             display: false, // hide vertical grid lines
+          },
+          ticks: {
+            // Change x-axis label color
+            color: "#DFDFDF",
           },
         },
         y: {
@@ -140,8 +162,22 @@ document.addEventListener("DOMContentLoaded", function () {
           suggestedMin: 0.5,
           stepSize: 0.5,
           grid: {
+            color: "#dcdcdc9a",
             display: true, // keep horizontal grid lines
           },
+          ticks: {
+            // Change x-axis label color
+            color: "#DFDFDF",
+          },
+        },
+      },
+      plugins: {
+        legend: {
+          labels: {
+            // Change legend text color
+            color: "#DFDFDF",
+          },
+          // fillStyle: "#59D79E",
         },
       },
     },

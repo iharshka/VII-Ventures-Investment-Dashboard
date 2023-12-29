@@ -166,7 +166,7 @@ p {
   padding: 1.25rem;
 }
 .card {
-  border-radius: 5px;
+  border-radius: 15px;
   -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
   box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08);
   border: none;
@@ -17443,10 +17443,10 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
     linear,
     left top,
     right top,
-    from(#fe5d70),
-    to(#fe909d)
+    from(#59d79e),
+    to(#216367)
   );
-  background: linear-gradient(to right, #fe5d70, #fe909d);
+  background: linear-gradient(to right, #59d79e, #216367);
 }
 .bg-simple-c-pink {
   background: #fe5d70;
@@ -17459,10 +17459,10 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
     linear,
     left top,
     right top,
-    from(#0ac282),
-    to(#0df3a3)
+    from(#acd6e0),
+    to(#2f455c)
   );
-  background: linear-gradient(to right, #0ac282, #0df3a3);
+  background: linear-gradient(to right, #acd6e0, #2f455c);
 }
 .bg-simple-c-green {
   background: #0ac282;
@@ -17471,14 +17471,7 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
   color: #0ac282;
 }
 .bg-c-yellow {
-  background: -webkit-gradient(
-    linear,
-    left top,
-    right top,
-    from(#59d79e),
-    to(#feb798)
-  );
-  background: linear-gradient(to right, #59d79e, #feb798);
+  background: linear-gradient(to right, #59d79e, #205867);
 }
 .bg-simple-c-yellow {
   background: #59d79e;
@@ -17507,10 +17500,10 @@ table.footable-paging-center > tfoot > tr.footable-paging > td {
     linear,
     left top,
     right top,
-    from(#01a9ac),
-    to(#01dbdf)
+    from(#acd6e0),
+    to(#2f455c)
   );
-  background: linear-gradient(to right, #01a9ac, #01dbdf);
+  background: linear-gradient(to right, #acd6e0, #2f455c);
 }
 .bg-simple-c-lite-green {
   background: #01a9ac;
