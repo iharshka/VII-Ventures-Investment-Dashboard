@@ -41,6 +41,7 @@
         table {
             border-collapse: collapse;
             width: 100%;
+            background-color: white;
         }
 
         th,
@@ -56,7 +57,18 @@
         }
 
         th {
-            background-color: #2f455c27;
+            background-color: #205867;
+            color: white;
+            font-size: 1em;
+            font-weight: 600;
+            padding: 1em;
+        }
+
+        td {
+            color: black;
+            padding: 2em;
+            font-size: 1em;
+            font-weight: 500;
         }
 
         #myBarChart {
@@ -64,6 +76,13 @@
             /* Ensure the chart doesn't exceed the width of its container */
             height: 400px;
             /* Make the height adjust accordingly */
+        }
+
+        .triplepie {
+            position: relative;
+            background-image: url('https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.freepik.com%2Ffree-photos-vectors%2Fdotted-world-map&psig=AOvVaw20EJpPn_wuKK5VrAK3bAo-&ust=1704050857051000&source=images&cd=vfe&opi=89978449&ved=0CBQQjhxqFwoTCJi-4aPyt4MDFQAAAAAdAAAAABAD');
+            background-size: cover;
+            /* Adjust as needed */
         }
     </style>
 </head>
@@ -2008,7 +2027,7 @@
                                                 <canvas id="moicchart"></canvas>
                                             </div>
                                         </div>
-                                        <section id="companylevel"
+                                        <!-- <section id="companylevel"
                                             style="background-color: white; padding: 1em; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
                                             <h1
                                                 style="color: #2F455C; font-weight: 900; font-size: 1.9em; font-family: 'Open Sans';">
@@ -2027,44 +2046,101 @@
                                             <center>
                                                 <canvas id="linechart2" width="300" height="600"></canvas>
                                             </center>
-                                        </section>
+                                        </section> -->
 
-                                        <section id="geographies"
-                                            style="background-color: white; padding: 1em; margin-top: 30px; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
-                                            <h1
-                                                style="color: #2F455C; font-weight: 900; font-size: 1.9em; font-family: 'Open Sans';">
-                                                Investment Geographies</h1>
-                                            <h6
-                                                style="color: #59d79e; font-weight: 900; font-size: 1em; font-family: 'Open Sans';">
-                                                : Investment Geographies for 2022
-                                            </h6>
-                                            <center>
-                                                <div id="piechart" style="width: 65vw ; height: 60vh;"></div>
-                                                <!-- <canvas id="piechart" width="400" height="400"></canvas> -->
-                                            </center>
-                                        </section>
+                                        <span
+                                            style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; margin: 2em 0 0 0;">
+                                            VII Ventures SPC: Fund Performance in 2021</span>
 
-                                        <section id="table"
-                                            style="background-color: white; padding: 1em; margin-top: 2em; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
-                                            <h1
+                                        <section id="table" style="padding: 1em; margin-top: 1em; border-radius: 4px;">
+                                            <!-- <h1
                                                 style="color: #2F455C; font-weight: 900; font-size: 1.9em; font-family: 'Open Sans';">
-                                                Fund SPC Transactions - 2022</h1>
+                                                Fund SPC Transactions - 2022</h1> -->
                                             <table id="myTable">
                                                 <thead>
                                                     <tr>
-                                                        <th>Date</th>
-                                                        <th>Company Name</th>
-                                                        <th>Amount Invested</th>
-                                                        <th>Cost per share</th>
-                                                        <th>Entry Valuation as on 31 Dec 22</th>
+                                                        <th>Logo</th>
+                                                        <th>Company Invested</th>
+                                                        <th>Investment Cost</th>
+                                                        <th>Valuation as on 31 Dec 2021</th>
+                                                        <th>MOIC</th>
+                                                        <th>Geo</th>
+                                                        <th>Gain/Decline</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <!-- Data will be dynamically added here -->
                                                 </tbody>
                                             </table>
-
                                         </section>
+                                        <!-- <section id="geographies" style="padding: 1em; margin-top: 30px;">
+                                            <h1
+                                                style="color: #2F455C; font-weight: 900; font-size: 1.9em; font-family: 'Open Sans';">
+                                                Investment Geographies</h1>
+                                            <h6
+                                                style="color: #59d79e; font-weight: 900; font-size: 1em; font-family: 'Open Sans';">
+                                                : Investment Geographies for 2022
+                                            </h6> -->
+
+                                        <div style="display: flex; flex-direction: row;">
+                                            <div style="width: 50%;"><span
+                                                    style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700;">
+                                                    Portfolio Diversification by Industry</span>
+                                                <div id="industrypie" style="height: 70vh;"></div>
+                                            </div>
+                                            <div style="width: 50%; margin-left: 0.5em;"><span
+                                                    style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700;">
+                                                    Portfolio Diversification by Geo</span>
+                                                <div id="geopie" style="height: 70vh;"></div>
+                                            </div>
+                                        </div>
+                                        <!-- <canvas id="piechart" width="400" height="400"></canvas> -->
+                                        </section>
+
+                                        <span
+                                            style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700;">
+                                            VII Ventures SPC: Geographies of Investments</span>
+                                        <div style="display: flex; flex-direction: row;">
+                                            <div style="width: 33%;">
+                                                <div id="geopie1" class="triplepie" style="height: 90vh;width: 30vw;">
+                                                </div>
+                                            </div>
+                                            <div style="width: 33%;">
+                                                <div id="geopie2" class="triplepie" style="height: 90vh; width: 30vw;">
+                                                </div>
+                                            </div>
+                                            <div style="width: 33%;">
+                                                <div id="geopie3" class="triplepie" style="height: 90vh; width: 30vw;">
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <span
+                                            style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700;">
+                                            Investment Performance: Lamar Holding</span>
+
+                                        <section id="table" style="padding: 1em; margin-top: 1em;">
+                                            <table id="myTable2">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Funds Invested in</th>
+                                                        <th>Subscriptions in 2021 (USD)</th>
+                                                        <th>Subscriptions in 2022 (USD)</th>
+                                                        <th>NAV</th>
+                                                        <th>Profit/Loss</th>
+                                                        <th></th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody>
+                                                    <!-- Data will be dynamically added here -->
+                                                </tbody>
+                                            </table>
+                                        </section>
+
+                                        <span
+                                            style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700;">
+                                            Portfolio Diversification by Funds</span>
+                                        <div id="donutChart" style="height: 90vh;"></div>
 
                                         <!--  sale analytics start -->
                                         <!-- <div class="col-xl-9 col-md-12">

@@ -13,14 +13,13 @@ function drawChart() {
 
   var options = {
     legend: { position: "top" }, // Change "none" to "top", "bottom", "left", "right", or combination
-    pieSliceText: "label",
     pieSliceTextStyle: {
       color: "white", // Set the color of the text
       fontSize: 12, // Set the font size
     },
     colors: ["#59d79e", "#2F455C", "#acd6e0"],
     pieStartAngle: 100,
-    pieSliceText: "percentage",
+    pieSliceText: "percentage", //or pieSliceText: "label",
     // tooltip: {
     //   trigger: "none", // Disable tooltip on hover
     // },

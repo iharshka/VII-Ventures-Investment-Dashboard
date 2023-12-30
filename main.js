@@ -1,57 +1,4 @@
-// // Code for Bar Graph - 1
-// (function () {
-//   google.charts.load("current", { packages: ["corechart", "bar"] });
-//   google.charts.setOnLoadCallback(drawStuff);
-
-//   function drawStuff() {
-//     var chartDiv = document.getElementById("bargraph");
-//     var data = google.visualization.arrayToDataTable([
-//       ["", "Total Capital Invested", "NAV end of the year"],
-//       ["2021", 5214015, 7668124], // RGB value
-//       ["2022", 5964000, 7064715], // English color name
-//       ["2023", 5964000, 6189715],
-//     ]);
-
-//     var materialOptions = {
-//       width: 900,
-//       chart: {
-//         title: "Total Invested Capital vs. NAV end of December for 2021 & 2022",
-//         //   //   subtitle:
-//         //   //     "VII Ventures Fund SPC [Total Invested Capital vs. NAV end of December for 2021 & 2022]",
-//         titleTextStyle: {
-//           color: "#666", // Change the color of the chart title
-//         },
-//       },
-//       colors: ["#2F455C", "#59d79e"],
-//       bar: { groupWidth: "90%" },
-//       legend: { position: "top" },
-//       vAxis: {
-//         format: "0", // Display axis numbers without abbreviation
-//         textStyle: { color: "#666" }, // Adjust brightness by changing color
-//       },
-//       hAxis: {
-//         textStyle: { color: "#666" }, // Adjust brightness by changing color
-//       },
-//     };
-//     function drawMaterialChart() {
-//       var materialChart = new google.charts.Bar(chartDiv);
-//       materialChart.draw(
-//         data,
-//         google.charts.Bar.convertOptions(materialOptions)
-//       );
-//     }
-
-//     function drawClassicChart() {
-//       var classicChart = new google.visualization.ColumnChart(chartDiv);
-//       classicChart.draw(data, classicOptions);
-//     }
-
-//     drawMaterialChart();
-//   }
-// })();
-//Code for Bar Chart - 1 ENDED
-
-// //ALTERNATE BARGRAPH START
+// //BARGRAPH START
 document.addEventListener("DOMContentLoaded", function () {
   var ctx = document.getElementById("myBarChart").getContext("2d");
 
@@ -115,7 +62,7 @@ document.addEventListener("DOMContentLoaded", function () {
     },
   });
 });
-//ALTERNATE BARGRAPH ENDED
+//BARGRAPH ENDED
 
 //Code for Line Chart - 1 START (MOIC Chart)
 document.addEventListener("DOMContentLoaded", function () {
@@ -185,188 +132,308 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 //Code for Line Chart - 1 ENDED (MOIC Chart)
 
-//Code for Line Chart - 2 START
+// TABLE - 1 START
 document.addEventListener("DOMContentLoaded", function () {
-  // Sample data
-  var labels = [
-    "Zipline",
-    "NextRoll",
-    "Orbital Insights",
-    "Emerald Cloud Lab (ECL)",
-    "Kraken",
-    "Pipe",
-    "Plaid",
-    "Project SAM Productions LLC",
-  ];
-  var data1 = [
-    150015, 150000, 200000, 1000000, 714000, 1500000, 1000000, 500000,
-  ];
-  var data2 = [
-    142917, 150000, 212884, 1000000, 3477446, 1500000, 684877, 500000,
+  function formatIndianNumber(number) {
+    // Format numbers in the Indian numbering system (lakh-crore system)
+    const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
+    return formattedNumber;
+  }
+  var data = [
+    {
+      logo: "",
+      // date: "29-Sep-21",
+      company: "Alcazar Alpha Fund I (CEIC Ltd)",
+      amount: 1000000,
+      valuation31Dec21: 1372250,
+      moic: 0.01,
+      geo: "",
+      gaindec: "",
+    },
+    {
+      logo: "",
+      // date: "29-Sep-21",
+      company: "Tribe Capital V, LLC- Series 2-A",
+      amount: 714000,
+      valuation31Dec21: 1757588,
+      moic: 0.01,
+      geo: "",
+      gaindec: "",
+    },
+    // {
+    //   date: "13-Dec-21",
+    //   company: "Summer Pipe LLC",
+    //   amount: 1500000,
+    //   cost: 0.01,
+    //   entry: 1500000,
+    // },
+    // {
+    //   date: "02-Feb-22",
+    //   company: "HOF Capital Growth Opportunity XXI, LLC",
+    //   amount: 1000000,
+    //   cost: 0.01,
+    //   entry: 684877,
+    // },
+    // {
+    //   date: "16-Mar-22",
+    //   company:
+    //     "Project SAM Productions LLC- Equity investment (initial purchase USD 250K+ second purchase USD 250k)",
+    //   amount: 500000,
+    //   cost: 0.01,
+    //   entry: 500000,
+    // },
+    // {
+    //   date: "14-Apr-22",
+    //   company: "Koinz Holding B.V. - Inv. Cost",
+    //   amount: 250000,
+    //   cost: 0.01,
+    //   entry: 250000,
+    // },
   ];
 
-  // Get the canvas element and create a 2D drawing context
-  var ctx = document.getElementById("linechart1").getContext("2d");
+  // Reference to the table body
+  var tbody = document.querySelector("#myTable tbody");
 
-  // Create the chart
-  var myChart = new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: "Investment Cost",
-          borderColor: "#59d79e",
-          data: data1,
-          fill: false,
-        },
-        {
-          label: "Valuation as of 31 Dec, 2021",
-          borderColor: "#2F455C",
-          data: data2,
-          fill: false,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        x: {
-          type: "category",
-          labels: labels,
-          grid: { display: false },
-        },
-        y: {
-          beginAtZero: true,
-          grid: { display: true },
-        },
-      },
-    },
+  // Populate the table with data
+  data.forEach(function (item) {
+    var row = document.createElement("tr");
+    var logoCell = document.createElement("td");
+    var companyCell = document.createElement("td");
+    var amountCell = document.createElement("td");
+    var valuation31Dec21cell = document.createElement("td");
+    var moicCell = document.createElement("td");
+    var geocell = document.createElement("td");
+    var gaindeccell = document.createElement("td");
+
+    logoCell.textContent = item.logo;
+    companyCell.textContent = item.company;
+    amountCell.textContent = formatIndianNumber(item.amount);
+    valuation31Dec21cell.textContent = formatIndianNumber(
+      item.valuation31Dec21
+    );
+    moicCell.textContent = formatIndianNumber(item.moic);
+    geocell.textContent = item.geo;
+    gaindeccell.textContent = item.gaindec;
+
+    row.appendChild(logoCell);
+    row.appendChild(companyCell);
+    row.appendChild(amountCell);
+    row.appendChild(valuation31Dec21cell);
+    row.appendChild(moicCell);
+    row.appendChild(geocell);
+    row.appendChild(gaindeccell);
+
+    tbody.appendChild(row);
   });
 });
-//Code for Line Chart - 2 ENDED
+// TABLE - 1 ENDED
 
-//Code for Line Chart - 3 START
-document.addEventListener("DOMContentLoaded", function () {
-  // Sample data
-  var labels = [
-    "Emerald Cloud Lab (ECL)",
-    "Kraken",
-    "Pipe",
-    "Plaid",
-    "Project SAM Productions LLC-Equity Investment (initial purchase USD 250k +second purchase USD 250k",
-    "Koinz Holding B.V.-Inv. Cost",
-    "Project SAM Productions LLC - Loan in 2021",
-    "Project SAM Productions LLC - Loan in Q1,2022",
-    "Project SAM Productions LLC - Loan in Q2,2022",
-  ];
-  var data1 = [
-    1000000, 714000, 1500000, 1000000, 500000, 250000, 350000, 400000, 250000,
-  ];
-  var data2 = [
-    1372250, 1757588, 1500000, 684877, 500000, 250000, 350000, 400000, 250000,
-  ];
-
-  // Get the canvas element and create a 2D drawing context
-  var ctx = document.getElementById("linechart2").getContext("2d");
-
-  // Create the chart
-  var myChart = new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: "Investment Cost",
-          borderColor: "#59d79e",
-          data: data1,
-          fill: false,
-        },
-        {
-          label: "Valuation as of 31 Dec, 2022",
-          borderColor: "#2F455C",
-          data: data2,
-          fill: false,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        x: {
-          type: "category",
-          labels: labels,
-          grid: {
-            display: false, // hide vertical grid lines
-          },
-        },
-        y: {
-          beginAtZero: true,
-          grid: {
-            display: true, // keep horizontal grid lines
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          display: true,
-        },
-        tooltip: {
-          enabled: true,
-        },
-      },
-      layout: {
-        padding: {
-          left: 10,
-          right: 10,
-          top: 10,
-          bottom: 10,
-        },
-      },
-      plugins: {
-        legend: {
-          display: true,
-        },
-        tooltip: {
-          enabled: true,
-        },
-        xaxis: {
-          maxTicksLimit: 10, // Adjust the maximum number of ticks on the x-axis
-          maxRotation: 45, // Adjust the maximum rotation angle of the x-axis labels
-        },
-      },
-    },
-  });
-});
-//Code for Line Chart - 3 ENDED
-
-//Code for Pie Chart - 1 START
+//Code for Pie Chart - 1 START (INDUSTRY)
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
-  var data = google.visualization.arrayToDataTable([
+  var data1 = google.visualization.arrayToDataTable([
+    ["Language", "Speakers (in millions)"],
+    ["Financial Services", 20],
+    ["FinTech", 20],
+    ["Social Impact or Nonprofit", 20],
+    ["Logistics", 20],
+    ["MarTech", 20],
+  ]);
+
+  var options1 = {
+    legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
+    pieSliceText: "percentage",
+    // title: "Investment Geographies for 2022",
+    colors: ["#ACD6E0", "#205867", "#2F455C", "#59D79E", "#D8D8D8"],
+    backgroundColor: "#f6f7fb",
+    pieStartAngle: 100,
+  };
+
+  var chart1 = new google.visualization.PieChart(
+    document.getElementById("industrypie")
+  );
+  chart1.draw(data1, options1);
+  //Code for Pie Chart - 1 ENDED (INDUSTRY)
+
+  //Code for Pie Chart - 2 START (GEO)
+
+  var data2 = google.visualization.arrayToDataTable([
     ["Language", "Speakers (in millions)"],
     ["Europe", 4.1],
     ["USA", 95.9],
   ]);
 
-  var options = {
+  var options2 = {
     legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
     pieSliceText: "percentage",
     // title: "Investment Geographies for 2022",
-    colors: ["#2F455C", "#59d79e"],
+    colors: ["#ACD6E0", "#205867"],
+    backgroundColor: "#f6f7fb",
     pieStartAngle: 100,
   };
 
-  var chart = new google.visualization.PieChart(
-    document.getElementById("piechart")
+  var chart2 = new google.visualization.PieChart(
+    document.getElementById("geopie")
   );
-  chart.draw(data, options);
+  chart2.draw(data2, options2);
+  //Code for Pie Chart - 2 ENDED (GEO)
+
+  //Code for TRIPLE Pie Chart - 1 START (GEO)
+  var data3 = google.visualization.arrayToDataTable([
+    ["Language", "Speakers (in millions)"],
+    ["Europe", 0],
+    ["USA", 100],
+  ]);
+
+  var options3 = {
+    legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
+    pieSliceText: "percentage",
+    // title: "Investment Geographies for 2022",
+    colors: ["#ACD6E0", "#205867"],
+    backgroundColor: "#f6f7fb",
+    // pieStartAngle: 100,
+  };
+
+  var chart3 = new google.visualization.PieChart(
+    document.getElementById("geopie1")
+  );
+  chart3.draw(data3, options3);
+  //Code for TRIPLE Pie Chart - 1 ENDED (GEO)
+
+  //Code for TRIPLE Pie Chart - 2 START (GEO)
+  var data4 = google.visualization.arrayToDataTable([
+    ["Language", "Speakers (in millions)"],
+    ["USA", 95.8],
+    ["Europe", 4.2],
+  ]);
+
+  var options4 = {
+    legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
+    pieSliceText: "percentage",
+    // title: "Investment Geographies for 2022",
+    colors: ["#205867", "#ACD6E0"],
+    backgroundColor: "#f6f7fb",
+  };
+
+  var chart4 = new google.visualization.PieChart(
+    document.getElementById("geopie2")
+  );
+  chart4.draw(data4, options4);
+  //Code for TRIPLE Pie Chart - 2 ENDED (GEO)
+
+  //Code for TRIPLE Pie Chart - 3 START (GEO)
+  var data5 = google.visualization.arrayToDataTable([
+    ["Language", "Speakers (in millions)"],
+    ["USA", 95.9],
+    ["Europe", 4.1],
+  ]);
+
+  var options5 = {
+    legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
+    pieSliceText: "percentage",
+    // title: "Investment Geographies for 2022",
+    colors: ["#205867", "#ACD6E0"],
+    backgroundColor: "#f6f7fb",
+  };
+
+  var chart5 = new google.visualization.PieChart(
+    document.getElementById("geopie3")
+  );
+  chart5.draw(data5, options5);
+
+  //DONUT chart START
+  var donutdata = google.visualization.arrayToDataTable([
+    ["Task", "Hours per Day"],
+    ["VII Ventures Fund 2 SP", 19],
+    ["VII Ventures SPC", 39.5],
+    ["VII Ventures Fund 1 SP", 41.5],
+  ]);
+
+  var donutoptions = {
+    // title: "Investment Geographies for 2022",
+    // pieSliceText: "label",
+    colors: ["#205867", "#ACD6E0", "#59D79E"],
+    backgroundColor: "#f6f7fb",
+    pieHole: 0.5,
+  };
+
+  var donutchart = new google.visualization.PieChart(
+    document.getElementById("donutChart")
+  );
+  donutchart.draw(donutdata, donutoptions);
+  //DONUT Chart ENDED
 }
-//Code for Pie Chart - 1 ENDED
+//Code for TRIPLE Pie Chart - 3 ENDED (GEO)
+
+// TABLE - 2 START
+document.addEventListener("DOMContentLoaded", function () {
+  function formatIndianNumber(number) {
+    // Format numbers in the Indian numbering system (lakh-crore system)
+    const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
+    return formattedNumber;
+  }
+  var data = [
+    {
+      funds: "VII Ventures SPC",
+      sub2021: 5589015,
+      sub2022: 5589015,
+      NAV: 7064715,
+      profit: -1347608,
+      graph: "",
+    },
+    {
+      funds: "VII Ventures SPC Fund 1",
+      sub2021: 5589015,
+      sub2022: 5589015,
+      NAV: 7064715,
+      profit: -1347608,
+      graph: "",
+    },
+    {
+      funds: "VII Ventures SPC Fund 1",
+      sub2021: 5589015,
+      sub2022: 5589015,
+      NAV: 7064715,
+      profit: -1347608,
+      graph: "",
+    },
+  ];
+
+  // Reference to the table body
+  var tbody = document.querySelector("#myTable2 tbody");
+
+  // Populate the table with data
+  data.forEach(function (item) {
+    var row = document.createElement("tr");
+    var fundscell = document.createElement("td");
+    var sub2021cell = document.createElement("td");
+    var sub2022cell = document.createElement("td");
+    var NAVcell = document.createElement("td");
+    var profitcell = document.createElement("td");
+    var graphlogocell = document.createElement("td");
+
+    fundscell.textContent = item.funds;
+    sub2021cell.textContent = formatIndianNumber(item.sub2021);
+    sub2022cell.textContent = formatIndianNumber(item.sub2022);
+    NAVcell.textContent = formatIndianNumber(item.NAV);
+    profitcell.textContent = formatIndianNumber(item.profit);
+    graphlogocell.textContent = item.graph;
+
+    row.appendChild(fundscell);
+    row.appendChild(sub2021cell);
+    row.appendChild(sub2022cell);
+    row.appendChild(NAVcell);
+    row.appendChild(profitcell);
+    row.appendChild(graphlogocell);
+
+    tbody.appendChild(row);
+  });
+});
+// TABLE - 2 ENDED
+
+//Optional Component(removed ones and additional ones) FROM HERE
 
 //Code for Table - 1 STARTED
 // google.charts.load("current", { packages: ["table"] });
@@ -432,85 +499,212 @@ function drawChart() {
 // }
 //Code for Table - 1 ENDED
 
-// TABLE Alternate - 1 START
-document.addEventListener("DOMContentLoaded", function () {
-  function formatIndianNumber(number) {
-    // Format numbers in the Indian numbering system (lakh-crore system)
-    const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
-    return formattedNumber;
-  }
-  var data = [
-    {
-      date: "29-Sep-21",
-      company: "Alcazar Alpha Fund I (CEIC Ltd)",
-      amount: 1000000,
-      cost: 0.01,
-      entry: 1372250,
-    },
-    {
-      date: "29-Sep-21",
-      company: "Tribe Capital V, LLC- Series 2-A",
-      amount: 714000,
-      cost: 0.01,
-      entry: 1757588,
-    },
-    {
-      date: "13-Dec-21",
-      company: "Summer Pipe LLC",
-      amount: 1500000,
-      cost: 0.01,
-      entry: 1500000,
-    },
-    {
-      date: "02-Feb-22",
-      company: "HOF Capital Growth Opportunity XXI, LLC",
-      amount: 1000000,
-      cost: 0.01,
-      entry: 684877,
-    },
-    {
-      date: "16-Mar-22",
-      company:
-        "Project SAM Productions LLC- Equity investment (initial purchase USD 250K+ second purchase USD 250k)",
-      amount: 500000,
-      cost: 0.01,
-      entry: 500000,
-    },
-    {
-      date: "14-Apr-22",
-      company: "Koinz Holding B.V. - Inv. Cost",
-      amount: 250000,
-      cost: 0.01,
-      entry: 250000,
-    },
-  ];
+// //Code for Line Chart - 2 START
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Sample data
+//   var labels = [
+//     "Zipline",
+//     "NextRoll",
+//     "Orbital Insights",
+//     "Emerald Cloud Lab (ECL)",
+//     "Kraken",
+//     "Pipe",
+//     "Plaid",
+//     "Project SAM Productions LLC",
+//   ];
+//   var data1 = [
+//     150015, 150000, 200000, 1000000, 714000, 1500000, 1000000, 500000,
+//   ];
+//   var data2 = [
+//     142917, 150000, 212884, 1000000, 3477446, 1500000, 684877, 500000,
+//   ];
 
-  // Reference to the table body
-  var tbody = document.querySelector("#myTable tbody");
+//   // Get the canvas element and create a 2D drawing context
+//   var ctx = document.getElementById("linechart1").getContext("2d");
 
-  // Populate the table with data
-  data.forEach(function (item) {
-    var row = document.createElement("tr");
-    var dateCell = document.createElement("td");
-    var companyCell = document.createElement("td");
-    var amountCell = document.createElement("td");
-    var costCell = document.createElement("td");
-    var entryCell = document.createElement("td");
+//   // Create the chart
+//   var myChart = new Chart(ctx, {
+//     type: "line",
+//     data: {
+//       labels: labels,
+//       datasets: [
+//         {
+//           label: "Investment Cost",
+//           borderColor: "#59d79e",
+//           data: data1,
+//           fill: false,
+//         },
+//         {
+//           label: "Valuation as of 31 Dec, 2021",
+//           borderColor: "#2F455C",
+//           data: data2,
+//           fill: false,
+//         },
+//       ],
+//     },
+//     options: {
+//       responsive: true,
+//       maintainAspectRatio: false,
+//       scales: {
+//         x: {
+//           type: "category",
+//           labels: labels,
+//           grid: { display: false },
+//         },
+//         y: {
+//           beginAtZero: true,
+//           grid: { display: true },
+//         },
+//       },
+//     },
+//   });
+// });
+// //Code for Line Chart - 2 ENDED
 
-    dateCell.textContent = item.date;
-    companyCell.textContent = item.company;
-    amountCell.textContent = formatIndianNumber(item.amount);
-    costCell.textContent = item.cost;
-    entryCell.textContent = formatIndianNumber(item.entry);
+// //Code for Line Chart - 3 START
+// document.addEventListener("DOMContentLoaded", function () {
+//   // Sample data
+//   var labels = [
+//     "Emerald Cloud Lab (ECL)",
+//     "Kraken",
+//     "Pipe",
+//     "Plaid",
+//     "Project SAM Productions LLC-Equity Investment (initial purchase USD 250k +second purchase USD 250k",
+//     "Koinz Holding B.V.-Inv. Cost",
+//     "Project SAM Productions LLC - Loan in 2021",
+//     "Project SAM Productions LLC - Loan in Q1,2022",
+//     "Project SAM Productions LLC - Loan in Q2,2022",
+//   ];
+//   var data1 = [
+//     1000000, 714000, 1500000, 1000000, 500000, 250000, 350000, 400000, 250000,
+//   ];
+//   var data2 = [
+//     1372250, 1757588, 1500000, 684877, 500000, 250000, 350000, 400000, 250000,
+//   ];
 
-    row.appendChild(dateCell);
-    row.appendChild(companyCell);
-    row.appendChild(amountCell);
-    row.appendChild(costCell);
-    row.appendChild(entryCell);
+//   // Get the canvas element and create a 2D drawing context
+//   var ctx = document.getElementById("linechart2").getContext("2d");
 
-    tbody.appendChild(row);
-  });
-});
+//   // Create the chart
+//   var myChart = new Chart(ctx, {
+//     type: "line",
+//     data: {
+//       labels: labels,
+//       datasets: [
+//         {
+//           label: "Investment Cost",
+//           borderColor: "#59d79e",
+//           data: data1,
+//           fill: false,
+//         },
+//         {
+//           label: "Valuation as of 31 Dec, 2022",
+//           borderColor: "#2F455C",
+//           data: data2,
+//           fill: false,
+//         },
+//       ],
+//     },
+//     options: {
+//       responsive: true,
+//       maintainAspectRatio: false,
+//       scales: {
+//         x: {
+//           type: "category",
+//           labels: labels,
+//           grid: {
+//             display: false, // hide vertical grid lines
+//           },
+//         },
+//         y: {
+//           beginAtZero: true,
+//           grid: {
+//             display: true, // keep horizontal grid lines
+//           },
+//         },
+//       },
+//       plugins: {
+//         legend: {
+//           display: true,
+//         },
+//         tooltip: {
+//           enabled: true,
+//         },
+//       },
+//       layout: {
+//         padding: {
+//           left: 10,
+//           right: 10,
+//           top: 10,
+//           bottom: 10,
+//         },
+//       },
+//       plugins: {
+//         legend: {
+//           display: true,
+//         },
+//         tooltip: {
+//           enabled: true,
+//         },
+//         xaxis: {
+//           maxTicksLimit: 10, // Adjust the maximum number of ticks on the x-axis
+//           maxRotation: 45, // Adjust the maximum rotation angle of the x-axis labels
+//         },
+//       },
+//     },
+//   });
+// });
+// //Code for Line Chart - 3 ENDED
 
-// TABLE Alternate - 1 ENDED
+// // Code for Bar Graph - 1
+// (function () {
+//   google.charts.load("current", { packages: ["corechart", "bar"] });
+//   google.charts.setOnLoadCallback(drawStuff);
+
+//   function drawStuff() {
+//     var chartDiv = document.getElementById("bargraph");
+//     var data = google.visualization.arrayToDataTable([
+//       ["", "Total Capital Invested", "NAV end of the year"],
+//       ["2021", 5214015, 7668124], // RGB value
+//       ["2022", 5964000, 7064715], // English color name
+//       ["2023", 5964000, 6189715],
+//     ]);
+
+//     var materialOptions = {
+//       width: 900,
+//       chart: {
+//         title: "Total Invested Capital vs. NAV end of December for 2021 & 2022",
+//         //   //   subtitle:
+//         //   //     "VII Ventures Fund SPC [Total Invested Capital vs. NAV end of December for 2021 & 2022]",
+//         titleTextStyle: {
+//           color: "#666", // Change the color of the chart title
+//         },
+//       },
+//       colors: ["#2F455C", "#59d79e"],
+//       bar: { groupWidth: "90%" },
+//       legend: { position: "top" },
+//       vAxis: {
+//         format: "0", // Display axis numbers without abbreviation
+//         textStyle: { color: "#666" }, // Adjust brightness by changing color
+//       },
+//       hAxis: {
+//         textStyle: { color: "#666" }, // Adjust brightness by changing color
+//       },
+//     };
+//     function drawMaterialChart() {
+//       var materialChart = new google.charts.Bar(chartDiv);
+//       materialChart.draw(
+//         data,
+//         google.charts.Bar.convertOptions(materialOptions)
+//       );
+//     }
+
+//     function drawClassicChart() {
+//       var classicChart = new google.visualization.ColumnChart(chartDiv);
+//       classicChart.draw(data, classicOptions);
+//     }
+
+//     drawMaterialChart();
+//   }
+// })();
+//Code for Bar Chart - 1 ENDED
