@@ -24,11 +24,15 @@
     <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
     <!-- Required Fremwork -->
     <link rel="stylesheet" type="text/css" href="../files/bower_components/bootstrap/dist/css/bootstrap.min.css">
+    <!-- themify-icons line icon -->
+    <link rel="stylesheet" type="text/css" href="../files/assets/icon/themify-icons/themify-icons.css">
+    <!-- ico font -->
+    <link rel="stylesheet" type="text/css" href="../files/assets/icon/icofont/css/icofont.css">
     <!-- feather Awesome -->
-    <link rel="stylesheet" type="text/css" href="../files\assets\icon\feather\css\feather.css">
+    <link rel="stylesheet" type="text/css" href="../files/assets/icon/feather/css/feather.css">
     <!-- Style.css -->
-    <link rel="stylesheet" type="text/css" href="../files\assets\css\style.css">
-    <link rel="stylesheet" type="text/css" href="../files\assets\css\jquery.mCustomScrollbar.css">
+    <link rel="stylesheet" type="text/css" href="../files/assets/css/style.css">
+    <link rel="stylesheet" type="text/css" href="../files/assets/css/jquery.mCustomScrollbar.css">
     <!-- Graph plots -->
     <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
@@ -1997,7 +2001,9 @@
                                                     </div> -->
                                             </div>
                                         </div>
+
                                         <!-- task, page, download counter  end -->
+
                                         <section style="background-color: #dcdcdc9a; padding: 1em 0.5em;">
                                             <span
                                                 style="font-family: 'Open Sans'; font-size: 2em; color: #2F455C; font-weight: 900; ">FUND
@@ -2142,8 +2148,27 @@
                                             Portfolio Diversification by Funds</span>
                                         <div id="donutChart" style="height: 90vh;"></div>
 
-                                        <!--  sale analytics start -->
-                                        <!-- <div class="col-xl-9 col-md-12">
+                                        <!-- Code for Animated pie chart (imported from templates's /chart-echart.html and cleaned the code, now no parts of it must be edited/removed)-->
+                                        <!-- PLEASE DO NOT DISTURB THE FOLLOWING CODE - Started-->
+
+                                        <!-- <div class="animated-pie-chart-heading">
+                                            <h5>Pie chart</h5>
+                                            <span>lorem ipsum dolor sit amet, consectetur adipisicing
+                                                elit</span>
+
+                                        </div> -->
+                                        <!--Will work without this div, but have made it for giving heading to the animated pie chart-->
+                                        <div class="piecardblock">
+                                            <div id="pie-chart" style="height:400px"></div>
+                                        </div>
+                                        <div id="main" style="height:0px"></div> <!--Ignore this div BECAUSE PIE Chart
+                                        doesn't work without it, so I have hide it in the frontend with 0px height-->
+                                    </div>
+                                    <!-- Code for Animated pie chart (imported from templates's /chart-echart.html and cleaned the code, now no parts of it must be edited/removed)-->
+                                    <!-- PLEASE DO NOT DISTURB THE Above CODE - ENDED-->
+
+                                    <!--  sale analytics start -->
+                                    <!-- <div class="col-xl-9 col-md-12">
                                                                     <div class="card">
                                                                         <div class="card-header">
                                                                             <h6>Sales Analytics</h6>
@@ -2199,9 +2224,9 @@
                                                                         </div>
                                                                     </div>
                                                                 </div> -->
-                                        <!--  sale analytics end -->
+                                    <!--  sale analytics end -->
 
-                                        <!-- <div class="col-xl-8 col-md-12">
+                                    <!-- <div class="col-xl-8 col-md-12">
                                                                     <div class="card table-card">
                                                                         <div class="card-header">
                                                                             <h5>Application Sales</h5>
@@ -2476,8 +2501,8 @@
                                                                                     </div>
                                                                                 </div> -->
 
-                                        <!-- wather user -->
-                                        <!-- <div class="col-xl-6 col-md-12">
+                                    <!-- wather user -->
+                                    <!-- <div class="col-xl-6 col-md-12">
                                                                                     <div class="card latest-update-card">
                                                                                         <div class="card-header">
                                                                                             <h5>Latest Updates</h5>
@@ -2657,10 +2682,10 @@
                                                                                         </div>
                                                                                     </div>
                                                                                 </div> -->
-                                        <!-- wather user -->
+                                    <!-- wather user -->
 
-                                        <!-- social download  start -->
-                                        <!-- <div class="col-xl-4 col-md-6">
+                                    <!-- social download  start -->
+                                    <!-- <div class="col-xl-4 col-md-6">
                                                                                     <div class="card social-card bg-simple-c-blue">
                                                                                         <div class="card-block">
                                                                                             <div class="row align-items-center">
@@ -2723,20 +2748,20 @@
                                                                                             class="feather icon-arrow-down"></i></a>
                                                                                     </div>
                                                                                 </div> -->
-                                        <!-- social download  end -->
+                                    <!-- social download  end -->
 
-                                    </div>
                                 </div>
                             </div>
+                        </div>
 
-                            <!-- <div id="styleSelector">
+                        <!-- <div id="styleSelector">
 
                                                                     </div> -->
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
+    </div>
     </div>
 
     <!-- Warning Section Starts -->
@@ -2784,23 +2809,26 @@
                                     <![endif]-->
     <!-- Warning Section Ends -->
     <!-- Required Jquery -->
+
     <script type="text/javascript" src="../files/bower_components/jquery/dist/jquery.min.js"></script>
-    <!-- <script type="text/javascript" src="../files/bower_components/jquery-ui/jquery-ui.min.js"></script> -->
-    <!-- <script type="text/javascript" src="../files/bower_components/popper.js/dist/umd/popper.min.js"></script> -->
     <script type="text/javascript" src="../files/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
     <!-- jquery slimscroll js -->
-    <!-- <script type="text/javascript" src="../files/bower_components/jquery-slimscroll/jquery.slimscroll.js"></script> -->
+    <script type="text/javascript" src="../files/bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
     <!-- modernizr js -->
-    <!-- <script type="text/javascript" src="../files/bower_components/modernizr/modernizr.js"></script> -->
-    <!-- Chart js -->
-    <!-- <script type="text/javascript" src="../files/bower_components/chart.js/dist/Chart.js"></script> -->
-    <script src="files\assets\js\jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript" src="files\assets\js\SmoothScroll.js"></script>
-    <script src="files\assets\js\pcoded.min.js"></script>
-    <!-- custom js -->
-    <script src="files\assets\js\vartical-layout.min.js"></script>
-    <!-- <script type="text/javascript" src="../files/assets/pages/dashboard/custom-dashboard.js"></script> -->
-    <script type="text/javascript" src="files\assets\js\script.min.js"></script>
+    <script type="text/javascript" src="../files/bower_components/modernizr/modernizr.js"></script>
+    <script type="text/javascript" src="../files/bower_components/modernizr/feature-detects/css-scrollbars.js"></script>
+
+    <!-- echart js -->
+    <script src="/files/assets/pages/chart/echarts/js/echarts-all.js" type="text/javascript"></script>
+    <!-- Custom js -->
+    <script type="text/javascript" src="/files/assets/pages/chart/echarts/echart-custom.js"></script>
+
+    <script src="../files/assets/js/pcoded.min.js"></script>
+    <script src="../files/assets/js/vartical-layout.min.js"></script>
+    <script src="../files/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+    <script type="text/javascript" src="../files/assets/js/script.js"></script>
+    <script type="text/javascript" src="../files/bower_components/jquery-ui/jquery-ui.min.js"></script>
+    <script type="text/javascript" src="../files/bower_components/popper.js/dist/umd/popper.min.js"></script>
 </body>
 
 </html>
