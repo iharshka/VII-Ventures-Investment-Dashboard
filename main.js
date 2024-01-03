@@ -141,14 +141,14 @@ document.addEventListener("DOMContentLoaded", function () {
   }
   var data = [
     {
-      logo: "",
+      logo: "Favicon.svg",
       // date: "29-Sep-21",
       company: "Alcazar Alpha Fund I (CEIC Ltd)",
       amount: 1000000,
       valuation31Dec21: 1372250,
       moic: 0.01,
-      geo: "",
-      gaindec: "",
+      geo: "usa.png",
+      gaindec: "uptrend.png",
     },
     {
       logo: "",
@@ -157,8 +157,8 @@ document.addEventListener("DOMContentLoaded", function () {
       amount: 714000,
       valuation31Dec21: 1757588,
       moic: 0.01,
-      geo: "",
-      gaindec: "",
+      geo: "usa.png",
+      gaindec: "downtrend.png",
     },
     // {
     //   date: "13-Dec-21",
@@ -205,15 +205,15 @@ document.addEventListener("DOMContentLoaded", function () {
     var geocell = document.createElement("td");
     var gaindeccell = document.createElement("td");
 
-    logoCell.textContent = item.logo;
+    // logoCell.textContent = item.logo;
     companyCell.textContent = item.company;
     amountCell.textContent = formatIndianNumber(item.amount);
     valuation31Dec21cell.textContent = formatIndianNumber(
       item.valuation31Dec21
     );
     moicCell.textContent = formatIndianNumber(item.moic);
-    geocell.textContent = item.geo;
-    gaindeccell.textContent = item.gaindec;
+    // geocell.textContent = item.geo;
+    // gaindeccell.textContent = item.gaindec;
 
     row.appendChild(logoCell);
     row.appendChild(companyCell);
@@ -224,61 +224,84 @@ document.addEventListener("DOMContentLoaded", function () {
     row.appendChild(gaindeccell);
 
     tbody.appendChild(row);
+    // Create an image element
+    var companylogo = document.createElement("img");
+    var geologo = document.createElement("img");
+    var gaindeclogo = document.createElement("img");
+
+    // Set the source from the data array
+    companylogo.src = item.logo; // Use the image URL from the data array
+    geologo.src = item.geo; // Use the image URL from the data array
+    gaindeclogo.src = item.gaindec; // Use the image URL from the data array
+
+    // Set the size of the image
+    companylogo.width = 30; // Set the width in pixels
+    // img.height = 50; // Set the height in pixels
+    geologo.width = 40;
+    gaindeclogo.width = 40;
+
+    // // Set any additional attributes if needed
+    // img.alt = "Logo";
+
+    // Append the image element to the last cell
+    logoCell.appendChild(companylogo);
+    geocell.appendChild(geologo);
+    gaindeccell.appendChild(gaindeclogo);
   });
 });
 // TABLE - 1 ENDED
 
-//Code for Pie Chart - 1 START (INDUSTRY)
+//Code for Pie Charts- ALL COMBINED
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
 
 function drawChart() {
-  var data1 = google.visualization.arrayToDataTable([
-    ["Language", "Speakers (in millions)"],
-    ["Financial Services", 20],
-    ["FinTech", 20],
-    ["Social Impact or Nonprofit", 20],
-    ["Logistics", 20],
-    ["MarTech", 20],
-  ]);
+  // Code for Pie Chart - 1 START (INDUSTRY)
+  //   var data1 = google.visualization.arrayToDataTable([
+  //     ["Language", "Speakers (in millions)"],
+  //     ["Financial Services", 20],
+  //     ["FinTech", 20],
+  //     ["Social Impact or Nonprofit", 20],
+  //     ["Logistics", 20],
+  //     ["MarTech", 20],
+  //   ]);
 
-  var options1 = {
-    legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
-    pieSliceText: "percentage",
-    // title: "Investment Geographies for 2022",
-    colors: ["#ACD6E0", "#205867", "#2F455C", "#59D79E", "#D8D8D8"],
-    backgroundColor: "#f6f7fb",
-    pieStartAngle: 100,
-  };
+  //   var options1 = {
+  //     legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
+  //     pieSliceText: "percentage",
+  //     // title: "Investment Geographies for 2022",
+  //     colors: ["#ACD6E0", "#205867", "#2F455C", "#59D79E", "#D8D8D8"],
+  //     backgroundColor: "#f6f7fb",
+  //     pieStartAngle: 100,
+  //   };
 
-  var chart1 = new google.visualization.PieChart(
-    document.getElementById("industrypie")
-  );
-  chart1.draw(data1, options1);
-  //Code for Pie Chart - 1 ENDED (INDUSTRY)
+  //   var chart1 = new google.visualization.PieChart(
+  //     document.getElementById("industrypie")
+  //   );
+  //   chart1.draw(data1, options1);
+  // //Code for Pie Chart - 1 ENDED (INDUSTRY)
 
-  //Code for Pie Chart - 2 START (GEO)
+  // //Code for Pie Chart - 2 START (GEO)
+  // var data2 = google.visualization.arrayToDataTable([
+  //   ["Language", "Speakers (in millions)"],
+  //   ["Europe", 4.1],
+  //   ["USA", 95.9],
+  // ]);
 
-  var data2 = google.visualization.arrayToDataTable([
-    ["Language", "Speakers (in millions)"],
-    ["Europe", 4.1],
-    ["USA", 95.9],
-  ]);
+  // var options2 = {
+  //   legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
+  //   pieSliceText: "percentage",
+  //   // title: "Investment Geographies for 2022",
+  //   colors: ["#ACD6E0", "#205867"],
+  //   backgroundColor: "#f6f7fb",
+  //   pieStartAngle: 100,
+  // };
 
-  var options2 = {
-    legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
-    pieSliceText: "percentage",
-    // title: "Investment Geographies for 2022",
-    colors: ["#ACD6E0", "#205867"],
-    backgroundColor: "#f6f7fb",
-    pieStartAngle: 100,
-  };
-
-  var chart2 = new google.visualization.PieChart(
-    document.getElementById("geopie")
-  );
-  chart2.draw(data2, options2);
-  //Code for Pie Chart - 2 ENDED (GEO)
+  // var chart2 = new google.visualization.PieChart(
+  //   document.getElementById("geopie")
+  // );
+  // chart2.draw(data2, options2);
+  // //Code for Pie Chart - 2 ENDED (GEO)
 
   //Code for TRIPLE Pie Chart - 1 START (GEO)
   var data3 = google.visualization.arrayToDataTable([
@@ -381,7 +404,7 @@ document.addEventListener("DOMContentLoaded", function () {
       sub2022: 5589015,
       NAV: 7064715,
       profit: -1347608,
-      graph: "",
+      graph: "downtrend.png",
     },
     {
       funds: "VII Ventures SPC Fund 1",
@@ -389,7 +412,7 @@ document.addEventListener("DOMContentLoaded", function () {
       sub2022: 5589015,
       NAV: 7064715,
       profit: -1347608,
-      graph: "",
+      graph: "uptrend.png",
     },
     {
       funds: "VII Ventures SPC Fund 1",
@@ -397,13 +420,12 @@ document.addEventListener("DOMContentLoaded", function () {
       sub2022: 5589015,
       NAV: 7064715,
       profit: -1347608,
-      graph: "",
+      graph: "downtrend.png",
     },
   ];
 
   // Reference to the table body
   var tbody = document.querySelector("#myTable2 tbody");
-
   // Populate the table with data
   data.forEach(function (item) {
     var row = document.createElement("tr");
@@ -419,7 +441,7 @@ document.addEventListener("DOMContentLoaded", function () {
     sub2022cell.textContent = formatIndianNumber(item.sub2022);
     NAVcell.textContent = formatIndianNumber(item.NAV);
     profitcell.textContent = formatIndianNumber(item.profit);
-    graphlogocell.textContent = item.graph;
+    // graphlogocell.textContent = item.graph;
 
     row.appendChild(fundscell);
     row.appendChild(sub2021cell);
@@ -429,6 +451,22 @@ document.addEventListener("DOMContentLoaded", function () {
     row.appendChild(graphlogocell);
 
     tbody.appendChild(row);
+
+    // Create an image element
+    var img = document.createElement("img");
+
+    // Set the source from the data array
+    img.src = item.graph; // Use the image URL from the data array
+
+    // Set the size of the image
+    img.width = 40; // Set the width in pixels
+    // img.height = 50; // Set the height in pixels
+
+    // // Set any additional attributes if needed
+    // img.alt = "Logo";
+
+    // Append the image element to the last cell
+    graphlogocell.appendChild(img);
   });
 });
 // TABLE - 2 ENDED
