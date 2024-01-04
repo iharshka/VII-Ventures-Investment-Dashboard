@@ -30,6 +30,8 @@
     <link rel="stylesheet" type="text/css" href="../files/assets/icon/icofont/css/icofont.css">
     <!-- feather Awesome -->
     <link rel="stylesheet" type="text/css" href="../files/assets/icon/feather/css/feather.css">
+    <!--Vector Map Css -->
+    <link rel="stylesheet" type="text/css" href="../files/assets/pages/vector-maps/css/jquery-jvectormap-2.0.2.css">
     <!-- Style.css -->
     <link rel="stylesheet" type="text/css" href="../files/assets/css/style.css">
     <link rel="stylesheet" type="text/css" href="../files/assets/css/jquery.mCustomScrollbar.css">
@@ -689,47 +691,61 @@
                                         doesn't work without it, so I have hide it in the frontend with 0px height-->
                                     <!-- Code for Animated pie chart (imported from templates's /chart-echart.html and cleaned the code, now no parts of it must be edited/removed)-->
                                     <!-- PLEASE DO NOT DISTURB THE Above CODE - ENDED-->
+                                    <!-- Basic Map With Markers start -->
+                                    <div class="card">
+                                        <div class="card-header">
+                                            <h5>Portfolio Diversification by Geography</h5>
+
+                                        </div>
+                                        <div class="card-block">
+                                            <div id="world-map-markers" class="set-map"></div>
+                                        </div>
+                                    </div>
+                                    <!-- Basic Map With Markers end -->
+
+                                    <button><a href="map-vector.html">Check more map demos here (added just for
+                                            samples)</a></button>
 
                                 </div>
+                                <!-- Page body end -->
                             </div>
-                            <!-- Page body end -->
+                            <!-- Main Body End -->
                         </div>
-                        <!-- Main Body End -->
                     </div>
                 </div>
             </div>
         </div>
-    </div>
 
-    <!-- Required Jquery -->
-    <script type="text/javascript" src="../files/bower_components/jquery/dist/jquery.min.js"></script>
-    <script type="text/javascript" src="../files/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
-    <!-- jquery slimscroll js -->
-    <script type="text/javascript" src="../files/bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
-    <!-- modernizr js -->
-    <script type="text/javascript" src="../files/bower_components/modernizr/modernizr.js"></script>
-    <script type="text/javascript" src="../files/bower_components/modernizr/feature-detects/css-scrollbars.js"></script>
-    <!--Vector Map-->
-    <script
-        src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
-    <script src="/files/assets/pages/vector-maps/js/jquery-jvectormap-2.0.2.min.js"></script>
-    <script src="/files/assets/pages/vector-maps/js/jquery-jvectormap-world-mill-en.js"></script>
-    <script src="/files/assets/pages/vector-maps/js/gdp-data.js"></script>
-    <script src="/files/assets/pages/vector-maps/js/jquery-jvectormap-us-aea-en.js"></script>
+        <!-- Required Jquery -->
+        <script type="text/javascript" src="../files/bower_components/jquery/dist/jquery.min.js"></script>
+        <script type="text/javascript" src="../files/bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+        <!-- jquery slimscroll js -->
+        <script type="text/javascript" src="../files/bower_components/jquery-slimscroll/jquery.slimscroll.js"></script>
+        <!-- modernizr js -->
+        <script type="text/javascript" src="../files/bower_components/modernizr/modernizr.js"></script>
+        <script type="text/javascript"
+            src="../files/bower_components/modernizr/feature-detects/css-scrollbars.js"></script>
+        <!--Vector Map-->
+        <script
+            src="https://developers.google.com/maps/documentation/javascript/examples/markerclusterer/markerclusterer.js"></script>
+        <script src="/files/assets/pages/vector-maps/js/jquery-jvectormap-2.0.2.min.js"></script>
+        <script src="/files/assets/pages/vector-maps/js/jquery-jvectormap-world-mill-en.js"></script>
+        <script src="/files/assets/pages/vector-maps/js/gdp-data.js"></script>
+        <script src="/files/assets/pages/vector-maps/js/jquery-jvectormap-us-aea-en.js"></script>
 
-    <script src="/files/assets/pages/vector-maps/js/jquery-jvectormap-us-il-chicago-mill-en.js"></script>
-    <!-- echart js -->
-    <script src="/files/assets/pages/chart/echarts/js/echarts-all.js" type="text/javascript"></script>
-    <!-- Custom js -->
-    <script type="text/javascript" src="/files/assets/pages/chart/echarts/echart-custom.js"></script>
-    <script src="../files/assets/pages/vector-maps/js/map-vector.js"></script>
+        <script src="/files/assets/pages/vector-maps/js/jquery-jvectormap-us-il-chicago-mill-en.js"></script>
+        <!-- echart js -->
+        <script src="/files/assets/pages/chart/echarts/js/echarts-all.js" type="text/javascript"></script>
+        <!-- Custom js -->
+        <script type="text/javascript" src="/files/assets/pages/chart/echarts/echart-custom.js"></script>
+        <script src="../files/assets/pages/vector-maps/js/map-vector.js"></script>
 
-    <script src="../files/assets/js/pcoded.min.js"></script>
-    <script src="../files/assets/js/vartical-layout.min.js"></script>
-    <script src="../files/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
-    <script type="text/javascript" src="../files/assets/js/script.js"></script>
-    <script type="text/javascript" src="../files/bower_components/jquery-ui/jquery-ui.min.js"></script>
-    <script type="text/javascript" src="../files/bower_components/popper.js/dist/umd/popper.min.js"></script>
+        <script src="../files/assets/js/pcoded.min.js"></script>
+        <script src="../files/assets/js/vartical-layout.min.js"></script>
+        <script src="../files/assets/js/jquery.mCustomScrollbar.concat.min.js"></script>
+        <script type="text/javascript" src="../files/assets/js/script.js"></script>
+        <script type="text/javascript" src="../files/bower_components/jquery-ui/jquery-ui.min.js"></script>
+        <script type="text/javascript" src="../files/bower_components/popper.js/dist/umd/popper.min.js"></script>
 </body>
 
 </html>
