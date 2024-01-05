@@ -151,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
       gaindec: "uptrend.png",
     },
     {
-      logo: "",
+      logo: "Favicon.svg",
       // date: "29-Sep-21",
       company: "Tribe Capital V, LLC- Series 2-A",
       amount: 714000,
@@ -380,6 +380,7 @@ function drawChart() {
     colors: ["#205867", "#ACD6E0", "#59D79E"],
     backgroundColor: "#f6f7fb",
     pieHole: 0.5,
+    legend: "left",
   };
 
   var donutchart = new google.visualization.PieChart(
