@@ -1,21 +1,34 @@
 // //BARGRAPH START
-document.addEventListener("DOMContentLoaded", function () {
+document.addEventListener("DOMContentLoaded", async function () {
+  // Fetch MOIC data from the API
+  const response = await fetch(
+    "https://virtserver.swaggerhub.com/MEHRATAVISH000/Investment_Dashboard/1.0.0/api/overall-portfolio/vii-ventures/"
+  );
+  const dataFromAPI = await response.json();
+
+  // Extract labels and data from the API response
   var ctx = document.getElementById("myBarChart").getContext("2d");
 
   var myChart = new Chart(ctx, {
     type: "bar",
     data: {
-      labels: ["2021", "2022", "2023"],
+      labels: [...Object.keys(dataFromAPI)],
       datasets: [
         {
           label: "Total Capital Invested",
-          data: [5214015, 5964000, 5964000],
+          data: [
+            ...Object.values(dataFromAPI).map(
+              (item) => item.total_capital_invested
+            ),
+          ],
           backgroundColor: "#59d79e",
           borderRadius: 10,
         },
         {
           label: "NAV end of the year",
-          data: [7668124, 7064715, 6189715],
+          data: [
+            ...Object.values(dataFromAPI).map((item) => item.nav_end_of_year),
+          ],
           backgroundColor: "#ACD6E0",
           borderRadius: 10,
           barPercentage: 0.9, // Adjust the width of the bars
@@ -61,14 +74,20 @@ document.addEventListener("DOMContentLoaded", function () {
       },
     },
   });
-});
-//BARGRAPH ENDED
+  //BARGRAPH ENDED
 
-//Code for Line Chart - 1 START (MOIC Chart)
-document.addEventListener("DOMContentLoaded", function () {
-  // Sample data
-  var labels = ["", "2021", "2022", "2023", ""];
-  var data = [null, 1.47, 1.18, 1.04, null];
+  //Code for Line Chart - 1 START (MOIC Chart)
+
+  // Extracting labels and data from the API response
+  const labels = ["", ...Object.keys(dataFromAPI), ""];
+  const data = [
+    null,
+    ...Object.values(dataFromAPI).map((item) => item.moic),
+    null,
+  ];
+  // // Sample data
+  // var labels = ["", "2021", "2022", "2023", ""];
+  // var data = [null, 1.47, 1.18, 1.04, null];
 
   // Get the canvas element and create a 2D drawing context
   var ctx = document.getElementById("moicchart").getContext("2d");
@@ -132,7 +151,7 @@ document.addEventListener("DOMContentLoaded", function () {
 });
 //Code for Line Chart - 1 ENDED (MOIC Chart)
 
-// TABLE - 1 START
+// TABLE - 2021 START
 document.addEventListener("DOMContentLoaded", function () {
   function formatIndianNumber(number) {
     // Format numbers in the Indian numbering system (lakh-crore system)
@@ -192,7 +211,7 @@ document.addEventListener("DOMContentLoaded", function () {
   ];
 
   // Reference to the table body
-  var tbody = document.querySelector("#myTable tbody");
+  var tbody = document.querySelector("#myTable2021 tbody");
 
   // Populate the table with data
   data.forEach(function (item) {
@@ -249,7 +268,187 @@ document.addEventListener("DOMContentLoaded", function () {
     gaindeccell.appendChild(gaindeclogo);
   });
 });
-// TABLE - 1 ENDED
+// TABLE - 2021 ENDED
+
+// TABLE - 2022 START
+document.addEventListener("DOMContentLoaded", function () {
+  function formatIndianNumber(number) {
+    // Format numbers in the Indian numbering system (lakh-crore system)
+    const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
+    return formattedNumber;
+  }
+  var data = [
+    {
+      logo: "Favicon.svg",
+      // date: "29-Sep-21",
+      company: "Alcazar Alpha Fund I (CEIC Ltd)",
+      amount: 1000000,
+      valuation31Dec21: 1372250,
+      moic: 0.01,
+      geo: "usa.png",
+      gaindec: "uptrend.png",
+    },
+    {
+      logo: "Favicon.svg",
+      // date: "29-Sep-21",
+      company: "Tribe Capital V, LLC- Series 2-A",
+      amount: 714000,
+      valuation31Dec21: 1757588,
+      moic: 0.01,
+      geo: "usa.png",
+      gaindec: "downtrend.png",
+    },
+  ];
+
+  // Reference to the table body
+  var tbody = document.querySelector("#myTable2022 tbody");
+
+  // Populate the table with data
+  data.forEach(function (item) {
+    var row = document.createElement("tr");
+    var logoCell = document.createElement("td");
+    var companyCell = document.createElement("td");
+    var amountCell = document.createElement("td");
+    var valuation31Dec21cell = document.createElement("td");
+    var moicCell = document.createElement("td");
+    var geocell = document.createElement("td");
+    var gaindeccell = document.createElement("td");
+
+    // logoCell.textContent = item.logo;
+    companyCell.textContent = item.company;
+    amountCell.textContent = formatIndianNumber(item.amount);
+    valuation31Dec21cell.textContent = formatIndianNumber(
+      item.valuation31Dec21
+    );
+    moicCell.textContent = formatIndianNumber(item.moic);
+    // geocell.textContent = item.geo;
+    // gaindeccell.textContent = item.gaindec;
+
+    row.appendChild(logoCell);
+    row.appendChild(companyCell);
+    row.appendChild(amountCell);
+    row.appendChild(valuation31Dec21cell);
+    row.appendChild(moicCell);
+    row.appendChild(geocell);
+    row.appendChild(gaindeccell);
+
+    tbody.appendChild(row);
+    // Create an image element
+    var companylogo = document.createElement("img");
+    var geologo = document.createElement("img");
+    var gaindeclogo = document.createElement("img");
+
+    // Set the source from the data array
+    companylogo.src = item.logo; // Use the image URL from the data array
+    geologo.src = item.geo; // Use the image URL from the data array
+    gaindeclogo.src = item.gaindec; // Use the image URL from the data array
+
+    // Set the size of the image
+    companylogo.width = 30; // Set the width in pixels
+    // img.height = 50; // Set the height in pixels
+    geologo.width = 40;
+    gaindeclogo.width = 40;
+
+    // // Set any additional attributes if needed
+    // img.alt = "Logo";
+
+    // Append the image element to the last cell
+    logoCell.appendChild(companylogo);
+    geocell.appendChild(geologo);
+    gaindeccell.appendChild(gaindeclogo);
+  });
+});
+// TABLE - 2022 ENDED
+
+// TABLE - 2023 START
+document.addEventListener("DOMContentLoaded", function () {
+  function formatIndianNumber(number) {
+    // Format numbers in the Indian numbering system (lakh-crore system)
+    const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
+    return formattedNumber;
+  }
+  var data = [
+    {
+      logo: "Favicon.svg",
+      // date: "29-Sep-21",
+      company: "Alcazar Alpha Fund I (CEIC Ltd)",
+      amount: 1000000,
+      valuation31Dec21: 1372250,
+      moic: 0.01,
+      geo: "usa.png",
+      gaindec: "uptrend.png",
+    },
+    {
+      logo: "Favicon.svg",
+      // date: "29-Sep-21",
+      company: "Tribe Capital V, LLC- Series 2-A",
+      amount: 714000,
+      valuation31Dec21: 1757588,
+      moic: 0.01,
+      geo: "usa.png",
+      gaindec: "downtrend.png",
+    },
+  ];
+
+  // Reference to the table body
+  var tbody = document.querySelector("#myTable2023 tbody");
+
+  // Populate the table with data
+  data.forEach(function (item) {
+    var row = document.createElement("tr");
+    var logoCell = document.createElement("td");
+    var companyCell = document.createElement("td");
+    var amountCell = document.createElement("td");
+    var valuation31Dec21cell = document.createElement("td");
+    var moicCell = document.createElement("td");
+    var geocell = document.createElement("td");
+    var gaindeccell = document.createElement("td");
+
+    // logoCell.textContent = item.logo;
+    companyCell.textContent = item.company;
+    amountCell.textContent = formatIndianNumber(item.amount);
+    valuation31Dec21cell.textContent = formatIndianNumber(
+      item.valuation31Dec21
+    );
+    moicCell.textContent = formatIndianNumber(item.moic);
+    // geocell.textContent = item.geo;
+    // gaindeccell.textContent = item.gaindec;
+
+    row.appendChild(logoCell);
+    row.appendChild(companyCell);
+    row.appendChild(amountCell);
+    row.appendChild(valuation31Dec21cell);
+    row.appendChild(moicCell);
+    row.appendChild(geocell);
+    row.appendChild(gaindeccell);
+
+    tbody.appendChild(row);
+    // Create an image element
+    var companylogo = document.createElement("img");
+    var geologo = document.createElement("img");
+    var gaindeclogo = document.createElement("img");
+
+    // Set the source from the data array
+    companylogo.src = item.logo; // Use the image URL from the data array
+    geologo.src = item.geo; // Use the image URL from the data array
+    gaindeclogo.src = item.gaindec; // Use the image URL from the data array
+
+    // Set the size of the image
+    companylogo.width = 30; // Set the width in pixels
+    // img.height = 50; // Set the height in pixels
+    geologo.width = 40;
+    gaindeclogo.width = 40;
+
+    // // Set any additional attributes if needed
+    // img.alt = "Logo";
+
+    // Append the image element to the last cell
+    logoCell.appendChild(companylogo);
+    geocell.appendChild(geologo);
+    gaindeccell.appendChild(gaindeclogo);
+  });
+});
+// TABLE - 2023 ENDED
 
 //Code for Pie Charts- ALL COMBINED
 google.charts.load("current", { packages: ["corechart"] });
@@ -311,12 +510,11 @@ function drawChart() {
   ]);
 
   var options3 = {
-    legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
+    legend: { position: "top", textStyle: { fontSize: 16 } }, // Increase legend text size
     pieSliceText: "percentage",
-    // title: "Investment Geographies for 2022",
+    pieSliceTextStyle: { fontSize: 16 }, // Increase slice text size
     colors: ["#ACD6E0", "#205867"],
     backgroundColor: "#f6f7fb",
-    // pieStartAngle: 100,
   };
 
   var chart3 = new google.visualization.PieChart(
@@ -324,6 +522,7 @@ function drawChart() {
   );
   chart3.draw(data3, options3);
   //Code for TRIPLE Pie Chart - 1 ENDED (GEO)
+  addTitle("geopie1", "2021"); // Add title to the chart
 
   //Code for TRIPLE Pie Chart - 2 START (GEO)
   var data4 = google.visualization.arrayToDataTable([
@@ -333,9 +532,9 @@ function drawChart() {
   ]);
 
   var options4 = {
-    legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
+    legend: { position: "top", textStyle: { fontSize: 16 } },
     pieSliceText: "percentage",
-    // title: "Investment Geographies for 2022",
+    pieSliceTextStyle: { fontSize: 16 },
     colors: ["#205867", "#ACD6E0"],
     backgroundColor: "#f6f7fb",
   };
@@ -345,6 +544,7 @@ function drawChart() {
   );
   chart4.draw(data4, options4);
   //Code for TRIPLE Pie Chart - 2 ENDED (GEO)
+  addTitle("geopie2", "2022"); // Add title to the chart
 
   //Code for TRIPLE Pie Chart - 3 START (GEO)
   var data5 = google.visualization.arrayToDataTable([
@@ -354,9 +554,9 @@ function drawChart() {
   ]);
 
   var options5 = {
-    legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
+    legend: { position: "top", textStyle: { fontSize: 16 } },
     pieSliceText: "percentage",
-    // title: "Investment Geographies for 2022",
+    pieSliceTextStyle: { fontSize: 16 },
     colors: ["#205867", "#ACD6E0"],
     backgroundColor: "#f6f7fb",
   };
@@ -365,6 +565,16 @@ function drawChart() {
     document.getElementById("geopie3")
   );
   chart5.draw(data5, options5);
+  //Code for TRIPLE Pie Chart - 3 ENDED (GEO)
+  addTitle("geopie3", "2023"); // Add title to the chart
+}
+
+function addTitle(chartId, year) {
+  // Add title to the chart
+  var titleDiv = document.createElement("div");
+  titleDiv.className = "chart-title";
+  titleDiv.innerText = year;
+  document.getElementById(chartId).parentNode.appendChild(titleDiv);
 }
 //Code for TRIPLE Pie Chart - 3 ENDED (GEO)
 
