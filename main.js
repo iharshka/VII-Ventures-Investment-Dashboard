@@ -522,7 +522,6 @@ function drawChart() {
   );
   chart3.draw(data3, options3);
   //Code for TRIPLE Pie Chart - 1 ENDED (GEO)
-  addTitle("geopie1", "2021"); // Add title to the chart
 
   //Code for TRIPLE Pie Chart - 2 START (GEO)
   var data4 = google.visualization.arrayToDataTable([
@@ -544,7 +543,6 @@ function drawChart() {
   );
   chart4.draw(data4, options4);
   //Code for TRIPLE Pie Chart - 2 ENDED (GEO)
-  addTitle("geopie2", "2022"); // Add title to the chart
 
   //Code for TRIPLE Pie Chart - 3 START (GEO)
   var data5 = google.visualization.arrayToDataTable([
@@ -566,15 +564,6 @@ function drawChart() {
   );
   chart5.draw(data5, options5);
   //Code for TRIPLE Pie Chart - 3 ENDED (GEO)
-  addTitle("geopie3", "2023"); // Add title to the chart
-}
-
-function addTitle(chartId, year) {
-  // Add title to the chart
-  var titleDiv = document.createElement("div");
-  titleDiv.className = "chart-title";
-  titleDiv.innerText = year;
-  document.getElementById(chartId).parentNode.appendChild(titleDiv);
 }
 //Code for TRIPLE Pie Chart - 3 ENDED (GEO)
 
