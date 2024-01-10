@@ -23,6 +23,8 @@ document.addEventListener("DOMContentLoaded", async function () {
           ],
           backgroundColor: "#59d79e",
           borderRadius: 10,
+          barPercentage: 0.7,
+          categoryPercentage: 0.2, // Adjust the spacing between bars
         },
         {
           label: "NAV end of the year",
@@ -31,8 +33,8 @@ document.addEventListener("DOMContentLoaded", async function () {
           ],
           backgroundColor: "#ACD6E0",
           borderRadius: 10,
-          barPercentage: 0.9, // Adjust the width of the bars
-          categoryPercentage: 0.7, // Adjust the spacing between bars
+          barPercentage: 0.7, // Adjust the width of the bars
+          categoryPercentage: 0.2, // Adjust the spacing between bars
         },
       ],
     },

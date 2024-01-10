@@ -86,16 +86,19 @@
 
         .chart-container {
             position: relative;
+            text-align: center;
+            /* Center text within the chart container */
         }
 
         .chart-title {
             position: absolute;
-            top: 60%;
+            bottom: 1.5em;
+            /* Adjust the distance from the bottom as needed */
             left: 60%;
-            transform: translate(-60%, -60%);
+            transform: translateX(-50%);
             font-size: 18px;
             font-weight: 500;
-            color: white;
+            color: #2F455C;
             /* Choose the color that suits your design */
         }
     </style>
@@ -534,10 +537,12 @@
                                     </div>
 
                                     <!-- task, page, download counter  end -->
-
-                                    <section style="background-color: #dcdcdc9a; padding: 1em 0.5em;">
+                                    <section
+                                        style="background-color: #2F455C; padding: 1em 0.5em; transition: background-color 0.4s ease-in-out;"
+                                        onmouseover="this.style.backgroundColor='#dfdfdf'; this.querySelector('span').style.fontSize='1.99em'; this.querySelector('span').style.color='#2F455C';"
+                                        onmouseout="this.style.backgroundColor='#2F455C'; this.querySelector('span').style.fontSize='2em'; this.querySelector('span').style.color='white';">
                                         <span
-                                            style="font-family: 'Open Sans'; font-size: 2em; color: #2F455C; font-weight: 900; ">FUND
+                                            style="font-family: 'Open Sans'; font-size: 2em; color: white; font-weight: 600; transition: font-size 0.3s ease;">FUND
                                             LEVEL PERFORMANCE</span>
                                     </section>
                                     <span
@@ -575,9 +580,9 @@
                                         </section> -->
 
                                     <section id="2023">
-                                        <span
+                                        <center
                                             style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; margin: 1.5em 0 0 0;">
-                                            VII Ventures Fund 1 SP: Fund Performance in 2023</span>
+                                            VII Ventures Fund 1 SP: Fund Performance in 2023</center>
 
                                         <section id="table"
                                             style="padding: 1em; padding-top: 0.5em; margin-top: 0.2em; border-radius: 4px;">
@@ -630,9 +635,9 @@
                                     </section>
 
                                     <section id="2022">
-                                        <span
+                                        <center
                                             style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; margin: 1.5em 0 0 0;">
-                                            VII Ventures Fund 1 SP: Fund Performance in 2022</span>
+                                            VII Ventures Fund 1 SP: Fund Performance in 2022</center>
 
                                         <section id="table"
                                             style="padding: 1em; padding-top: 0.5em; margin-top: 0.2em; border-radius: 4px;">
@@ -682,9 +687,9 @@
                                         </div>
                                     </section>
                                     <section id="2021">
-                                        <span
+                                        <center
                                             style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; margin: 1.5em 0 0 0;">
-                                            VII Ventures Fund 1 SP: Fund Performance in 2021</span>
+                                            VII Ventures Fund 1 SP: Fund Performance in 2021</center>
 
                                         <section id="table"
                                             style="padding: 1em; padding-top: 0.5em; margin-top: 0.2em; border-radius: 4px;">
