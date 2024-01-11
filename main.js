@@ -2,9 +2,10 @@
 document.addEventListener("DOMContentLoaded", async function () {
   // Fetch MOIC data from the API
   const response = await fetch(
-    "https://virtserver.swaggerhub.com/MEHRATAVISH000/Investment_Dashboard/1.0.0/api/overall-portfolio/vii-ventures/"
+    "https://virtserver.swaggerhub.com/MEHRATAVISH000/Investment_Dashboard/1.0.0/funds/overall-portfolio/?fundName=VII%2520Ventures%2520SPC"
   );
-  const dataFromAPI = await response.json();
+  const responseData = await response.json();
+  const dataFromAPI = responseData.body.overall_portfolio;
 
   // Extract labels and data from the API response
   var ctx = document.getElementById("myBarChart").getContext("2d");
@@ -153,306 +154,72 @@ document.addEventListener("DOMContentLoaded", async function () {
 });
 //Code for Line Chart - 1 ENDED (MOIC Chart)
 
-// TABLE - 2021 START
-document.addEventListener("DOMContentLoaded", function () {
+//Code for 2023, 2022, 2021 Tables START
+document.addEventListener("DOMContentLoaded", async function () {
+  // Fetch investment data from the API
+  const response = await fetch(
+    "https://virtserver.swaggerhub.com/MEHRATAVISH000/Investment_Dashboard/1.0.0/funds/company-level-portfolio/?fundName=VII%2520Ventures%2520SPC"
+  );
+  const responseData = await response.json();
+  const investmentData = responseData.body.company_level_portfolio;
+
+  // Function for Formatting numbers in the Indian numbering system (lakh-crore system)
   function formatIndianNumber(number) {
-    // Format numbers in the Indian numbering system (lakh-crore system)
     const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
     return formattedNumber;
   }
-  var data = [
-    {
-      logo: "Favicon.svg",
-      // date: "29-Sep-21",
-      company: "Alcazar Alpha Fund I (CEIC Ltd)",
-      amount: 1000000,
-      valuation31Dec21: 1372250,
-      moic: 0.01,
-      geo: "usa.png",
-      gaindec: "uptrend.png",
-    },
-    {
-      logo: "Favicon.svg",
-      // date: "29-Sep-21",
-      company: "Tribe Capital V, LLC- Series 2-A",
-      amount: 714000,
-      valuation31Dec21: 1757588,
-      moic: 0.01,
-      geo: "usa.png",
-      gaindec: "downtrend.png",
-    },
-    // {
-    //   date: "13-Dec-21",
-    //   company: "Summer Pipe LLC",
-    //   amount: 1500000,
-    //   cost: 0.01,
-    //   entry: 1500000,
-    // },
-    // {
-    //   date: "02-Feb-22",
-    //   company: "HOF Capital Growth Opportunity XXI, LLC",
-    //   amount: 1000000,
-    //   cost: 0.01,
-    //   entry: 684877,
-    // },
-    // {
-    //   date: "16-Mar-22",
-    //   company:
-    //     "Project SAM Productions LLC- Equity investment (initial purchase USD 250K+ second purchase USD 250k)",
-    //   amount: 500000,
-    //   cost: 0.01,
-    //   entry: 500000,
-    // },
-    // {
-    //   date: "14-Apr-22",
-    //   company: "Koinz Holding B.V. - Inv. Cost",
-    //   amount: 250000,
-    //   cost: 0.01,
-    //   entry: 250000,
-    // },
-  ];
 
-  // Reference to the table body
-  var tbody = document.querySelector("#myTable2021 tbody");
-
-  // Populate the table with data
-  data.forEach(function (item) {
+  // Function to create a table row for the given investment item
+  function createTableRow(item) {
     var row = document.createElement("tr");
     var logoCell = document.createElement("td");
     var companyCell = document.createElement("td");
     var amountCell = document.createElement("td");
-    var valuation31Dec21cell = document.createElement("td");
+    var valuationCell = document.createElement("td");
     var moicCell = document.createElement("td");
-    var geocell = document.createElement("td");
+    var geoCell = document.createElement("td");
     var gaindeccell = document.createElement("td");
 
+    // Populate cells with data
     // logoCell.textContent = item.logo;
-    companyCell.textContent = item.company;
-    amountCell.textContent = formatIndianNumber(item.amount);
-    valuation31Dec21cell.textContent = formatIndianNumber(
-      item.valuation31Dec21
-    );
-    moicCell.textContent = formatIndianNumber(item.moic);
-    // geocell.textContent = item.geo;
-    // gaindeccell.textContent = item.gaindec;
+    logoCell.innerHTML = `<a href="${item.web_link}" target="_blank">${item.web_link}</a>`;
+    companyCell.textContent = item.name;
+    amountCell.textContent = formatIndianNumber(item.investment_cost);
+    valuationCell.textContent = formatIndianNumber(item.valuation_31_dec);
+    moicCell.textContent = item.moic;
+    geoCell.textContent = item.geo;
+    gaindeccell.textContent = item.industry.join(", ");
 
+    // Append cells to the row
     row.appendChild(logoCell);
     row.appendChild(companyCell);
     row.appendChild(amountCell);
-    row.appendChild(valuation31Dec21cell);
+    row.appendChild(valuationCell);
     row.appendChild(moicCell);
-    row.appendChild(geocell);
+    row.appendChild(geoCell);
     row.appendChild(gaindeccell);
 
-    tbody.appendChild(row);
-    // Create an image element
-    var companylogo = document.createElement("img");
-    var geologo = document.createElement("img");
-    var gaindeclogo = document.createElement("img");
-
-    // Set the source from the data array
-    companylogo.src = item.logo; // Use the image URL from the data array
-    geologo.src = item.geo; // Use the image URL from the data array
-    gaindeclogo.src = item.gaindec; // Use the image URL from the data array
-
-    // Set the size of the image
-    companylogo.width = 30; // Set the width in pixels
-    // img.height = 50; // Set the height in pixels
-    geologo.width = 40;
-    gaindeclogo.width = 40;
-
-    // // Set any additional attributes if needed
-    // img.alt = "Logo";
-
-    // Append the image element to the last cell
-    logoCell.appendChild(companylogo);
-    geocell.appendChild(geologo);
-    gaindeccell.appendChild(gaindeclogo);
-  });
-});
-// TABLE - 2021 ENDED
-
-// TABLE - 2022 START
-document.addEventListener("DOMContentLoaded", function () {
-  function formatIndianNumber(number) {
-    // Format numbers in the Indian numbering system (lakh-crore system)
-    const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
-    return formattedNumber;
+    return row;
   }
-  var data = [
-    {
-      logo: "Favicon.svg",
-      // date: "29-Sep-21",
-      company: "Alcazar Alpha Fund I (CEIC Ltd)",
-      amount: 1000000,
-      valuation31Dec21: 1372250,
-      moic: 0.01,
-      geo: "usa.png",
-      gaindec: "uptrend.png",
-    },
-    {
-      logo: "Favicon.svg",
-      // date: "29-Sep-21",
-      company: "Tribe Capital V, LLC- Series 2-A",
-      amount: 714000,
-      valuation31Dec21: 1757588,
-      moic: 0.01,
-      geo: "usa.png",
-      gaindec: "downtrend.png",
-    },
-  ];
 
-  // Reference to the table body
-  var tbody = document.querySelector("#myTable2022 tbody");
+  // Populate tables for 2023, 2022, and 2021
+  ["2023", "2022", "2021"].forEach(function (year) {
+    // Reference to the table body
+    var tbody = document.querySelector(`#myTable${year} tbody`);
 
-  // Populate the table with data
-  data.forEach(function (item) {
-    var row = document.createElement("tr");
-    var logoCell = document.createElement("td");
-    var companyCell = document.createElement("td");
-    var amountCell = document.createElement("td");
-    var valuation31Dec21cell = document.createElement("td");
-    var moicCell = document.createElement("td");
-    var geocell = document.createElement("td");
-    var gaindeccell = document.createElement("td");
+    // Extract data for the specific year
+    var dataForYear = investmentData[year];
 
-    // logoCell.textContent = item.logo;
-    companyCell.textContent = item.company;
-    amountCell.textContent = formatIndianNumber(item.amount);
-    valuation31Dec21cell.textContent = formatIndianNumber(
-      item.valuation31Dec21
-    );
-    moicCell.textContent = formatIndianNumber(item.moic);
-    // geocell.textContent = item.geo;
-    // gaindeccell.textContent = item.gaindec;
-
-    row.appendChild(logoCell);
-    row.appendChild(companyCell);
-    row.appendChild(amountCell);
-    row.appendChild(valuation31Dec21cell);
-    row.appendChild(moicCell);
-    row.appendChild(geocell);
-    row.appendChild(gaindeccell);
-
-    tbody.appendChild(row);
-    // Create an image element
-    var companylogo = document.createElement("img");
-    var geologo = document.createElement("img");
-    var gaindeclogo = document.createElement("img");
-
-    // Set the source from the data array
-    companylogo.src = item.logo; // Use the image URL from the data array
-    geologo.src = item.geo; // Use the image URL from the data array
-    gaindeclogo.src = item.gaindec; // Use the image URL from the data array
-
-    // Set the size of the image
-    companylogo.width = 30; // Set the width in pixels
-    // img.height = 50; // Set the height in pixels
-    geologo.width = 40;
-    gaindeclogo.width = 40;
-
-    // // Set any additional attributes if needed
-    // img.alt = "Logo";
-
-    // Append the image element to the last cell
-    logoCell.appendChild(companylogo);
-    geocell.appendChild(geologo);
-    gaindeccell.appendChild(gaindeclogo);
+    // Populate the table with data for the specific year
+    dataForYear.forEach(function (item) {
+      var row = createTableRow(item);
+      tbody.appendChild(row);
+    });
   });
 });
-// TABLE - 2022 ENDED
+//Code for 2023, 2022, 2021 Tables ENDED
 
-// TABLE - 2023 START
-document.addEventListener("DOMContentLoaded", function () {
-  function formatIndianNumber(number) {
-    // Format numbers in the Indian numbering system (lakh-crore system)
-    const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
-    return formattedNumber;
-  }
-  var data = [
-    {
-      logo: "Favicon.svg",
-      // date: "29-Sep-21",
-      company: "Alcazar Alpha Fund I (CEIC Ltd)",
-      amount: 1000000,
-      valuation31Dec21: 1372250,
-      moic: 0.01,
-      geo: "usa.png",
-      gaindec: "uptrend.png",
-    },
-    {
-      logo: "Favicon.svg",
-      // date: "29-Sep-21",
-      company: "Tribe Capital V, LLC- Series 2-A",
-      amount: 714000,
-      valuation31Dec21: 1757588,
-      moic: 0.01,
-      geo: "usa.png",
-      gaindec: "downtrend.png",
-    },
-  ];
-
-  // Reference to the table body
-  var tbody = document.querySelector("#myTable2023 tbody");
-
-  // Populate the table with data
-  data.forEach(function (item) {
-    var row = document.createElement("tr");
-    var logoCell = document.createElement("td");
-    var companyCell = document.createElement("td");
-    var amountCell = document.createElement("td");
-    var valuation31Dec21cell = document.createElement("td");
-    var moicCell = document.createElement("td");
-    var geocell = document.createElement("td");
-    var gaindeccell = document.createElement("td");
-
-    // logoCell.textContent = item.logo;
-    companyCell.textContent = item.company;
-    amountCell.textContent = formatIndianNumber(item.amount);
-    valuation31Dec21cell.textContent = formatIndianNumber(
-      item.valuation31Dec21
-    );
-    moicCell.textContent = formatIndianNumber(item.moic);
-    // geocell.textContent = item.geo;
-    // gaindeccell.textContent = item.gaindec;
-
-    row.appendChild(logoCell);
-    row.appendChild(companyCell);
-    row.appendChild(amountCell);
-    row.appendChild(valuation31Dec21cell);
-    row.appendChild(moicCell);
-    row.appendChild(geocell);
-    row.appendChild(gaindeccell);
-
-    tbody.appendChild(row);
-    // Create an image element
-    var companylogo = document.createElement("img");
-    var geologo = document.createElement("img");
-    var gaindeclogo = document.createElement("img");
-
-    // Set the source from the data array
-    companylogo.src = item.logo; // Use the image URL from the data array
-    geologo.src = item.geo; // Use the image URL from the data array
-    gaindeclogo.src = item.gaindec; // Use the image URL from the data array
-
-    // Set the size of the image
-    companylogo.width = 30; // Set the width in pixels
-    // img.height = 50; // Set the height in pixels
-    geologo.width = 40;
-    gaindeclogo.width = 40;
-
-    // // Set any additional attributes if needed
-    // img.alt = "Logo";
-
-    // Append the image element to the last cell
-    logoCell.appendChild(companylogo);
-    geocell.appendChild(geologo);
-    gaindeccell.appendChild(gaindeclogo);
-  });
-});
-// TABLE - 2023 ENDED
-
-//Code for Pie Charts- ALL COMBINED
+//Code for Pie Charts- ALL COMBINED START
 google.charts.load("current", { packages: ["corechart"] });
 google.charts.setOnLoadCallback(drawChart);
 
@@ -568,6 +335,7 @@ function drawChart() {
   //Code for TRIPLE Pie Chart - 3 ENDED (GEO)
 }
 //Code for TRIPLE Pie Chart - 3 ENDED (GEO)
+//Code for Pie Charts- ALL COMBINED ENDED
 
 //Optional Component(removed ones and additional ones) FROM HERE
 

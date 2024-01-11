@@ -1,69 +1,21 @@
-//DONUT chart START
-google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawChart);
-
-function drawChart() {
-  var donutdata = google.visualization.arrayToDataTable([
-    ["Task", "Hours per Day"],
-    ["VII Ventures Fund 2 SP", 19],
-    ["VII Ventures SPC", 39.5],
-    ["VII Ventures Fund 1 SP", 41.5],
-  ]);
-
-  var donutoptions = {
-    // title: "Investment Geographies for 2022",
-    // pieSliceText: "label",
-    colors: ["#205867", "#ACD6E0", "#59D79E"],
-    backgroundColor: "#f6f7fb",
-    pieHole: 0.5,
-    legend: "left",
-  };
-
-  var donutchart = new google.visualization.PieChart(
-    document.getElementById("donutChart")
+// Fetch data from the API
+document.addEventListener("DOMContentLoaded", async function () {
+  const response = await fetch(
+    "https://virtserver.swaggerhub.com/MEHRATAVISH000/Investment_Dashboard/1.0.0/funds/investor-table/?userId=1001"
   );
-  donutchart.draw(donutdata, donutoptions);
-}
-//DONUT Chart ENDED
+  const apiData = await response.json();
 
-// TABLE - 2 START
-document.addEventListener("DOMContentLoaded", function () {
+  // Function for Formatting numbers in the Indian numbering system (lakh-crore system)
   function formatIndianNumber(number) {
-    // Format numbers in the Indian numbering system (lakh-crore system)
     const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
     return formattedNumber;
   }
-  var data = [
-    {
-      funds: "VII Ventures SPC",
-      sub2021: 5589015,
-      sub2022: 5589015,
-      NAV: 7064715,
-      profit: -1347608,
-      graph: "downtrend.png",
-    },
-    {
-      funds: "VII Ventures SPC Fund 1",
-      sub2021: 5589015,
-      sub2022: 5589015,
-      NAV: 7064715,
-      profit: -1347608,
-      graph: "uptrend.png",
-    },
-    {
-      funds: "VII Ventures SPC Fund 1",
-      sub2021: 5589015,
-      sub2022: 5589015,
-      NAV: 7064715,
-      profit: -1347608,
-      graph: "downtrend.png",
-    },
-  ];
 
   // Reference to the table body
   var tbody = document.querySelector("#myTable2 tbody");
-  // Populate the table with data
-  data.forEach(function (item) {
+
+  // Populate the table with API data
+  apiData.body.user_data.forEach(function (item) {
     var row = document.createElement("tr");
     var fundscell = document.createElement("td");
     var sub2021cell = document.createElement("td");
@@ -72,11 +24,11 @@ document.addEventListener("DOMContentLoaded", function () {
     var profitcell = document.createElement("td");
     var graphlogocell = document.createElement("td");
 
-    fundscell.textContent = item.funds;
-    sub2021cell.textContent = formatIndianNumber(item.sub2021);
-    sub2022cell.textContent = formatIndianNumber(item.sub2022);
-    NAVcell.textContent = formatIndianNumber(item.NAV);
-    profitcell.textContent = formatIndianNumber(item.profit);
+    fundscell.textContent = item.fund_name;
+    sub2021cell.textContent = formatIndianNumber(item.subscription_2021);
+    sub2022cell.textContent = formatIndianNumber(item.subscription_2022);
+    NAVcell.textContent = formatIndianNumber(item.nav);
+    profitcell.textContent = formatIndianNumber(item.pnl);
     // graphlogocell.textContent = item.graph;
 
     row.appendChild(fundscell);
@@ -91,18 +43,47 @@ document.addEventListener("DOMContentLoaded", function () {
     // Create an image element
     var img = document.createElement("img");
 
-    // Set the source from the data array
-    img.src = item.graph; // Use the image URL from the data array
+    // Set the source from the data array (assuming logo URLs are provided in the web_link key)
+    img.src = item.web_link;
 
     // Set the size of the image
     img.width = 40; // Set the width in pixels
-    // img.height = 50; // Set the height in pixels
-
-    // // Set any additional attributes if needed
-    // img.alt = "Logo";
 
     // Append the image element to the last cell
     graphlogocell.appendChild(img);
   });
+
+  //Code for DONUT Chart START
+  // Function to draw the donut chart
+  function drawChart() {
+    var donutoptions = {
+      colors: ["#205867", "#ACD6E0", "#59D79E"],
+      backgroundColor: "#f6f7fb",
+      pieHole: 0.5,
+      legend: "left",
+    };
+
+    var donutdata = google.visualization.arrayToDataTable([
+      ["Task", "Hours per Day"],
+      ["VII Ventures SPC", apiData.body.user_data[0].percent_fund_allocation],
+      [
+        "VII Ventures Fund 1 SP",
+        apiData.body.user_data[1].percent_fund_allocation,
+      ],
+      [
+        "VII Ventures Fund 2 SP",
+        apiData.body.user_data[2].percent_fund_allocation,
+      ],
+    ]);
+
+    var donutchart = new google.visualization.PieChart(
+      document.getElementById("donutChart")
+    );
+    donutchart.draw(donutdata, donutoptions);
+  }
+
+  // Update Donut Chart data
+  google.charts.load("current", { packages: ["corechart"] }); // Loads the "current" Google Visualisation API and calls "corechart" on that API
+  google.charts.setOnLoadCallback(drawChart); //Callback function to execute drawChart function only when the google chart library is loaded
 });
-// TABLE - 2 ENDED
+//Code for DONUT Chart ENDED
