@@ -1,3 +1,8 @@
+// Function for Formatting numbers in the Indian numbering system (lakh-crore system)
+function formatIndianNumber(number) {
+  const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
+  return formattedNumber;
+}
 // //BARGRAPH START
 document.addEventListener("DOMContentLoaded", async function () {
   // Fetch MOIC data from the API
@@ -163,12 +168,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   const responseData = await response.json();
   const investmentData = responseData.body.company_level_portfolio;
 
-  // Function for Formatting numbers in the Indian numbering system (lakh-crore system)
-  function formatIndianNumber(number) {
-    const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
-    return formattedNumber;
-  }
-
   // Function to create a table row for the given investment item
   function createTableRow(item) {
     var row = document.createElement("tr");
@@ -221,123 +220,115 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 //Code for Pie Charts- ALL COMBINED START
 google.charts.load("current", { packages: ["corechart"] });
-google.charts.setOnLoadCallback(drawChart);
 
-function drawChart() {
-  // Code for Pie Chart - 1 START (INDUSTRY)
-  //   var data1 = google.visualization.arrayToDataTable([
-  //     ["Language", "Speakers (in millions)"],
-  //     ["Financial Services", 20],
-  //     ["FinTech", 20],
-  //     ["Social Impact or Nonprofit", 20],
-  //     ["Logistics", 20],
-  //     ["MarTech", 20],
-  //   ]);
-
-  //   var options1 = {
-  //     legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
-  //     pieSliceText: "percentage",
-  //     // title: "Investment Geographies for 2022",
-  //     colors: ["#ACD6E0", "#205867", "#2F455C", "#59D79E", "#D8D8D8"],
-  //     backgroundColor: "#f6f7fb",
-  //     pieStartAngle: 100,
-  //   };
-
-  //   var chart1 = new google.visualization.PieChart(
-  //     document.getElementById("industrypie")
-  //   );
-  //   chart1.draw(data1, options1);
-  // //Code for Pie Chart - 1 ENDED (INDUSTRY)
-
-  // //Code for Pie Chart - 2 START (GEO)
-  // var data2 = google.visualization.arrayToDataTable([
-  //   ["Language", "Speakers (in millions)"],
-  //   ["Europe", 4.1],
-  //   ["USA", 95.9],
-  // ]);
-
-  // var options2 = {
-  //   legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
-  //   pieSliceText: "percentage",
-  //   // title: "Investment Geographies for 2022",
-  //   colors: ["#ACD6E0", "#205867"],
-  //   backgroundColor: "#f6f7fb",
-  //   pieStartAngle: 100,
-  // };
-
-  // var chart2 = new google.visualization.PieChart(
-  //   document.getElementById("geopie")
-  // );
-  // chart2.draw(data2, options2);
-  // //Code for Pie Chart - 2 ENDED (GEO)
-
-  //Code for TRIPLE Pie Chart - 1 START (GEO)
-  var data3 = google.visualization.arrayToDataTable([
-    ["Language", "Speakers (in millions)"],
-    ["Europe", 0],
-    ["USA", 100],
-  ]);
-
-  var options3 = {
-    legend: { position: "top", textStyle: { fontSize: 16 } }, // Increase legend text size
-    pieSliceText: "percentage",
-    pieSliceTextStyle: { fontSize: 16 }, // Increase slice text size
-    colors: ["#ACD6E0", "#205867"],
-    backgroundColor: "#f6f7fb",
-  };
-
-  var chart3 = new google.visualization.PieChart(
-    document.getElementById("geopie1")
+google.charts.setOnLoadCallback(async function () {
+  const response = await fetch(
+    "https://virtserver.swaggerhub.com/MEHRATAVISH000/Investment_Dashboard/1.0.0/funds/funds-geographies/?fundName=VII%2520Ventures%2520SPC"
   );
-  chart3.draw(data3, options3);
-  //Code for TRIPLE Pie Chart - 1 ENDED (GEO)
+  const apiData = await response.json();
 
-  //Code for TRIPLE Pie Chart - 2 START (GEO)
-  var data4 = google.visualization.arrayToDataTable([
-    ["Language", "Speakers (in millions)"],
-    ["USA", 95.8],
-    ["Europe", 4.2],
-  ]);
+  function drawPieChart(containerId, year) {
+    const chartContainer = document.getElementById(containerId);
 
-  var options4 = {
-    legend: { position: "top", textStyle: { fontSize: 16 } },
-    pieSliceText: "percentage",
-    pieSliceTextStyle: { fontSize: 16 },
-    colors: ["#205867", "#ACD6E0"],
-    backgroundColor: "#f6f7fb",
-  };
+    const data = new google.visualization.DataTable();
+    data.addColumn("string", "Geography");
+    data.addColumn("number", "Percent Invested");
 
-  var chart4 = new google.visualization.PieChart(
-    document.getElementById("geopie2")
-  );
-  chart4.draw(data4, options4);
-  //Code for TRIPLE Pie Chart - 2 ENDED (GEO)
+    const rows = apiData.body.geographies[year] || [];
+    rows.forEach((row) => {
+      data.addRow([row.geo, row.percent_invested]);
+    });
 
-  //Code for TRIPLE Pie Chart - 3 START (GEO)
-  var data5 = google.visualization.arrayToDataTable([
-    ["Language", "Speakers (in millions)"],
-    ["USA", 95.9],
-    ["Europe", 4.1],
-  ]);
+    const view = new google.visualization.DataView(data);
+    view.setColumns([
+      0,
+      1,
+      {
+        calc: function (dt, row) {
+          return (
+            dt.getValue(row, 0) +
+            "\n" +
+            "Percent Invested: " +
+            dt.getValue(row, 1) +
+            "%\nTotal Invested: " +
+            formatIndianNumber(
+              apiData.body.geographies[year][row].total_invested
+            )
+          );
+        },
+        type: "string",
+        role: "tooltip",
+      },
+    ]);
 
-  var options5 = {
-    legend: { position: "top", textStyle: { fontSize: 16 } },
-    pieSliceText: "percentage",
-    pieSliceTextStyle: { fontSize: 16 },
-    colors: ["#205867", "#ACD6E0"],
-    backgroundColor: "#f6f7fb",
-  };
+    const options = {
+      legend: { position: "top", textStyle: { fontSize: 16 } },
+      pieSliceText: "percentage",
+      pieSliceTextStyle: { fontSize: 16, bold: true },
+      colors: ["#205867", "#ACD6E0"],
+      backgroundColor: "#f6f7fb",
+      tooltip: { isHtml: true },
+    };
 
-  var chart5 = new google.visualization.PieChart(
-    document.getElementById("geopie3")
-  );
-  chart5.draw(data5, options5);
-  //Code for TRIPLE Pie Chart - 3 ENDED (GEO)
-}
-//Code for TRIPLE Pie Chart - 3 ENDED (GEO)
+    const chart = new google.visualization.PieChart(chartContainer);
+    chart.draw(view, options);
+  }
+
+  drawPieChart("geopie2023", "2023");
+  drawPieChart("geopie2022", "2022");
+  drawPieChart("geopie2021", "2021");
+});
+
 //Code for Pie Charts- ALL COMBINED ENDED
 
 //Optional Component(removed ones and additional ones) FROM HERE
+
+// Code for Pie Chart - 1 START (INDUSTRY)
+//   var data1 = google.visualization.arrayToDataTable([
+//     ["Language", "Speakers (in millions)"],
+//     ["Financial Services", 20],
+//     ["FinTech", 20],
+//     ["Social Impact or Nonprofit", 20],
+//     ["Logistics", 20],
+//     ["MarTech", 20],
+//   ]);
+
+//   var options1 = {
+//     legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
+//     pieSliceText: "percentage",
+//     // title: "Investment Geographies for 2022",
+//     colors: ["#ACD6E0", "#205867", "#2F455C", "#59D79E", "#D8D8D8"],
+//     backgroundColor: "#f6f7fb",
+//     pieStartAngle: 100,
+//   };
+
+//   var chart1 = new google.visualization.PieChart(
+//     document.getElementById("industrypie")
+//   );
+//   chart1.draw(data1, options1);
+//Code for Pie Chart - 1 ENDED (INDUSTRY)
+
+//Code for Pie Chart - 2 START (GEO)
+// var data2 = google.visualization.arrayToDataTable([
+//   ["Language", "Speakers (in millions)"],
+//   ["Europe", 4.1],
+//   ["USA", 95.9],
+// ]);
+
+// var options2 = {
+//   legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
+//   pieSliceText: "percentage",
+//   // title: "Investment Geographies for 2022",
+//   colors: ["#ACD6E0", "#205867"],
+//   backgroundColor: "#f6f7fb",
+//   pieStartAngle: 100,
+// };
+
+// var chart2 = new google.visualization.PieChart(
+//   document.getElementById("geopie")
+// );
+// chart2.draw(data2, options2);
+// //Code for Pie Chart - 2 ENDED (GEO)
 
 //Code for Table - 1 STARTED
 // google.charts.load("current", { packages: ["table"] });

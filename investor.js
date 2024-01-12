@@ -64,7 +64,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     };
 
     var donutdata = google.visualization.arrayToDataTable([
-      ["Task", "Hours per Day"],
+      ["Funds", "Percentage Invested"],
       ["VII Ventures SPC", apiData.body.user_data[0].percent_fund_allocation],
       [
         "VII Ventures Fund 1 SP",
