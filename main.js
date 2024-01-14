@@ -180,14 +180,13 @@ document.addEventListener("DOMContentLoaded", async function () {
     var gaindeccell = document.createElement("td");
 
     // Populate cells with data
-    // logoCell.textContent = item.logo;
-    logoCell.innerHTML = `<a href="${item.web_link}" target="_blank">${item.web_link}</a>`;
+    logoCell.innerHTML = `<img src="${item.logo}" width = 30></img>`;
+    geoCell.innerHTML = `<img src="${item.geo}" width = 30></img>`;
     companyCell.textContent = item.name;
     amountCell.textContent = formatIndianNumber(item.investment_cost);
     valuationCell.textContent = formatIndianNumber(item.valuation_31_dec);
     moicCell.textContent = item.moic;
-    geoCell.textContent = item.geo;
-    gaindeccell.textContent = item.industry.join(", ");
+    gaindeccell.textContent = item.industry;
 
     // Append cells to the row
     row.appendChild(logoCell);
@@ -199,6 +198,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     row.appendChild(gaindeccell);
 
     return row;
+  }
+
+  // Placeholder for the formatIndianNumber function
+  function formatIndianNumber(number) {
+    // Replace this function with your actual implementation
+    return number.toLocaleString("en-IN");
   }
 
   // Populate tables for 2023, 2022, and 2021
@@ -216,6 +221,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     });
   });
 });
+
 //Code for 2023, 2022, 2021 Tables ENDED
 
 //Code for Pie Charts- ALL COMBINED START
@@ -246,8 +252,7 @@ google.charts.setOnLoadCallback(async function () {
       {
         calc: function (dt, row) {
           return (
-            dt.getValue(row, 0) +
-            "\n" +
+            // dt.getValue(row, 0) +
             "Percent Invested: " +
             dt.getValue(row, 1) +
             "%\nTotal Invested: " +
