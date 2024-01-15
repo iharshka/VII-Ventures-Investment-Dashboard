@@ -180,8 +180,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     var gaindeccell = document.createElement("td");
 
     // Populate cells with data
-    logoCell.innerHTML = `<img src="${item.logo}" width = 30></img>`;
-    geoCell.innerHTML = `<img src="${item.geo}" width = 30></img>`;
+    logoCell.innerHTML = `<img src="${item.logo}" width = 70></img>`;
+    geoCell.innerHTML = `<img src="${item.geo}" width = 50></img>`;
     companyCell.textContent = item.name;
     amountCell.textContent = formatIndianNumber(item.investment_cost);
     valuationCell.textContent = formatIndianNumber(item.valuation_31_dec);
