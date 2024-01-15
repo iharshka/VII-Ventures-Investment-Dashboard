@@ -186,7 +186,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     amountCell.textContent = formatIndianNumber(item.investment_cost);
     valuationCell.textContent = formatIndianNumber(item.valuation_31_dec);
     moicCell.textContent = item.moic;
-    gaindeccell.textContent = item.industry;
+    gaindeccell.innerHTML = `<img src="${item.trend}" width = 70></img>`;
 
     // Append cells to the row
     row.appendChild(logoCell);
