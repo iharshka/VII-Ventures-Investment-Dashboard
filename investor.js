@@ -5,12 +5,10 @@ document.addEventListener("DOMContentLoaded", async function () {
   );
   const apiData = await response.json();
 
-  // Function for Formatting numbers in the Indian numbering system (lakh-crore system)
-  function formatIndianNumber(number) {
-    const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
-    return formattedNumber;
+  // Function to format numbers in American number system
+  function formatAmericanNumber(number) {
+    return number.toLocaleString("en-US");
   }
-
   // Reference to the table body
   var tbody = document.querySelector("#myTable2 tbody");
 
@@ -25,11 +23,11 @@ document.addEventListener("DOMContentLoaded", async function () {
     var graphlogocell = document.createElement("td");
 
     fundscell.textContent = item.fund_name;
-    sub2021cell.textContent = formatIndianNumber(item.subscription_2021);
-    sub2022cell.textContent = formatIndianNumber(item.subscription_2022);
-    NAVcell.textContent = formatIndianNumber(item.nav);
-    profitcell.textContent = formatIndianNumber(item.pnl);
-    // graphlogocell.textContent = item.graph;
+    sub2021cell.textContent = formatAmericanNumber(item.subscription_2021);
+    sub2022cell.textContent = formatAmericanNumber(item.subscription_2022);
+    NAVcell.textContent = formatAmericanNumber(item.nav);
+    profitcell.textContent = formatAmericanNumber(item.pnl);
+    graphlogocell.innerHTML = `<img src="${item.trend}" width = 70></img>`;
 
     row.appendChild(fundscell);
     row.appendChild(sub2021cell);
@@ -39,18 +37,6 @@ document.addEventListener("DOMContentLoaded", async function () {
     row.appendChild(graphlogocell);
 
     tbody.appendChild(row);
-
-    // Create an image element
-    var img = document.createElement("img");
-
-    // Set the source from the data array (assuming logo URLs are provided in the web_link key)
-    img.src = item.web_link;
-
-    // Set the size of the image
-    img.width = 40; // Set the width in pixels
-
-    // Append the image element to the last cell
-    graphlogocell.appendChild(img);
   });
 
   //Code for DONUT Chart START

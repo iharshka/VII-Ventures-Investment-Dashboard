@@ -1,16 +1,21 @@
-// Function for Formatting numbers in the Indian numbering system (lakh-crore system)
-function formatIndianNumber(number) {
-  const formattedNumber = new Intl.NumberFormat("en-IN").format(number);
-  return formattedNumber;
+// Function to format numbers in American number system
+function formatAmericanNumber(number) {
+  return number.toLocaleString("en-US");
 }
 // //BARGRAPH START
 document.addEventListener("DOMContentLoaded", async function () {
-  // Fetch MOIC data from the API
+  // Fetch Overall Portfolio data from the API (for bar chart, moic chart and for cards as well)
   const response = await fetch(
     "https://virtserver.swaggerhub.com/MEHRATAVISH000/Investment_Dashboard/1.0.0/funds/overall-portfolio/?fundName=VII%2520Ventures%2520SPC"
   );
   const responseData = await response.json();
   const dataFromAPI = responseData.body.overall_portfolio;
+
+  // Update the CARD value with the 2023: nav_end_of_year
+  const navValueElement = document.getElementById("navValue");
+  navValueElement.textContent = `$ ${formatAmericanNumber(
+    dataFromAPI["2023"].nav_end_of_year
+  )}`;
 
   // Extract labels and data from the API response
   var ctx = document.getElementById("myBarChart").getContext("2d");
@@ -183,8 +188,8 @@ document.addEventListener("DOMContentLoaded", async function () {
     logoCell.innerHTML = `<img src="${item.logo}" width = 70></img>`;
     geoCell.innerHTML = `<img src="${item.geo}" width = 50></img>`;
     companyCell.textContent = item.name;
-    amountCell.textContent = formatIndianNumber(item.investment_cost);
-    valuationCell.textContent = formatIndianNumber(item.valuation_31_dec);
+    amountCell.textContent = formatAmericanNumber(item.investment_cost);
+    valuationCell.textContent = formatAmericanNumber(item.valuation_31_dec);
     moicCell.textContent = item.moic;
     gaindeccell.innerHTML = `<img src="${item.trend}" width = 70></img>`;
 
@@ -200,10 +205,9 @@ document.addEventListener("DOMContentLoaded", async function () {
     return row;
   }
 
-  // Placeholder for the formatIndianNumber function
-  function formatIndianNumber(number) {
-    // Replace this function with your actual implementation
-    return number.toLocaleString("en-IN");
+  // Function to format numbers in American number system
+  function formatAmericanNumber(number) {
+    return number.toLocaleString("en-US");
   }
 
   // Populate tables for 2023, 2022, and 2021
@@ -256,7 +260,7 @@ google.charts.setOnLoadCallback(async function () {
             "Percent Invested: " +
             dt.getValue(row, 1) +
             "%\nTotal Invested: " +
-            formatIndianNumber(
+            formatAmericanNumber(
               apiData.body.geographies[year][row].total_invested
             )
           );
