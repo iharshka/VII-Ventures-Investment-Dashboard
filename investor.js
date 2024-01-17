@@ -1,7 +1,7 @@
 // Fetch data from the API
 document.addEventListener("DOMContentLoaded", async function () {
   const response = await fetch(
-    "https://virtserver.swaggerhub.com/MEHRATAVISH000/Investment_Dashboard/1.0.0/funds/investor-table/?userId=1001"
+    "http://35.154.225.94/funds/investor-table?format=json&userId=1001"
   );
   const apiData = await response.json();
 

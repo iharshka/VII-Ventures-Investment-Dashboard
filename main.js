@@ -6,7 +6,7 @@ function formatAmericanNumber(number) {
 document.addEventListener("DOMContentLoaded", async function () {
   // Fetch Overall Portfolio data from the API (for bar chart, moic chart and for cards as well)
   const response = await fetch(
-    "https://virtserver.swaggerhub.com/MEHRATAVISH000/Investment_Dashboard/1.0.0/funds/overall-portfolio/?fundName=VII%2520Ventures%2520SPC"
+    "http://35.154.225.94/funds/overall-portfolio?format=api&fundName=VII+Ventures+FUND+2+SP"
   );
   const responseData = await response.json();
   const dataFromAPI = responseData.body.overall_portfolio;
@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 document.addEventListener("DOMContentLoaded", async function () {
   // Fetch investment data from the API
   const response = await fetch(
-    "https://virtserver.swaggerhub.com/MEHRATAVISH000/Investment_Dashboard/1.0.0/funds/company-level-portfolio/?fundName=VII%2520Ventures%2520SPC"
+    "http://35.154.225.94/funds/company-level-portfolio?format=json&fundName=VII%20Ventures%20SPC"
   );
   const responseData = await response.json();
   const investmentData = responseData.body.company_level_portfolio;
@@ -233,7 +233,7 @@ google.charts.load("current", { packages: ["corechart"] });
 
 google.charts.setOnLoadCallback(async function () {
   const response = await fetch(
-    "https://virtserver.swaggerhub.com/MEHRATAVISH000/Investment_Dashboard/1.0.0/funds/funds-geographies/?fundName=VII%2520Ventures%2520SPC"
+    "http://35.154.225.94/funds/funds-geographies?format=json&fundName=VII%20Ventures%20SPC"
   );
   const apiData = await response.json();
 
