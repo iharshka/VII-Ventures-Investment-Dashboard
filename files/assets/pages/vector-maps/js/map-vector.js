@@ -6,7 +6,7 @@
 
     // Fetch investment data from the API
     var apiResponse = await fetch(
-      "https://virtserver.swaggerhub.com/MEHRATAVISH000/Investment_Dashboard/1.0.0/funds/funds-geographies/?fundName=VII%2520Ventures%2520SPC"
+      "https://35.154.225.94/funds/funds-geographies?format=json&fundName=VII%20Ventures%20SPC"
     );
     var apiData = await apiResponse.json();
 
