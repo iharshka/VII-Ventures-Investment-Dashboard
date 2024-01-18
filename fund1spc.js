@@ -168,7 +168,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 document.addEventListener("DOMContentLoaded", async function () {
   // Fetch investment data from the API
   const response = await fetch(
-    "https://35.154.225.94/funds/company-level-portfolio?format=json&VII%20Ventures%20FUND%201%20SP"
+    "https://35.154.225.94/funds/company-level-portfolio?format=json&fundName=VII%20Ventures%20FUND%201%20SP"
   );
   const responseData = await response.json();
   const investmentData = responseData.body.company_level_portfolio;
@@ -233,7 +233,7 @@ google.charts.load("current", { packages: ["corechart"] });
 
 google.charts.setOnLoadCallback(async function () {
   const response = await fetch(
-    "https://35.154.225.94/funds/funds-geographies?format=json&VII%20Ventures%20FUND%201%20SP"
+    "https://35.154.225.94/funds/funds-geographies?format=json&fundName=VII%20Ventures%20FUND%201%20SP"
   );
   const apiData = await response.json();
 

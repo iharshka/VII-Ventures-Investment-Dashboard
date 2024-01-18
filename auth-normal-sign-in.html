@@ -77,8 +77,7 @@
             <div class="row">
                 <div class="col-sm-12">
                     <!-- Authentication card start -->
-
-                    <form class="md-float-material form-material">
+                    <form id="loginForm" class="md-float-material form-material">
                         <div class="text-center">
                             <img src="viiLogo.png" alt="Vii-Logo" width="130">
                         </div>
@@ -90,13 +89,13 @@
                                     </div>
                                 </div>
                                 <div class="mb-3 form-primary">
-                                    <input type="text" name="email" class="form-control" required=""
+                                    <input type="email" name="email" id="email" class="form-control" required=""
                                         placeholder="Your Email Address">
                                     <span class="form-bar"></span>
                                 </div>
                                 <div class="mb-3 form-primary">
-                                    <input type="password" name="password" class="form-control" required=""
-                                        placeholder="Password">
+                                    <input type="password" name="password" id="password" class="form-control"
+                                        required="" placeholder="Password">
                                     <span class="form-bar"></span>
                                 </div>
                                 <div class="row m-t-25 text-start">
@@ -110,15 +109,14 @@
                                             </label>
                                         </div>
                                         <div class="forgot-phone text-end f-right">
-                                            <a href="#" class="text-end f-w-600"> Forgot
-                                                Password?</a>
+                                            <a href="#" class="text-end f-w-600"> Forgot Password?</a>
                                         </div>
                                     </div>
                                 </div>
                                 <div class="row m-t-30">
                                     <div class="col-md-12">
                                         <div class="d-grid">
-                                            <button type="button"
+                                            <button type="button" id="loginButton"
                                                 class="btn btn-primary btn-md waves-effect waves-light text-center m-b-20">
                                                 Log in
                                             </button>
@@ -130,11 +128,9 @@
                                     <div class="col-md-10">
                                         <p class="text-inverse text-start m-b-0">Thank you.</p>
                                         <p class="text-inverse text-start"><a href="index.html"><b class="f-w-600">Back
-                                                    to website</b></a></p>
+                                                    to website</b></a>
+                                        </p>
                                     </div>
-                                    <!-- <div class="col-md-2">
-                                        <img src="\Adminty-HTML-2.0.0\viiLogo.png" alt="small-logo.png">
-                                    </div> -->
                                 </div>
                             </div>
                         </div>
@@ -147,50 +143,7 @@
         </div>
         <!-- end of container-fluid -->
     </section>
-    <!-- Warning Section Starts -->
-    <!-- Older IE warning message -->
-    <!--[if lt IE 10]>
-<div class="ie-warning">
-    <h1>Warning!!</h1>
-    <p>You are using an outdated version of Internet Explorer, please upgrade <br/>to any of the following web browsers to access this website.</p>
-    <div class="iew-container">
-        <ul class="iew-download">
-            <li>
-                <a href="http://www.google.com/chrome/">
-                    <img src="../files/assets/images/browser/chrome.png" alt="Chrome">
-                    <div>Chrome</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.mozilla.org/en-US/firefox/new/">
-                    <img src="../files/assets/images/browser/firefox.png" alt="Firefox">
-                    <div>Firefox</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://www.opera.com">
-                    <img src="../files/assets/images/browser/opera.png" alt="Opera">
-                    <div>Opera</div>
-                </a>
-            </li>
-            <li>
-                <a href="https://www.apple.com/safari/">
-                    <img src="../files/assets/images/browser/safari.png" alt="Safari">
-                    <div>Safari</div>
-                </a>
-            </li>
-            <li>
-                <a href="http://windows.microsoft.com/en-us/internet-explorer/download-ie">
-                    <img src="../files/assets/images/browser/ie.png" alt="">
-                    <div>IE (9 & above)</div>
-                </a>
-            </li>
-        </ul>
     </div>
-    <p>Sorry for the inconvenience!</p>
-</div>
-<![endif]-->
-    <!-- Warning Section Ends -->
     <!-- Required Jquery -->
     <script type="text/javascript" src="../files/bower_components/jquery/dist/jquery.min.js"></script>
     <script type="text/javascript" src="../files/bower_components/jquery-ui/jquery-ui.min.js"></script>
@@ -203,12 +156,13 @@
     <script type="text/javascript" src="../files/bower_components/modernizr/feature-detects/css-scrollbars.js"></script>
     <!-- i18next.min.js -->
     <script type="text/javascript" src="../files/bower_components/i18next/i18next.min.js"></script>
-    <script type="text/javascript"
-        src="../files/bower_components/i18next-xhr-backend/i18nextXHRBackend.min.js"></script>
+    <!-- <script type="text/javascript"
+        src="../files/bower_components/i18next-xhr-backend/i18nextXHRBackend.min.js"></script> -->
     <script type="text/javascript"
         src="../files/bower_components/i18next-browser-languagedetector/i18nextBrowserLanguageDetector.min.js"></script>
     <script type="text/javascript" src="../files/bower_components/jquery-i18next/jquery-i18next.min.js"></script>
     <script type="text/javascript" src="../files/assets/js/common-pages.js"></script>
+    <script type="text/javascript" src="login.js"></script>
 </body>
 
 </html>
