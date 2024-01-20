@@ -15,7 +15,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
     // Create the URL with parameters
     var apiUrl =
-      "https://35.154.225.94/funds/login?format=json" +
+      "https://investors-backend.viiventures.co/funds/login?format=json" +
       "&user_id=" +
       userId +
       "&password=" +

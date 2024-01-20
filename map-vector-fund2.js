@@ -7,7 +7,7 @@
 
     // Fetch investment data from the API
     var apiResponse = await fetch(
-      "https://35.154.225.94/funds/funds-geographies?format=json&fundName=VII%20Ventures%20FUND%202%20SP"
+      "https://investors-backend.viiventures.co/funds/funds-geographies?format=json&fundName=VII%20Ventures%20FUND%202%20SP"
     );
     var apiData = await apiResponse.json();
 

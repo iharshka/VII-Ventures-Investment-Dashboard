@@ -1,7 +1,7 @@
 // Fetch data from the API
 document.addEventListener("DOMContentLoaded", async function () {
   const response = await fetch(
-    "https://35.154.225.94/funds/investor-table?format=json&userId=1001"
+    "https://investors-backend.viiventures.co/funds/investor-table?format=json&userId=1001"
   );
   const apiData = await response.json();
 
