@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     var gaindeccell = document.createElement("td");
 
     // Populate cells with data
-    logoCell.innerHTML = `<img src="${item.logo}" width = 70></img>`;
+    logoCell.innerHTML = `<img src="${item.logo}" width = 110></img>`;
     geoCell.innerHTML = `<img src="${item.geo}" width = 50></img>`;
     companyCell.textContent = item.name;
     amountCell.textContent = formatAmericanNumber(item.investment_cost);
