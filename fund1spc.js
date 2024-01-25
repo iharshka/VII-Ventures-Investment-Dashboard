@@ -185,7 +185,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     var gaindeccell = document.createElement("td");
 
     // Populate cells with data
-    logoCell.innerHTML = `<img src="${item.logo}" width = 70></img>`;
+    logoCell.innerHTML = `<a href = "${item.web_link}"><img src="${item.logo}" width = 110></img></a>`;
     geoCell.innerHTML = `<img src="${item.geo}" width = 50></img>`;
     companyCell.textContent = item.name;
     amountCell.textContent = formatAmericanNumber(item.investment_cost);
@@ -274,7 +274,7 @@ google.charts.setOnLoadCallback(async function () {
       legend: { position: "top", textStyle: { fontSize: 16 } },
       pieSliceText: "percentage",
       pieSliceTextStyle: { fontSize: 16, bold: true },
-      colors: ["#205867", "#ACD6E0"],
+      colors: ["#205867", "#ACD6E0", "#59D79E"],
       backgroundColor: "#f6f7fb",
       tooltip: { isHtml: true },
     };

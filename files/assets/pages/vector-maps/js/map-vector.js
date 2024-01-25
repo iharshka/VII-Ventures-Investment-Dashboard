@@ -36,6 +36,7 @@
         mapObjects[mapId].setSelectedRegions(item);
       });
     });
+    // mapObjects[mapId].setSelectedRegions("CH"); for debugging purpose
   };
 
   // Initialize maps for different years
