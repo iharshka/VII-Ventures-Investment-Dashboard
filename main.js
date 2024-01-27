@@ -17,6 +17,12 @@ document.addEventListener("DOMContentLoaded", async function () {
     dataFromAPI["2023"].nav_end_of_year
   )}`;
 
+  // Update the MOIC CARD value with the 2023: MOIC
+  const moicValueElement = document.getElementById("moicValue");
+  moicValueElement.textContent = `${formatAmericanNumber(
+    dataFromAPI["2023"].moic
+  )}`;
+
   // Extract labels and data from the API response
   var ctx = document.getElementById("myBarChart").getContext("2d");
 

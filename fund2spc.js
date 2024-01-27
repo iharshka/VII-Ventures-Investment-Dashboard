@@ -11,10 +11,16 @@ document.addEventListener("DOMContentLoaded", async function () {
   const responseData = await response.json();
   const dataFromAPI = responseData.body.overall_portfolio;
 
-  // Update the CARD value with the 2023: nav_end_of_year
+  // Update the NAV CARD value with the 2023: nav_end_of_year
   const navValueElement = document.getElementById("navValue");
   navValueElement.textContent = `$ ${formatAmericanNumber(
     dataFromAPI["2023"].nav_end_of_year
+  )}`;
+
+  // Update the MOIC CARD value with the 2023: MOIC
+  const moicValueElement = document.getElementById("moicValue");
+  moicValueElement.textContent = `${formatAmericanNumber(
+    dataFromAPI["2023"].moic
   )}`;
 
   // Extract labels and data from the API response
