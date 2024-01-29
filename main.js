@@ -1,3 +1,4 @@
+// import { username } from "./investor";
 // Function to format numbers in American number system
 function formatAmericanNumber(number) {
   return number.toLocaleString("en-US");
@@ -10,6 +11,10 @@ document.addEventListener("DOMContentLoaded", async function () {
   );
   const responseData = await response.json();
   const dataFromAPI = responseData.body.overall_portfolio;
+
+  // Update the Username with the API call
+  const usernameelement = document.getElementById("username");
+  usernameelement.textContent = localStorage.username;
 
   // Update the CARD value with the 2023: nav_end_of_year
   const navValueElement = document.getElementById("navValue");

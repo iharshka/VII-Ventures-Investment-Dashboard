@@ -5,11 +5,15 @@ document.addEventListener("DOMContentLoaded", async function () {
   );
   const apiData = await response.json();
 
+  // Update the Username with the API call
+  var username = localStorage.username;
+  username = apiData.body.username;
+  const usernameelement = document.getElementById("username");
+  usernameelement.textContent = username;
+
   // Update the User heading with the API call
   const investornameheadElement = document.getElementById("investornamehead");
-  investornameheadElement.textContent = `${formatAmericanNumber(
-    apiData.body.username
-  )}`;
+  investornameheadElement.textContent = `${apiData.body.userheading}`;
 
   // Function to format numbers in American number system
   function formatAmericanNumber(number) {
@@ -85,3 +89,4 @@ document.addEventListener("DOMContentLoaded", async function () {
   google.charts.setOnLoadCallback(drawChart); //Callback function to execute drawChart function only when the google chart library is loaded
 });
 //Code for DONUT Chart ENDED
+// export var username;
