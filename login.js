@@ -1,19 +1,11 @@
-document.addEventListener("DOMContentLoaded", function () {
-  document.getElementById("loginButton").addEventListener("click", function () {
-    // Get form data
-    var email = document.getElementById("email").value;
-    var password = document.getElementById("password").value;
+$(document).ready(function () {
+  // Function to handle login logic
+  function handleLogin() {
+    // Get values from the form
+    var userId = $("#email").val();
+    var password = $("#password").val();
 
-    // Validate user_id (assuming email is the user_id and needs to be converted to an integer)
-    var userId = parseInt(email);
-
-    // Check if the conversion is successful
-    if (isNaN(userId)) {
-      alert("Invalid User ID. Please enter a valid email address.");
-      return;
-    }
-
-    // Create the URL with parameters
+    // API endpoint for login
     var apiUrl =
       "https://investors-backend.viiventures.co/funds/login?format=json" +
       "&user_id=" +
@@ -21,26 +13,35 @@ document.addEventListener("DOMContentLoaded", function () {
       "&password=" +
       encodeURIComponent(password);
 
-    // Make a GET request to the API endpoint
-    fetch(apiUrl, {
-      method: "POST",
-    })
-      .then((response) => response.json())
-      .then((data) => {
-        // Handle the API response
-        console.log(data);
+    // Make a POST request to the API
+    $.post(apiUrl, function (data) {
+      // Check if the login was successful
+      if (data.success) {
+        // Store the auth token in a JSON file
+        var authToken = data.authToken;
+        var authData = { authToken: authToken };
 
-        // Check if login was successful (you may need to adjust based on API response structure)
-        if (data.success) {
-          // Redirect to index.html
-          window.location.href = "index.html";
-        } else {
-          // Handle unsuccessful login (show error message, etc.)
-          alert("Login failed. Please check your credentials.");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
+        // Convert the data to JSON string
+        var jsonData = JSON.stringify(authData);
+
+        // Create a Blob and download the JSON file
+        var blob = new Blob([jsonData], { type: "application/json" });
+        var link = document.createElement("a");
+        link.href = window.URL.createObjectURL(blob);
+        link.download = "authToken.json";
+        link.click();
+
+        // Redirect to the index.html page
+        window.location.href = "index.html";
+      } else {
+        // Display error message if login fails
+        alert("Invalid credentials. Please try again.");
+      }
+    });
+  }
+
+  // Attach click event to the login button
+  $("#loginButton").on("click", function () {
+    handleLogin();
   });
 });

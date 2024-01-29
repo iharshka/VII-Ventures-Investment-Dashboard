@@ -5,6 +5,12 @@ document.addEventListener("DOMContentLoaded", async function () {
   );
   const apiData = await response.json();
 
+  // Update the User heading with the API call
+  const investornameheadElement = document.getElementById("investornamehead");
+  investornameheadElement.textContent = `${formatAmericanNumber(
+    apiData.body.username
+  )}`;
+
   // Function to format numbers in American number system
   function formatAmericanNumber(number) {
     return number.toLocaleString("en-US");
@@ -16,8 +22,10 @@ document.addEventListener("DOMContentLoaded", async function () {
   apiData.body.user_data.forEach(function (item) {
     var row = document.createElement("tr");
     var fundscell = document.createElement("td");
-    var sub2021cell = document.createElement("td");
+    var sub2023cell = document.createElement("td");
     var sub2022cell = document.createElement("td");
+    var sub2021cell = document.createElement("td");
+    var percentagefundcell = document.createElement("td");
     var NAVcell = document.createElement("td");
     var profitcell = document.createElement("td");
     var graphlogocell = document.createElement("td");
@@ -25,13 +33,17 @@ document.addEventListener("DOMContentLoaded", async function () {
     fundscell.textContent = item.fund_name;
     sub2021cell.textContent = formatAmericanNumber(item.subscription_2021);
     sub2022cell.textContent = formatAmericanNumber(item.subscription_2022);
+    sub2023cell.textContent = formatAmericanNumber(item.subscription_2023);
+    percentagefundcell.textContent = item.fund_ownership;
     NAVcell.textContent = formatAmericanNumber(item.nav);
     profitcell.textContent = formatAmericanNumber(item.pnl);
     graphlogocell.innerHTML = `<img src="${item.trend}" width = 70></img>`;
 
     row.appendChild(fundscell);
-    row.appendChild(sub2021cell);
+    row.appendChild(sub2023cell);
     row.appendChild(sub2022cell);
+    row.appendChild(sub2021cell);
+    row.appendChild(percentagefundcell);
     row.appendChild(NAVcell);
     row.appendChild(profitcell);
     row.appendChild(graphlogocell);

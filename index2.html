@@ -45,7 +45,7 @@
     <script type="text/javascript" src="investor.js"></script>
     <style>
         table {
-            border-collapse: collapse;
+            /* border-collapse: collapse; */
             width: 100%;
             background-color: white;
         }
@@ -60,6 +60,10 @@
             overflow-wrap: break-word;
             /* Allow long words to break and wrap */
             max-width: 200px;
+            color: black;
+            padding: 2em;
+            font-size: 1em;
+            font-weight: 500;
         }
 
         th {
@@ -68,13 +72,6 @@
             font-size: 1em;
             font-weight: 600;
             padding: 1em;
-        }
-
-        td {
-            color: black;
-            padding: 2em;
-            font-size: 1em;
-            font-weight: 500;
         }
     </style>
 </head>
@@ -291,7 +288,7 @@
                                     style="font-family: 'Open Sans'; font-weight: 700; padding: 1em; color: white;">Dashboard</span></a>
                         </div>
                         <a href="index.html">
-                            <img src="icons8-column-chart-50.png" width="22" style="margin: 1em 0.2em;">
+                            <img src="icons8-column-chart-50.png" width="22" style="margin: 1em 0.05em;">
                             <span
                                 style="font-family: 'Open Sans'; font-size: 1.15em; color: #dcdcdc; margin-top: 0.2em;">
                                 Fund-Level
@@ -380,7 +377,7 @@
                                 </ul>
                             </li>
                             <a href="index2.html">
-                                <img src="icons8-column-chart-50.png" width="22" style="margin: 1em 0.2em;">
+                                <img src="icons8-column-chart-50.png" width="22" style="margin: 1em 0.05em;">
                                 <span style="font-family: 'Open Sans'; font-size: 1.15em; color: #dcdcdc;">
                                     Your Investment
                                     Performance</span>
@@ -390,7 +387,8 @@
                     </div>
                 </nav>
             </div>
-            <div class="pcoded-content">
+            <div class="pcoded-content"
+                style="background-image: url('backdrop.png'); background-position: bottom; background-size:cover;">
                 <div class="pcoded-inner-content">
                     <div class="main-body">
                         <div style="margin-left: 1.5em;">
@@ -421,16 +419,19 @@
                                     <!-- </section> -->
 
                                     <span
-                                        style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700;">
-                                        Investment Performance: Lamar Holding</span>
+                                        style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700;"
+                                        id="investornamehead">
+                                    </span>
 
                                     <section id="table" style="padding: 1em; margin-top: 1em;">
                                         <table id="myTable2">
                                             <thead>
                                                 <tr>
                                                     <th>Funds Invested in</th>
-                                                    <th>Subscriptions in 2021 (USD)</th>
-                                                    <th>Subscriptions in 2022 (USD)</th>
+                                                    <th>Investment Cost in 2023</th>
+                                                    <th>Investment Cost in 2022</th>
+                                                    <th>Investment Cost in 2021</th>
+                                                    <th>Fund Ownership %</th>
                                                     <th>NAV</th>
                                                     <th>Profit/Loss</th>
                                                     <th></th>
