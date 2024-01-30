@@ -13,8 +13,11 @@ document.addEventListener("DOMContentLoaded", async function () {
   const dataFromAPI = responseData.body.overall_portfolio;
 
   // Update the Username with the API call
-  const usernameelement = document.getElementById("username");
-  usernameelement.textContent = localStorage.username;
+  var storedapiData = localStorage.getItem("sharedapiData");
+  // Parse the JSON string back to an object
+  var apiData = JSON.parse(storedapiData);
+  const usernameelement = document.getElementById("usernamerighttop");
+  usernameelement.textContent = apiData.body.username;
 
   // Update the CARD value with the 2023: nav_end_of_year
   const navValueElement = document.getElementById("navValue");

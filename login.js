@@ -5,6 +5,14 @@ $(document).ready(function () {
     var userId = $("#email").val();
     var password = $("#password").val();
 
+    // Create the sendData object
+    var sendUserData = {
+      userId: userId,
+      password: password,
+    };
+    //Send Data to the Investor.js
+    localStorage.setItem("shareduserData", JSON.stringify(sendUserData));
+
     // API endpoint for login
     var apiUrl =
       "https://investors-backend.viiventures.co/funds/login?format=json";
@@ -42,7 +50,7 @@ $(document).ready(function () {
           window.location.href = "index.html";
         } else {
           // Display error message if login fails
-          alert("Invalid credentials. Please try again.");
+          alert("Invalid Login ID or Password. Please try again.");
         }
       },
       error: function () {

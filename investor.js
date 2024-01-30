@@ -1,15 +1,20 @@
 // Fetch data from the API
+var userdetails = localStorage.getItem("shareduserData");
+var parseuserdetails = JSON.parse(userdetails);
+console.log(parseuserdetails.userId);
 document.addEventListener("DOMContentLoaded", async function () {
   const response = await fetch(
-    "https://investors-backend.viiventures.co/funds/investor-table?format=json&userId=1001"
+    "https://investors-backend.viiventures.co/funds/investor-table?format=json" +
+      "&userId=" +
+      parseuserdetails.userId
   );
   const apiData = await response.json();
 
-  // Update the Username with the API call
-  var username = localStorage.username;
-  username = apiData.body.username;
-  const usernameelement = document.getElementById("username");
-  usernameelement.textContent = username;
+  // Update the Username with the API call and Sending the username for other pages
+  localStorage.setItem("sharedapiData", JSON.stringify(apiData));
+  sharedusername = apiData.body.username;
+  const usernameelement = document.getElementById("usernamerighttop");
+  usernameelement.textContent = sharedusername;
 
   // Update the User heading with the API call
   const investornameheadElement = document.getElementById("investornamehead");
