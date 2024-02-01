@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 //Code for 2023, 2022, 2021 Tables ENDED
 
-//Code for Pie Charts- ALL COMBINED START
+//Code for Industry Pie Charts- ALL COMBINED START
 google.charts.load("current", { packages: ["corechart"] });
 
 google.charts.setOnLoadCallback(async function () {
@@ -305,30 +305,81 @@ google.charts.setOnLoadCallback(async function () {
 //Code for Pie Charts- ALL COMBINED ENDED
 
 //Optional Component(removed ones and additional ones) FROM HERE
-
 // Code for Pie Chart - 1 START (INDUSTRY)
-//   var data1 = google.visualization.arrayToDataTable([
-//     ["Language", "Speakers (in millions)"],
-//     ["Financial Services", 20],
-//     ["FinTech", 20],
-//     ["Social Impact or Nonprofit", 20],
-//     ["Logistics", 20],
-//     ["MarTech", 20],
-//   ]);
+google.charts.load("current", { packages: ["corechart"] });
 
-//   var options1 = {
-//     legend: "top", // Change "none" to "top", "bottom", "left", "right", or combination
-//     pieSliceText: "percentage",
-//     // title: "Investment Geographies for 2022",
-//     colors: ["#ACD6E0", "#205867", "#2F455C", "#59D79E", "#D8D8D8"],
-//     backgroundColor: "#f6f7fb",
-//     pieStartAngle: 100,
-//   };
+google.charts.setOnLoadCallback(async function () {
+  const response = await fetch(
+    "https://investors-backend.viiventures.co/funds/company-level-portfolio?format=json&fundName=VII%20Ventures%20SPC"
+  );
+  const apiData = await response.json();
 
-//   var chart1 = new google.visualization.PieChart(
-//     document.getElementById("industrypie")
-//   );
-//   chart1.draw(data1, options1);
+  // Extracting data for each year
+  const data2021 = processData(apiData.body.company_level_portfolio["2021"]);
+  const data2022 = processData(apiData.body.company_level_portfolio["2022"]);
+  const data2023 = processData(apiData.body.company_level_portfolio["2023"]);
+
+  console.log(
+    "Data for 2021:",
+    processData(apiData.body.company_level_portfolio["2021"])
+  );
+  console.log(
+    "Data for 2022:",
+    processData(apiData.body.company_level_portfolio["2022"])
+  );
+  console.log(
+    "Data for 2023:",
+    processData(apiData.body.company_level_portfolio["2023"])
+  );
+
+  // Code for Pie Chart - 2021
+  var chart2021 = new google.visualization.PieChart(
+    document.getElementById("industrypie2021")
+  );
+  chart2021.draw(data2021, getOptions("Investment Distribution for 2021"));
+
+  // Code for Pie Chart - 2022
+  var chart2022 = new google.visualization.PieChart(
+    document.getElementById("industrypie2022")
+  );
+  chart2022.draw(data2022, getOptions("Investment Distribution for 2022"));
+
+  // Code for Pie Chart - 2023
+  var chart2023 = new google.visualization.PieChart(
+    document.getElementById("industrypie2023")
+  );
+  chart2023.draw(data2023, getOptions("Investment Distribution for 2023"));
+});
+
+function processData(investments) {
+  // Assuming each investment has an "industry" property
+  // Counting investments in each industry
+  const industryCount = {};
+  investments.forEach((investment) => {
+    investment.industry.forEach((industry) => {
+      industryCount[industry] = (industryCount[industry] || 0) + 1;
+    });
+  });
+
+  // Converting data to the format expected by Google Charts
+  const dataArray = [["Industry", "Number of Investments"]];
+  for (const industry in industryCount) {
+    dataArray.push([industry, industryCount[industry]]);
+  }
+
+  return google.visualization.arrayToDataTable(dataArray);
+}
+
+function getOptions(title) {
+  return {
+    legend: "top",
+    pieSliceText: "percentage",
+    title: title,
+    colors: ["#ACD6E0", "#205867", "#2F455C", "#59D79E", "#D8D8D8"],
+    backgroundColor: "#f6f7fb",
+    pieStartAngle: 100,
+  };
+}
 //Code for Pie Chart - 1 ENDED (INDUSTRY)
 
 //Code for Pie Chart - 2 START (GEO)

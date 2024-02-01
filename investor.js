@@ -1,4 +1,4 @@
-// Fetch data from the API
+// Fetch data from the API ("https://investors-backend.viiventures.co/funds/investor-table?format=json&userId=1005")
 var userdetails = localStorage.getItem("shareduserData");
 var parseuserdetails = JSON.parse(userdetails);
 console.log(parseuserdetails.userId);
@@ -24,6 +24,91 @@ document.addEventListener("DOMContentLoaded", async function () {
   function formatAmericanNumber(number) {
     return number.toLocaleString("en-US");
   }
+
+  //Code for Line Chart - 1 START (MOIC Chart)
+  // var labels = ["", "2021", "2022", "2023", ""];
+  // var data = [null, 1.47, 1.18, 1.04, null];
+  const labels = [null, "2021", "2022", "2023", null];
+  const investmentCostData = [null];
+
+  Object.values(apiData.body.investor_portfolio).map((yearData) =>
+    investmentCostData.push(yearData.invested_cost)
+  );
+  investmentCostData.push[null];
+
+  const investmentValueData = [null];
+  Object.values(apiData.body.investor_portfolio).map((yearData) =>
+    investmentValueData.push(yearData.investment_value)
+  );
+
+  // Get the canvas element and create a 2D drawing context
+  var ctx = document.getElementById("investorlinechart").getContext("2d");
+
+  // Create the chart
+  var myChart = new Chart(ctx, {
+    type: "line",
+    data: {
+      labels: labels,
+      datasets: [
+        {
+          label: "Investment Cost",
+          borderColor: "#59D79E",
+          backgroundColor: "#59D79E",
+          data: investmentCostData,
+          fill: false,
+        },
+        {
+          label: "Investment Value",
+          borderColor: "#2F455C",
+          backgroundColor: "#2F455C",
+          data: investmentValueData,
+          fill: false,
+        },
+      ],
+    },
+    options: {
+      responsive: true,
+      maintainAspectRatio: false,
+      scales: {
+        x: {
+          type: "category",
+          labels: labels,
+          grid: {
+            // color: "white",
+            display: false, // hide vertical grid lines
+          },
+          // ticks: {
+          //   // Change x-axis label color
+          //   color: "#DFDFDF",
+          // },
+        },
+        y: {
+          beginAtZero: true,
+          suggestedMin: 0.5,
+          stepSize: 0.5,
+          grid: {
+            color: "#dcdcdc9a",
+            display: true, // keep horizontal grid lines
+          },
+          // ticks: {
+          //   // Change x-axis label color
+          //   color: "#DFDFDF",
+          // },
+        },
+      },
+      // plugins: {
+      //   legend: {
+      //     labels: {
+      //       // Change legend text color
+      //       color: "#DFDFDF",
+      //     },
+      //     // fillStyle: "#59D79E",
+      //   },
+      // },
+    },
+  });
+  //Code for Line Chart - 1 ENDED (MOIC Chart)
+
   // Reference to the table body
   var tbody = document.querySelector("#myTable2 tbody");
 
@@ -70,18 +155,14 @@ document.addEventListener("DOMContentLoaded", async function () {
       legend: "left",
     };
 
-    var donutdata = google.visualization.arrayToDataTable([
-      ["Funds", "Percentage Invested"],
-      ["VII Ventures SPC", apiData.body.user_data[0].percent_fund_allocation],
-      [
-        "VII Ventures Fund 1 SP",
-        apiData.body.user_data[1].percent_fund_allocation,
-      ],
-      [
-        "VII Ventures Fund 2 SP",
-        apiData.body.user_data[2].percent_fund_allocation,
-      ],
-    ]);
+    var donutdata = new google.visualization.DataTable();
+    donutdata.addColumn("string", "Funds");
+    donutdata.addColumn("number", "Percentage Invested");
+
+    // Populate data based on the number of items in body.user_data
+    apiData.body.user_data.forEach((fund) => {
+      donutdata.addRow([fund.fund_name, fund.percent_fund_allocation]);
+    });
 
     var donutchart = new google.visualization.PieChart(
       document.getElementById("donutChart")
@@ -90,8 +171,8 @@ document.addEventListener("DOMContentLoaded", async function () {
   }
 
   // Update Donut Chart data
-  google.charts.load("current", { packages: ["corechart"] }); // Loads the "current" Google Visualisation API and calls "corechart" on that API
-  google.charts.setOnLoadCallback(drawChart); //Callback function to execute drawChart function only when the google chart library is loaded
+  google.charts.load("current", { packages: ["corechart"] });
+  google.charts.setOnLoadCallback(drawChart);
 });
 //Code for DONUT Chart ENDED
 // export var username;
