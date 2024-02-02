@@ -303,6 +303,72 @@ google.charts.setOnLoadCallback(async function () {
 
 //Code for Pie Charts- ALL COMBINED ENDED
 
+// Code for Industry Pie Chart - 1 START (ALL combined)
+google.charts.load("current", { packages: ["corechart"] });
+
+google.charts.setOnLoadCallback(async function () {
+  const response = await fetch(
+    "https://investors-backend.viiventures.co/funds/company-level-portfolio?format=json&fundName=VII%20Ventures%20FUND%201%20SP"
+  );
+  const apiData = await response.json();
+
+  // Function to draw the pie chart
+  function drawPieChart(year, divId) {
+    // Extract data for the specific year
+    const yearData = apiData.body.company_level_portfolio[year];
+
+    // Prepare data for the chart
+    var data = new google.visualization.DataTable();
+    data.addColumn("string", "Company");
+    data.addColumn("number", "Investment Cost");
+
+    // Populate data array using forEach
+    yearData.forEach((item) => {
+      // Convert investment_cost to number
+      const investmentCost = Number(item.investment_cost);
+      // Add row to the DataTable
+      data.addRow([item.name, investmentCost]);
+      console.log(item.name, investmentCost);
+    });
+
+    // Configure options for the chart
+    var options = {
+      legend: "top",
+      pieSliceText: "percentage",
+      colors: [
+        "#ACD6E0",
+        "#205867",
+        "#2F455C",
+        "#59D79E",
+        "#D8D8D8",
+        "#FF7F50",
+        "#6A5ACD",
+        "#FFD700",
+        "#32CD32",
+        "#8A2BE2",
+        "#FF6347",
+        "#40E0D0",
+        "#FFA07A",
+      ],
+      backgroundColor: "white",
+      pieStartAngle: 100,
+      // title: `Investment Distribution for ${year}`,
+    };
+
+    // Create and draw the chart
+    var chart = new google.visualization.PieChart(
+      document.getElementById(divId)
+    );
+    chart.draw(data, options);
+  }
+
+  // Draw pie charts for 2021, 2022, and 2023
+  drawPieChart("2023", "industrypie2023");
+  drawPieChart("2022", "industrypie2022");
+  drawPieChart("2021", "industrypie2021");
+});
+
+//Code for Pie Chart - 1 ENDED (INDUSTRY)
 //Optional Component(removed ones and additional ones) FROM HERE
 
 // Code for Pie Chart - 1 START (INDUSTRY)

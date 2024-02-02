@@ -242,7 +242,7 @@ document.addEventListener("DOMContentLoaded", async function () {
 
 //Code for 2023, 2022, 2021 Tables ENDED
 
-//Code for Industry Pie Charts- ALL COMBINED START
+//Code for Geography Pie Charts- ALL COMBINED START
 google.charts.load("current", { packages: ["corechart"] });
 
 google.charts.setOnLoadCallback(async function () {
@@ -304,8 +304,7 @@ google.charts.setOnLoadCallback(async function () {
 
 //Code for Pie Charts- ALL COMBINED ENDED
 
-//Optional Component(removed ones and additional ones) FROM HERE
-// Code for Pie Chart - 1 START (INDUSTRY)
+// Code for Industry Pie Chart - 1 START (ALL combined)
 google.charts.load("current", { packages: ["corechart"] });
 
 google.charts.setOnLoadCallback(async function () {
@@ -314,74 +313,65 @@ google.charts.setOnLoadCallback(async function () {
   );
   const apiData = await response.json();
 
-  // Extracting data for each year
-  const data2021 = processData(apiData.body.company_level_portfolio["2021"]);
-  const data2022 = processData(apiData.body.company_level_portfolio["2022"]);
-  const data2023 = processData(apiData.body.company_level_portfolio["2023"]);
+  // Function to draw the pie chart
+  function drawPieChart(year, divId) {
+    // Extract data for the specific year
+    const yearData = apiData.body.company_level_portfolio[year];
 
-  console.log(
-    "Data for 2021:",
-    processData(apiData.body.company_level_portfolio["2021"])
-  );
-  console.log(
-    "Data for 2022:",
-    processData(apiData.body.company_level_portfolio["2022"])
-  );
-  console.log(
-    "Data for 2023:",
-    processData(apiData.body.company_level_portfolio["2023"])
-  );
+    // Prepare data for the chart
+    var data = new google.visualization.DataTable();
+    data.addColumn("string", "Company");
+    data.addColumn("number", "Investment Cost");
 
-  // Code for Pie Chart - 2021
-  var chart2021 = new google.visualization.PieChart(
-    document.getElementById("industrypie2021")
-  );
-  chart2021.draw(data2021, getOptions("Investment Distribution for 2021"));
-
-  // Code for Pie Chart - 2022
-  var chart2022 = new google.visualization.PieChart(
-    document.getElementById("industrypie2022")
-  );
-  chart2022.draw(data2022, getOptions("Investment Distribution for 2022"));
-
-  // Code for Pie Chart - 2023
-  var chart2023 = new google.visualization.PieChart(
-    document.getElementById("industrypie2023")
-  );
-  chart2023.draw(data2023, getOptions("Investment Distribution for 2023"));
-});
-
-function processData(investments) {
-  // Assuming each investment has an "industry" property
-  // Counting investments in each industry
-  const industryCount = {};
-  investments.forEach((investment) => {
-    investment.industry.forEach((industry) => {
-      industryCount[industry] = (industryCount[industry] || 0) + 1;
+    // Populate data array using forEach
+    yearData.forEach((item) => {
+      // Convert investment_cost to number
+      const investmentCost = Number(item.investment_cost);
+      // Add row to the DataTable
+      data.addRow([item.name, investmentCost]);
+      console.log(item.name, investmentCost);
     });
-  });
 
-  // Converting data to the format expected by Google Charts
-  const dataArray = [["Industry", "Number of Investments"]];
-  for (const industry in industryCount) {
-    dataArray.push([industry, industryCount[industry]]);
+    // Configure options for the chart
+    var options = {
+      legend: "top",
+      pieSliceText: "percentage",
+      colors: [
+        "#ACD6E0",
+        "#205867",
+        "#2F455C",
+        "#59D79E",
+        "#D8D8D8",
+        "#FF7F50",
+        "#6A5ACD",
+        "#FFD700",
+        "#32CD32",
+        "#8A2BE2",
+        "#FF6347",
+        "#40E0D0",
+        "#FFA07A",
+      ],
+      backgroundColor: "white",
+      pieStartAngle: 100,
+      // title: `Investment Distribution for ${year}`,
+    };
+
+    // Create and draw the chart
+    var chart = new google.visualization.PieChart(
+      document.getElementById(divId)
+    );
+    chart.draw(data, options);
   }
 
-  return google.visualization.arrayToDataTable(dataArray);
-}
+  // Draw pie charts for 2021, 2022, and 2023
+  drawPieChart("2023", "industrypie2023");
+  drawPieChart("2022", "industrypie2022");
+  drawPieChart("2021", "industrypie2021");
+});
 
-function getOptions(title) {
-  return {
-    legend: "top",
-    pieSliceText: "percentage",
-    title: title,
-    colors: ["#ACD6E0", "#205867", "#2F455C", "#59D79E", "#D8D8D8"],
-    backgroundColor: "#f6f7fb",
-    pieStartAngle: 100,
-  };
-}
 //Code for Pie Chart - 1 ENDED (INDUSTRY)
 
+//Optional Component(removed ones and additional ones) FROM HERE
 //Code for Pie Chart - 2 START (GEO)
 // var data2 = google.visualization.arrayToDataTable([
 //   ["Language", "Speakers (in millions)"],
