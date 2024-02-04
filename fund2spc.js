@@ -2,7 +2,7 @@ var sharedauthtoken = localStorage.getItem("authData");
 // console.log(sharedauthtoken);
 if (!sharedauthtoken) {
   var Authorization = {
-    Authorisation: "",
+    Authorization: "",
   };
 } else Authorization = JSON.parse(sharedauthtoken);
 console.log(Authorization);
@@ -25,7 +25,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     type: "GET",
     contentType: "application/json",
     headers: {
-      Authorization: Authorization.Authorisation,
+      Authorization: Authorization.Authorization,
     },
     success: function (result) {
       // CallBack(result);
