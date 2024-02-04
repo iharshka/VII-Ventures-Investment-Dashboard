@@ -1,3 +1,13 @@
+var sharedauthtoken = localStorage.getItem("authData");
+// console.log(sharedauthtoken);
+if (!sharedauthtoken) {
+  var Authorization = {
+    Authorisation: "",
+  };
+} else Authorization = JSON.parse(sharedauthtoken);
+console.log(Authorization);
+var responseData;
+var dataFromAPI;
 // Function to format numbers in American number system
 function formatAmericanNumber(number) {
   return number.toLocaleString("en-US");
@@ -5,174 +15,196 @@ function formatAmericanNumber(number) {
 // //BARGRAPH START
 document.addEventListener("DOMContentLoaded", async function () {
   // Fetch Overall Portfolio data from the API (for bar chart, moic chart and for cards as well)
-  const response = await fetch(
-    "https://investors-backend.viiventures.co/funds/overall-portfolio?format=json&fundName=VII%20Ventures%20FUND%202%20SP"
-  );
-  const responseData = await response.json();
-  const dataFromAPI = responseData.body.overall_portfolio;
+  // const response = await fetch(
+  //   "https://investors-backend.viiventures.co/funds/overall-portfolio?format=json&fundName=VII%20Ventures%20FUND%202%20SP"
+  // );
+  // const responseData = await response.json();
+  // const dataFromAPI = responseData.body.overall_portfolio;
+  $.ajax({
+    url: "https://investors-backend.viiventures.co/funds/overall-portfolio?format=json&fundName=VII%20Ventures%20FUND%202%20SP",
+    type: "GET",
+    contentType: "application/json",
+    headers: {
+      Authorization: Authorization.Authorisation,
+    },
+    success: function (result) {
+      // CallBack(result);
+      console.log(result);
+      // responseData = result.json();
+      // console.log(responseData);
+      dataFromAPI = result.body.overall_portfolio;
+      console.log(result.body.overall_portfolio);
+      if (result.status_code == 401)
+        window.location.href = "auth-normal-sign-in.html";
+      // // Update the Username with the API call
+      // var storedapiData = localStorage.getItem("sharedapiData");
+      // // Parse the JSON string back to an object
+      // var apiData = JSON.parse(storedapiData);
+      // const usernameelement = document.getElementById("usernamerighttop");
+      // usernameelement.textContent = dataFromAPI.body.username;
 
-  // Update the Username with the API call
-  var storedapiData = localStorage.getItem("sharedapiData");
-  // Parse the JSON string back to an object
-  var apiData = JSON.parse(storedapiData);
-  const usernameelement = document.getElementById("usernamerighttop");
-  usernameelement.textContent = apiData.body.username;
+      // Update the NAV CARD value with the 2023: nav_end_of_year
+      const navValueElement = document.getElementById("navValue");
+      navValueElement.textContent = `$ ${formatAmericanNumber(
+        dataFromAPI["2023"].nav_end_of_year
+      )}`;
 
-  // Update the NAV CARD value with the 2023: nav_end_of_year
-  const navValueElement = document.getElementById("navValue");
-  navValueElement.textContent = `$ ${formatAmericanNumber(
-    dataFromAPI["2023"].nav_end_of_year
-  )}`;
+      // Update the MOIC CARD value with the 2023: MOIC
+      const moicValueElement = document.getElementById("moicValue");
+      moicValueElement.textContent = `${formatAmericanNumber(
+        dataFromAPI["2023"].moic
+      )}`;
 
-  // Update the MOIC CARD value with the 2023: MOIC
-  const moicValueElement = document.getElementById("moicValue");
-  moicValueElement.textContent = `${formatAmericanNumber(
-    dataFromAPI["2023"].moic
-  )}`;
+      // Extract labels and data from the API response
+      var ctx = document.getElementById("myBarChart").getContext("2d");
 
-  // Extract labels and data from the API response
-  var ctx = document.getElementById("myBarChart").getContext("2d");
-
-  var myChart = new Chart(ctx, {
-    type: "bar",
-    data: {
-      labels: [...Object.keys(dataFromAPI)],
-      datasets: [
-        {
-          label: "Total Capital Invested",
-          data: [
-            ...Object.values(dataFromAPI).map(
-              (item) => item.total_capital_invested
-            ),
+      var myChart = new Chart(ctx, {
+        type: "bar",
+        data: {
+          labels: [...Object.keys(dataFromAPI)],
+          datasets: [
+            {
+              label: "Total Capital Invested",
+              data: [
+                ...Object.values(dataFromAPI).map(
+                  (item) => item.total_capital_invested
+                ),
+              ],
+              backgroundColor: "#59d79e",
+              borderRadius: 10,
+              barPercentage: 0.7,
+              categoryPercentage: 0.2, // Adjust the spacing between bars
+            },
+            {
+              label: "NAV end of the year",
+              data: [
+                ...Object.values(dataFromAPI).map(
+                  (item) => item.nav_end_of_year
+                ),
+              ],
+              backgroundColor: "#ACD6E0",
+              borderRadius: 10,
+              barPercentage: 0.7, // Adjust the width of the bars
+              categoryPercentage: 0.2, // Adjust the spacing between bars
+            },
           ],
-          backgroundColor: "#59d79e",
-          borderRadius: 10,
-          barPercentage: 0.7,
-          categoryPercentage: 0.2, // Adjust the spacing between bars
         },
-        {
-          label: "NAV end of the year",
-          data: [
-            ...Object.values(dataFromAPI).map((item) => item.nav_end_of_year),
-          ],
-          backgroundColor: "#ACD6E0",
-          borderRadius: 10,
-          barPercentage: 0.7, // Adjust the width of the bars
-          categoryPercentage: 0.2, // Adjust the spacing between bars
-        },
-      ],
-    },
-    options: {
-      responsive: true, // Set to false to use fixed size
-      maintainAspectRatio: false, // Set to false to allow changing the aspect ratio
-      scales: {
-        x: {
-          stacked: false, // Set to false for side-by-side bars
-          grid: {
-            // color: "#DFDFDF", // Set the color of the horizontal grid lines
-            display: false,
-            // drawBorder: false, // Hide the vertical grid lines
+        options: {
+          responsive: true, // Set to false to use fixed size
+          maintainAspectRatio: false, // Set to false to allow changing the aspect ratio
+          scales: {
+            x: {
+              stacked: false, // Set to false for side-by-side bars
+              grid: {
+                // color: "#DFDFDF", // Set the color of the horizontal grid lines
+                display: false,
+                // drawBorder: false, // Hide the vertical grid lines
+              },
+              ticks: {
+                // Change x-axis label color
+                color: "#DFDFDF",
+              },
+            },
+            y: {
+              stacked: false,
+              grid: {
+                color: "#dcdcdc9a",
+                display: true,
+              },
+              ticks: {
+                // Change x-axis label color
+                color: "#DFDFDF",
+              },
+            },
           },
-          ticks: {
-            // Change x-axis label color
-            color: "#DFDFDF",
-          },
-        },
-        y: {
-          stacked: false,
-          grid: {
-            color: "#dcdcdc9a",
-            display: true,
-          },
-          ticks: {
-            // Change x-axis label color
-            color: "#DFDFDF",
+          plugins: {
+            legend: {
+              labels: {
+                // Change legend text color
+                color: "#DFDFDF",
+              },
+            },
           },
         },
-      },
-      plugins: {
-        legend: {
-          labels: {
-            // Change legend text color
-            color: "#DFDFDF",
-          },
-        },
-      },
-    },
-  });
-  //BARGRAPH ENDED
+      });
+      //BARGRAPH ENDED
 
-  //Code for Line Chart - 1 START (MOIC Chart)
+      //Code for Line Chart - 1 START (MOIC Chart)
 
-  // Extracting labels and data from the API response
-  const labels = ["", ...Object.keys(dataFromAPI), ""];
-  const data = [
-    null,
-    ...Object.values(dataFromAPI).map((item) => item.moic),
-    null,
-  ];
-  // // Sample data
-  // var labels = ["", "2021", "2022", "2023", ""];
-  // var data = [null, 1.47, 1.18, 1.04, null];
+      // Extracting labels and data from the API response
+      const labels = ["", ...Object.keys(dataFromAPI), ""];
+      const data = [
+        null,
+        ...Object.values(dataFromAPI).map((item) => item.moic),
+        null,
+      ];
+      // // Sample data
+      // var labels = ["", "2021", "2022", "2023", ""];
+      // var data = [null, 1.47, 1.18, 1.04, null];
 
-  // Get the canvas element and create a 2D drawing context
-  var ctx = document.getElementById("moicchart").getContext("2d");
+      // Get the canvas element and create a 2D drawing context
+      var ctx = document.getElementById("moicchart").getContext("2d");
 
-  // Create the chart
-  var myChart = new Chart(ctx, {
-    type: "line",
-    data: {
-      labels: labels,
-      datasets: [
-        {
-          label: "MOIC",
-          borderColor: "#59D79E",
-          backgroundColor: "#59D79E",
-          data: data,
-          fill: false,
-        },
-      ],
-    },
-    options: {
-      responsive: true,
-      maintainAspectRatio: false,
-      scales: {
-        x: {
-          type: "category",
+      // Create the chart
+      var myChart = new Chart(ctx, {
+        type: "line",
+        data: {
           labels: labels,
-          grid: {
-            // color: "white",
-            display: false, // hide vertical grid lines
+          datasets: [
+            {
+              label: "MOIC",
+              borderColor: "#59D79E",
+              backgroundColor: "#59D79E",
+              data: data,
+              fill: false,
+            },
+          ],
+        },
+        options: {
+          responsive: true,
+          maintainAspectRatio: false,
+          scales: {
+            x: {
+              type: "category",
+              labels: labels,
+              grid: {
+                // color: "white",
+                display: false, // hide vertical grid lines
+              },
+              ticks: {
+                // Change x-axis label color
+                color: "#DFDFDF",
+              },
+            },
+            y: {
+              beginAtZero: true,
+              suggestedMin: 0.5,
+              stepSize: 0.5,
+              grid: {
+                color: "#dcdcdc9a",
+                display: true, // keep horizontal grid lines
+              },
+              ticks: {
+                // Change x-axis label color
+                color: "#DFDFDF",
+              },
+            },
           },
-          ticks: {
-            // Change x-axis label color
-            color: "#DFDFDF",
+          plugins: {
+            legend: {
+              labels: {
+                // Change legend text color
+                color: "#DFDFDF",
+              },
+              // fillStyle: "#59D79E",
+            },
           },
         },
-        y: {
-          beginAtZero: true,
-          suggestedMin: 0.5,
-          stepSize: 0.5,
-          grid: {
-            color: "#dcdcdc9a",
-            display: true, // keep horizontal grid lines
-          },
-          ticks: {
-            // Change x-axis label color
-            color: "#DFDFDF",
-          },
-        },
-      },
-      plugins: {
-        legend: {
-          labels: {
-            // Change legend text color
-            color: "#DFDFDF",
-          },
-          // fillStyle: "#59D79E",
-        },
-      },
+      });
     },
+    // error: function (error) {
+    //   window.location.href = "auth-normal-sign-in.html";
+    // },
   });
 });
 //Code for Line Chart - 1 ENDED (MOIC Chart)
@@ -191,6 +223,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     var row = document.createElement("tr");
     var logoCell = document.createElement("td");
     var companyCell = document.createElement("td");
+    var industryCell = document.createElement("td");
     var amountCell = document.createElement("td");
     var valuationCell = document.createElement("td");
     var moicCell = document.createElement("td");
@@ -201,6 +234,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     logoCell.innerHTML = `<a href = "${item.web_link}"><img src="${item.logo}" width = 110></img></a>`;
     geoCell.innerHTML = `<img src="${item.geo}" width = 50></img>`;
     companyCell.textContent = item.name;
+    industryCell.textContent = item.industry;
     amountCell.textContent = formatAmericanNumber(item.investment_cost);
     valuationCell.textContent = formatAmericanNumber(item.valuation_31_dec);
     moicCell.textContent = item.moic;
@@ -209,6 +243,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     // Append cells to the row
     row.appendChild(logoCell);
     row.appendChild(companyCell);
+    row.appendChild(industryCell);
     row.appendChild(amountCell);
     row.appendChild(valuationCell);
     row.appendChild(moicCell);
@@ -303,70 +338,70 @@ google.charts.setOnLoadCallback(async function () {
 
 //Code for Pie Charts- ALL COMBINED ENDED
 
-// Code for Industry Pie Chart - 1 START (ALL combined)
-google.charts.load("current", { packages: ["corechart"] });
+// // Code for Industry Pie Chart - 1 START (ALL combined)
+// google.charts.load("current", { packages: ["corechart"] });
 
-google.charts.setOnLoadCallback(async function () {
-  const response = await fetch(
-    "https://investors-backend.viiventures.co/funds/company-level-portfolio?format=json&fundName=VII%20Ventures%20FUND%202%20SP"
-  );
-  const apiData = await response.json();
+// google.charts.setOnLoadCallback(async function () {
+//   const response = await fetch(
+//     "https://investors-backend.viiventures.co/funds/company-level-portfolio?format=json&fundName=VII%20Ventures%20FUND%202%20SP"
+//   );
+//   const apiData = await response.json();
 
-  // Function to draw the pie chart
-  function drawPieChart(year, divId) {
-    // Extract data for the specific year
-    const yearData = apiData.body.company_level_portfolio[year];
+//   // Function to draw the pie chart
+//   function drawPieChart(year, divId) {
+//     // Extract data for the specific year
+//     const yearData = apiData.body.company_level_portfolio[year];
 
-    // Prepare data for the chart
-    var data = new google.visualization.DataTable();
-    data.addColumn("string", "Company");
-    data.addColumn("number", "Investment Cost");
+//     // Prepare data for the chart
+//     var data = new google.visualization.DataTable();
+//     data.addColumn("string", "Company");
+//     data.addColumn("number", "Investment Cost");
 
-    // Populate data array using forEach
-    yearData.forEach((item) => {
-      // Convert investment_cost to number
-      const investmentCost = Number(item.investment_cost);
-      // Add row to the DataTable
-      data.addRow([item.name, investmentCost]);
-      console.log(item.name, investmentCost);
-    });
+//     // Populate data array using forEach
+//     yearData.forEach((item) => {
+//       // Convert investment_cost to number
+//       const investmentCost = Number(item.investment_cost);
+//       // Add row to the DataTable
+//       data.addRow([item.name, investmentCost]);
+//       console.log(item.name, investmentCost);
+//     });
 
-    // Configure options for the chart
-    var options = {
-      legend: "top",
-      pieSliceText: "percentage",
-      colors: [
-        "#ACD6E0",
-        "#205867",
-        "#2F455C",
-        "#59D79E",
-        "#D8D8D8",
-        "#FF7F50",
-        "#6A5ACD",
-        "#FFD700",
-        "#32CD32",
-        "#8A2BE2",
-        "#FF6347",
-        "#40E0D0",
-        "#FFA07A",
-      ],
-      backgroundColor: "white",
-      pieStartAngle: 100,
-      // title: `Investment Distribution for ${year}`,
-    };
+//     // Configure options for the chart
+//     var options = {
+//       legend: "top",
+//       pieSliceText: "percentage",
+//       colors: [
+//         "#ACD6E0",
+//         "#205867",
+//         "#2F455C",
+//         "#59D79E",
+//         "#D8D8D8",
+//         "#FF7F50",
+//         "#6A5ACD",
+//         "#FFD700",
+//         "#32CD32",
+//         "#8A2BE2",
+//         "#FF6347",
+//         "#40E0D0",
+//         "#FFA07A",
+//       ],
+//       backgroundColor: "white",
+//       pieStartAngle: 100,
+//       // title: `Investment Distribution for ${year}`,
+//     };
 
-    // Create and draw the chart
-    var chart = new google.visualization.PieChart(
-      document.getElementById(divId)
-    );
-    chart.draw(data, options);
-  }
+//     // Create and draw the chart
+//     var chart = new google.visualization.PieChart(
+//       document.getElementById(divId)
+//     );
+//     chart.draw(data, options);
+//   }
 
-  // Draw pie charts for 2021, 2022, and 2023
-  drawPieChart("2023", "industrypie2023");
-  drawPieChart("2022", "industrypie2022");
-  drawPieChart("2021", "industrypie2021");
-});
+//   // Draw pie charts for 2021, 2022, and 2023
+//   drawPieChart("2023", "industrypie2023");
+//   drawPieChart("2022", "industrypie2022");
+//   drawPieChart("2021", "industrypie2021");
+// });
 //Code for Pie Chart - 1 ENDED (INDUSTRY)
 
 //Optional Component(removed ones and additional ones) FROM HERE

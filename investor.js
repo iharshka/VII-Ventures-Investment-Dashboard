@@ -11,7 +11,7 @@ document.addEventListener("DOMContentLoaded", async function () {
   const apiData = await response.json();
 
   // Update the Username with the API call and Sending the username for other pages
-  localStorage.setItem("sharedapiData", JSON.stringify(apiData));
+  // localStorage.setItem("sharedapiData", JSON.stringify(apiData));
   sharedusername = apiData.body.username;
   const usernameelement = document.getElementById("usernamerighttop");
   usernameelement.textContent = sharedusername;

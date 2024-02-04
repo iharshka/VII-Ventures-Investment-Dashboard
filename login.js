@@ -1,5 +1,6 @@
 $(document).ready(function () {
   // Function to handle login logic
+  var authData;
   function handleLogin() {
     // Get values from the form
     var userId = $("#email").val();
@@ -10,7 +11,6 @@ $(document).ready(function () {
       userId: userId,
       password: password,
     };
-    //Send Data to the Investor.js
     localStorage.setItem("shareduserData", JSON.stringify(sendUserData));
 
     // API endpoint for login
@@ -33,21 +33,22 @@ $(document).ready(function () {
         // Check if the login was successful
         if (data.success) {
           // Store the auth token in a JSON file
-          var authToken = data.authToken;
-          var authData = { authToken: authToken };
+          var authToken = data.auth_token;
+          authData = { Authorization: authToken };
+          // console.log(authData);
 
-          // Convert the data to JSON string
-          var jsonData = JSON.stringify(authData);
-
-          // Create a Blob and download the JSON file
-          var blob = new Blob([jsonData], { type: "application/json" });
-          var link = document.createElement("a");
-          link.href = window.URL.createObjectURL(blob);
-          // link.download = "authToken.json";
-          link.click();
+          // // Create a Blob and download the JSON file
+          // var blob = new Blob([jsonData], { type: "application/json" });
+          // var link = document.createElement("a");
+          // link.href = window.URL.createObjectURL(blob);
+          // // link.download = "authToken.json";
+          // link.click();
 
           // Redirect to the index.html page
           window.location.href = "index.html";
+          //Send Data to the Investor.js
+          localStorage.setItem("authData", JSON.stringify(authData));
+          console.log(authData);
         } else {
           // Display error message if login fails
           alert("Invalid Login ID or Password. Please try again.");
@@ -55,7 +56,7 @@ $(document).ready(function () {
       },
       error: function () {
         // Handle error case
-        alert("Error occurred while processing your request.");
+        alert("An error occurred while processing your request.");
       },
     });
   }
