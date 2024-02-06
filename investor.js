@@ -1,7 +1,8 @@
 // Fetch data from the API ("https://investors-backend.viiventures.co/funds/investor-table?format=json&userId=1005")
 var userdetails = localStorage.getItem("shareduserData");
 var parseuserdetails = JSON.parse(userdetails);
-console.log(parseuserdetails.userId);
+// console.log(parseuserdetails.userId);
+if (parseuserdetails == null) window.location.href = "auth-normal-sign-in.html";
 document.addEventListener("DOMContentLoaded", async function () {
   const response = await fetch(
     "https://investors-backend.viiventures.co/funds/investor-table?format=json" +

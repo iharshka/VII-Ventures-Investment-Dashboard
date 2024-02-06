@@ -48,7 +48,7 @@ $(document).ready(function () {
           window.location.href = "index.html";
           //Send Data to the Investor.js
           localStorage.setItem("authData", JSON.stringify(authData));
-          console.log(authData);
+          // console.log(authData);
         } else {
           // Display error message if login fails
           alert("Invalid Login ID or Password. Please try again.");

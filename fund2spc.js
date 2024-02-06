@@ -5,7 +5,7 @@ if (!sharedauthtoken) {
     Authorization: "",
   };
 } else Authorization = JSON.parse(sharedauthtoken);
-console.log(Authorization);
+// console.log(Authorization);
 var responseData;
 var dataFromAPI;
 // Function to format numbers in American number system
@@ -29,19 +29,18 @@ document.addEventListener("DOMContentLoaded", async function () {
     },
     success: function (result) {
       // CallBack(result);
-      console.log(result);
+      // console.log(result);
       // responseData = result.json();
       // console.log(responseData);
       dataFromAPI = result.body.overall_portfolio;
-      console.log(result.body.overall_portfolio);
+      // console.log(result.body.overall_portfolio);
+
       if (result.status_code == 401)
         window.location.href = "auth-normal-sign-in.html";
-      // // Update the Username with the API call
-      // var storedapiData = localStorage.getItem("sharedapiData");
-      // // Parse the JSON string back to an object
-      // var apiData = JSON.parse(storedapiData);
-      // const usernameelement = document.getElementById("usernamerighttop");
-      // usernameelement.textContent = dataFromAPI.body.username;
+
+      // Update the Username with the API call
+      const usernameelement = document.getElementById("usernamerighttop");
+      usernameelement.textContent = result.body.username;
 
       // Update the NAV CARD value with the 2023: nav_end_of_year
       const navValueElement = document.getElementById("navValue");

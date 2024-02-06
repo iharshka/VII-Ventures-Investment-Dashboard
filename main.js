@@ -6,7 +6,7 @@ if (!sharedauthtoken) {
     Authorization: "",
   };
 } else Authorization = JSON.parse(sharedauthtoken);
-console.log(Authorization);
+// console.log(Authorization);
 var responseData;
 var dataFromAPI;
 
@@ -25,15 +25,20 @@ document.addEventListener("DOMContentLoaded", async function () {
     },
     success: function (result) {
       // CallBack(result);
-      console.log(result);
+      // console.log(result);
       // responseData = result.json();
       // console.log(responseData);
       dataFromAPI = result.body.overall_portfolio;
-      console.log(result.body.overall_portfolio);
+      // console.log(result.body.overall_portfolio);
 
       if (result.status_code == 401)
         window.location.href = "auth-normal-sign-in.html";
       // Update the CARD value with the 2023: nav_end_of_year
+
+      // Update the Username with the API call
+      const usernameelement = document.getElementById("usernamerighttop");
+      usernameelement.textContent = result.body.username;
+
       const navValueElement = document.getElementById("navValue");
       navValueElement.textContent = `$ ${formatAmericanNumber(
         dataFromAPI["2023"].nav_end_of_year
@@ -203,15 +208,15 @@ document.addEventListener("DOMContentLoaded", async function () {
   // );
   // const responseData = await response.json();
   // const dataFromAPI = responseData.body.overall_portfolio;
-
-  // // Update the Username with the API call
-  // var storedapiData = localStorage.getItem("sharedapiData");
-  // // Parse the JSON string back to an object
-  // var apiData = JSON.parse(storedapiData);
-  // const usernameelement = document.getElementById("usernamerighttop");
-  // if (dataFromAPI.body.username)
-  //   usernameelement.textContent = dataFromAPI.body.username;
 });
+// // Function to handle logout
+// function logout() {
+//   // Set null in the Authorization object
+//   Authorization.Authorization = "";
+
+//   // Redirect the user to the sign-in page or perform other logout-related actions
+//   window.location.href = "auth-normal-sign-in.html";
+// }
 //Code for Line Chart - 1 ENDED (MOIC Chart)
 
 //Code for 2023, 2022, 2021 Tables START

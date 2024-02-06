@@ -9,7 +9,7 @@
     );
     var apiData = await apiResponse.json();
 
-    console.log(apiData);
+    // console.log(apiData);
 
     $worldMap.vectorMap({
       map: "world_mill_en",
@@ -28,10 +28,10 @@
     });
     // Update selected region for the specific map
     mapObjects[mapId] = $worldMap.vectorMap("get", "mapObject");
-    console.log(year);
+    // console.log(year);
     // Iterate over the array of regions and set them as selected
     apiData.body.geographies[year].forEach((item) => {
-      console.log(item.vector);
+      // console.log(item.vector);
       item.vector.forEach((item) => {
         mapObjects[mapId].setSelectedRegions(item);
       });
