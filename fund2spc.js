@@ -42,7 +42,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       const usernameelement = document.getElementById("usernamerighttop");
       usernameelement.textContent = result.body.username;
 
-      // Update the NAV CARD value with the 2023: nav_end_of_year
+      // Update the total number of investments
+      const totalnoofinvestments = document.getElementById("totalinvestments");
+      totalnoofinvestments.textContent = result.body.total_investments;
+
+      // Update the CARD value with the 2023: nav_end_of_year
       const navValueElement = document.getElementById("navValue");
       navValueElement.textContent = `$ ${formatAmericanNumber(
         dataFromAPI["2023"].nav_end_of_year
