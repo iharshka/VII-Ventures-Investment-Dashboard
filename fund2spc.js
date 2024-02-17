@@ -234,14 +234,14 @@ document.addEventListener("DOMContentLoaded", async function () {
     var gaindeccell = document.createElement("td");
 
     // Populate cells with data
-    logoCell.innerHTML = `<a href = "${item.web_link}"><img src="${item.logo}" width = 110></img></a>`;
-    geoCell.innerHTML = `<img src="${item.geo}" width = 50></img>`;
+    logoCell.innerHTML = `<a href = "${item.web_link}"><img src="${item.logo}" style="width: 4em;"></img></a>`;
+    geoCell.innerHTML = `<img src="${item.geo}" style="width: 3em;"></img>`;
     companyCell.textContent = item.name;
     industryCell.textContent = item.industry;
     amountCell.textContent = formatAmericanNumber(item.investment_cost);
     valuationCell.textContent = formatAmericanNumber(item.valuation_31_dec);
     moicCell.textContent = item.moic;
-    gaindeccell.innerHTML = `<img src="${item.trend}" width = 70></img>`;
+    gaindeccell.innerHTML = `<img src="${item.trend}" style="width: 3.5em;"></img>`;
 
     // Append cells to the row
     row.appendChild(logoCell);

@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     percentagefundcell.textContent = item.fund_ownership;
     NAVcell.textContent = formatAmericanNumber(item.nav);
     profitcell.textContent = formatAmericanNumber(item.pnl);
-    graphlogocell.innerHTML = `<img src="${item.trend}" width = 70></img>`;
+    graphlogocell.innerHTML = `<img src="${item.trend}"  style="width: 3.5em;"></img>`;
 
     row.appendChild(fundscell);
     row.appendChild(sub2023cell);
