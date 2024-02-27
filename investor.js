@@ -132,7 +132,7 @@ document.addEventListener("DOMContentLoaded", async function () {
     percentagefundcell.textContent = item.fund_ownership;
     NAVcell.textContent = formatAmericanNumber(item.nav);
     profitcell.textContent = formatAmericanNumber(item.pnl);
-    graphlogocell.innerHTML = `<img src="${item.trend}"  style="width: 3.5em;"></img>`;
+    graphlogocell.innerHTML = `<img src="${item.trend}"  style="width: 4.5em;"></img>`;
 
     row.appendChild(fundscell);
     row.appendChild(sub2023cell);
@@ -153,7 +153,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       colors: ["#205867", "#ACD6E0", "#59D79E"],
       backgroundColor: "#f6f7fb",
       pieHole: 0.5,
-      legend: "left",
+      legend: "top",
     };
 
     var donutdata = new google.visualization.DataTable();

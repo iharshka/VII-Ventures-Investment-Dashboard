@@ -85,10 +85,10 @@
                 padding: 0 !important;
             }
 
-            #logotext {
+            /* #logotext {
                 margin-left: 9.5em !important;
                 margin-top: -1.4em;
-            }
+            } */
 
             /* #bigcard {
                 font-size: 1em;
@@ -99,31 +99,29 @@
             }
 
             #table {
-                padding: 0 !important;
-                margin: 2em 0 !important;
+                overflow: auto;
+                white-space: nowrap;
             }
 
             th,
             td {
                 white-space: pre-line !important;
                 /* Allow line breaks in the text */
-                overflow-wrap: break-word !important;
-                /* Allow long words to break and wrap */
-                max-width: 6em;
             }
 
             th {
-                font-size: 0.9em !important;
+                font-size: 1em !important;
                 padding: 0.3em !important;
             }
 
             td {
-                padding: 0.4em !important;
-                font-size: 0.8em !important;
+                padding: 0.4em;
+                font-size: 0.8em;
             }
 
             #linechartid {
-                height: 60vw !important;
+                height: 55vw !important;
+                margin: 1em !important;
             }
         }
     </style>
@@ -185,10 +183,10 @@
                                 style="margin-left: 3vh; margin-top: -1vh;" /> -->
                             <img class="img-fluid" src="viiLogo.png" alt="Vii-Logo" width="30vh"
                                 style="margin-top: -1vh;" />
-                            <div id="logotext"
+                            <!-- <div id="logotext"
                                 style="display: inline-block; font-family: 'Open Sans'; font-size: 1.3em; font-weight: 700; margin-left: 0.5em; color: whitesmoke;">
                                 VII
-                                Ventures</div>
+                                Ventures</div> -->
                         </a>
                         <a class=" mobile-options">
                             <i class="feather icon-more-horizontal"></i>
@@ -493,7 +491,7 @@
                                                     <th>Fund Ownership %</th>
                                                     <th>NAV</th>
                                                     <th>Profit/Loss</th>
-                                                    <th></th>
+                                                    <th>Gain/Dec</th>
                                                 </tr>
                                             </thead>
                                             <tbody>

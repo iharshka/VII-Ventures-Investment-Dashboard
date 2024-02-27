@@ -121,48 +121,69 @@
                 padding: 0 !important;
             }
 
-            #logotext {
+            /* #logotext {
                 margin-left: 9.5em;
                 margin-top: -1.4em;
-            }
+            } */
 
             /* #bigcard {
                 font-size: 1em;
             } */
+
+            .mobileresponsive {
+                flex-direction: column !important;
+            }
+
+            .mobilebabies {
+                width: 100% !important;
+                height: 40vh;
+                margin-top: 1em;
+            }
+
+            .forresponsiveheight {
+                height: 50vh;
+            }
+
+            .moicheads {
+                display: none !important;
+            }
+
+            .cardsheight>img {
+                margin-top: 0;
+            }
+
+            .triplepie {
+                width: 100% !important;
+                margin-top: 2em !important;
+            }
+
+            .chart-title {
+                display: none;
+            }
 
             .miniheads {
                 font-size: 1.3em !important;
             }
 
             #table {
-                padding: 0 !important;
+                overflow: auto;
+                white-space: nowrap;
             }
 
             th,
             td {
                 white-space: pre-line !important;
                 /* Allow line breaks in the text */
-                overflow-wrap: break-word !important;
-                /* Allow long words to break and wrap */
-                max-width: 6em;
             }
 
             th {
-                font-size: 0.9em !important;
+                font-size: 1em !important;
                 padding: 0.3em !important;
             }
 
             td {
                 padding: 0.4em;
                 font-size: 0.8em;
-            }
-
-            /* .cardsheight {
-                height: 80% !important;
-            } */
-
-            .cardsheight img {
-                margin-top: 10em !important;
             }
         }
     </style>
@@ -224,9 +245,9 @@
                                 style="margin-left: 3vh; margin-top: -1vh;" /> -->
                             <img class="img-fluid" src="viiLogo.png" alt="Vii-Logo" width="30vh"
                                 style="margin-top: -1vh;" />
-                            <div id="logotext">
+                            <!-- <div id="logotext">
                                 VII
-                                Ventures</div>
+                                Ventures</div> -->
                         </a>
                         <a class="mobile-options">
                             <i class="feather icon-more-horizontal"></i>
@@ -617,17 +638,19 @@
                                     <span class="miniheads"
                                         style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; margin: 1em 0 0.5em 0;">VII
                                         VENTURES SPC</span>
-                                    <div style="display: flex; flex-direction: row; margin-bottom: 1.5em;">
-                                        <div
+                                    <div class="mobileresponsive"
+                                        style="display: flex; flex-direction: row; margin-bottom: 1.5em;">
+                                        <div class="mobilebabies"
                                             style="width: 50%; background-color: #2F455C; padding: 1em; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px; margin-right: 1em;">
                                             <canvas id="myBarChart"></canvas>
                                         </div>
-                                        <div
+                                        <div class="mobilebabies"
                                             style="width: 50%; background-color: #2F455C; padding: 1em; box-shadow: 1px 1.5px 3px #2f455c36; border-radius: 4px;">
                                             <canvas id="moicchart"></canvas>
                                         </div>
                                     </div>
-                                    <div style="display: flex; flex-direction: row; margin-bottom: 1.5em;">
+                                    <div class="moicheads"
+                                        style="display: flex; flex-direction: row; margin-bottom: 1.5em;">
                                         <div style="width: 50%;">
                                             <center>
                                                 <span
@@ -668,7 +691,7 @@
                                             style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; margin: 1.5em 0 0 0;">
                                             VII Ventures SPC: Fund Performance in 2023</center>
 
-                                        <section id="table"
+                                        <div id="table"
                                             style="padding: 1em; padding-top: 0.5em; margin-top: 0.2em; border-radius: 4px;">
 
                                             <table id="myTable2023">
@@ -681,17 +704,18 @@
                                                         <th style="text-align: center;">Valuation as on 31 Dec 2023</th>
                                                         <th style="text-align: center;">MOIC</th>
                                                         <th style="text-align: center;">Geo</th>
-                                                        <th style="text-align: center;"></th>
+                                                        <th style="text-align: center;">Gain/Dec</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <!-- Data will be dynamically added here -->
                                                 </tbody>
                                             </table>
-                                        </section>
+                                        </div>
 
-                                        <div style="display: flex; flex-direction: row; margin-bottom: 2em;">
-                                            <div style="width: 50%; margin-right: 1em;">
+                                        <div class="mobileresponsive"
+                                            style="display: flex; flex-direction: row; margin-bottom: 2em;">
+                                            <div class="mobilebabies" style="width: 50%; margin-right: 1em;">
                                                 <div class="miniheads"
                                                     style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; padding: 0.5em; padding-top: 0.6em;">
                                                     Portfolio Diversification by Industry</div>
@@ -704,7 +728,7 @@
                                                     style=" border-radius: 0.5em; background-color: white; box-shadow: 1px 1.5px 3px #2f455c36; height: 90%;">
                                                 </div> -->
                                             </div>
-                                            <div style="width: 50%;">
+                                            <div class="mobilebabies" style="width: 50%;">
                                                 <div class="miniheads"
                                                     style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; padding: 0.5em; padding-top: 0.6em;">
                                                     Portfolio Diversification by Geo</div>
@@ -726,7 +750,7 @@
                                             style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; margin: 1.5em 0 0 0;">
                                             VII Ventures SPC: Fund Performance in 2022</center>
 
-                                        <section id="table"
+                                        <div id="table"
                                             style="padding: 1em; padding-top: 0.5em; margin-top: 0.2em; border-radius: 4px;">
                                             <table id="myTable2022">
                                                 <thead>
@@ -738,17 +762,18 @@
                                                         <th style="text-align: center;">Valuation as on 31 Dec 2022</th>
                                                         <th style="text-align: center;">MOIC</th>
                                                         <th style="text-align: center;">Geo</th>
-                                                        <th style="text-align: center;"></th>
+                                                        <th style="text-align: center;">Gain/Dec</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
                                                     <!-- Data will be dynamically added here -->
                                                 </tbody>
                                             </table>
-                                        </section>
+                                        </div>
 
-                                        <div style="display: flex; flex-direction: row; margin-bottom: 2em;">
-                                            <div style="width: 50%; margin-right: 1em;">
+                                        <div class="mobileresponsive"
+                                            style="display: flex; flex-direction: row; margin-bottom: 2em;">
+                                            <div class="mobilebabies" style="width: 50%; margin-right: 1em;">
                                                 <div class="miniheads"
                                                     style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; padding: 0.5em; padding-top: 0.6em;">
                                                     Portfolio Diversification by Industry</div>
@@ -761,7 +786,7 @@
                                                     style=" border-radius: 0.5em; background-color: white; box-shadow: 1px 1.5px 3px #2f455c36; height: 90%;">
                                                 </div> -->
                                             </div>
-                                            <div style="width: 50%;">
+                                            <div class="mobilebabies" style="width: 50%;">
                                                 <div class="miniheads"
                                                     style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; padding: 0.5em; padding-top: 0.6em;">
                                                     Portfolio Diversification by Geo</div>
@@ -797,7 +822,7 @@
                                                         <th style="text-align: center;">Valuation as on 31 Dec 2021</th>
                                                         <th style="text-align: center;">MOIC</th>
                                                         <th style="text-align: center;">Geo</th>
-                                                        <th style="text-align: center;"></th>
+                                                        <th style="text-align: center;">Gain/Dec</th>
                                                     </tr>
                                                 </thead>
                                                 <tbody>
@@ -812,9 +837,10 @@
                                                                                 : Investment Geographies for 2022
                                                                             </h6> -->
 
-                                        <div style="display: flex; flex-direction: row; margin-bottom: 3em;">
+                                        <div class="mobileresponsive"
+                                            style="display: flex; flex-direction: row; margin-bottom: 3em;">
                                             <!-- <div id="industrypie" style="height: 70vh;"></div> -->
-                                            <div style="width: 50%; margin-right: 1em;">
+                                            <div class="mobilebabies" style="width: 50%; margin-right: 1em;">
                                                 <span class="miniheads"
                                                     style="display: block; font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; padding: 0.5em; padding-top: 0.6em;">
                                                     Portfolio Diversification by Industry</span>
@@ -827,7 +853,7 @@
                                                     style=" border-radius: 0.5em; background-color: white; box-shadow: 1px 1.5px 3px #2f455c36; height: 90%;">
                                                 </div> -->
                                             </div>
-                                            <div style="width: 50%;">
+                                            <div class="mobilebabies" style="width: 50%;">
                                                 <span class="miniheads"
                                                     style="display: block; font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700; padding: 0.5em; padding-top: 0.6em;">
                                                     Portfolio Diversification by Geo</span>
@@ -851,22 +877,23 @@
                                 <span class="miniheads"
                                     style="font-family: 'Open Sans'; font-size: 1.75em; color: #59d79e; font-weight: 700;">
                                     VII Ventures SPC: Geographies of Investments</span>
-                                <div style="display: flex; justify-content: space-between; margin-top: 1em;">
-                                    <div style="width: 33%;">
+                                <div class="mobileresponsive"
+                                    style="display: flex; justify-content: space-between; margin-top: 1em;">
+                                    <div class="mobilebabies forresponsiveheight" style="width: 33%;">
                                         <div class="chart-container">
                                             <div id="geopie2023" class="triplepie" style="height: 70vh; width: 30vw;">
                                             </div>
                                             <div class="chart-title">2023</div>
                                         </div>
                                     </div>
-                                    <div style="width: 33%;">
+                                    <div class="mobilebabies forresponsiveheight" style="width: 33%;">
                                         <div class="chart-container">
                                             <div id="geopie2022" class="triplepie" style="height: 70vh; width: 30vw;">
                                             </div>
                                             <div class="chart-title">2022</div>
                                         </div>
                                     </div>
-                                    <div style="width: 33%;">
+                                    <div class="mobilebabies forresponsiveheight" style="width: 33%;">
                                         <div class="chart-container">
                                             <div id="geopie2021" class="triplepie" style="height: 70vh; width: 30vw;">
                                             </div>
