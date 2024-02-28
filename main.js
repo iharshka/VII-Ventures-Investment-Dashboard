@@ -37,7 +37,9 @@ document.addEventListener("DOMContentLoaded", async function () {
 
       // Update the Username with the API call
       const usernameelement = document.getElementById("usernamerighttop");
+      const usernameelementmbl = document.getElementById("usernamerighttopmbl");
       usernameelement.textContent = result.body.username;
+      usernameelementmbl.textContent = result.body.username;
 
       // Update the total number of investments
       const totalnoofinvestments = document.getElementById("totalinvestments");

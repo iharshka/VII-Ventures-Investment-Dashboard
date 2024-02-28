@@ -10,3 +10,9 @@ $(document).ready(function () {
     localStorage.removeItem("shareduserData");
   });
 });
+$(document).ready(function () {
+  $("#logoutbuttonmbl").on("click", function () {
+    localStorage.removeItem("authData");
+    localStorage.removeItem("shareduserData");
+  });
+});
