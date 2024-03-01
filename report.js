@@ -1,44 +1,85 @@
-const apiEndpoint =
-  "https://investors-backend.viiventures.co/funds/reports?format=json";
+// To fetch Investor Name
+var sharedauthtoken = localStorage.getItem("authData");
+var Authorization;
+// console.log(sharedauthtoken);
+if (!sharedauthtoken) {
+  Authorization = {
+    Authorization: "",
+  };
+} else Authorization = JSON.parse(sharedauthtoken);
+// console.log(Authorization);
+var responseData;
+var dataFromAPI;
 
-// Function to fetch data from the API
-async function fetchData() {
-  try {
-    const response = await fetch(apiEndpoint);
-    const data = await response.json();
-    return data.body;
-  } catch (error) {
-    console.error("Error fetching data:", error);
-  }
-}
+document.addEventListener("DOMContentLoaded", async function () {
+  $.ajax({
+    url: "https://investors-backend.viiventures.co/funds/reports?format=json",
+    type: "GET",
+    contentType: "application/json",
+    headers: {
+      Authorization: Authorization.Authorization,
+    },
+    success: function (result) {
+      // CallBack(result);
+      // console.log(result);
+      // responseData = result.json();
+      // console.log(responseData);
+      dataFromAPI = result.body;
+      // console.log(result.body.overall_portfolio);
 
-// Function to update HTML content with API data
-async function updateContent() {
-  const fundData = await fetchData();
+      if (result.status_code == 401)
+        window.location.href = "auth-normal-sign-in.html";
 
-  // Replace 'VII Ventures SPC' with the actual fund name you want to display
-  const fundName = "VII Ventures SPC";
+      // Update the Username with the API call
+      const usernameelement = document.getElementById("usernamerighttop");
+      const usernameelementmbl = document.getElementById("usernamerighttopmbl");
+      usernameelement.textContent = result.body.username;
+      usernameelementmbl.textContent = result.body.username;
 
-  // Replace the following code with your actual HTML structure
-  document.querySelector(".elementor-heading-title").textContent = fundName;
-  document
-    .querySelector(".elementor-heading-title")
-    .insertAdjacentHTML("afterend", '<div class="elementor-widget-container">');
-  document
-    .querySelector(".elementor-widget-container")
-    .insertAdjacentHTML(
-      "afterend",
-      `<p class="elementor-heading-title elementor-size-default"><span style="font-weight: bolder; font-size: 14px;">Password:</span><span style="font-size: 14px;"> ${fundData[fundName].password}</span></p>`
-    );
-  document
-    .querySelector(".elementor-widget-container")
-    .insertAdjacentHTML(
-      "afterend",
-      `<div class="elementor-button-wrapper"><a class="elementor-button elementor-button-link elementor-size-sm" href="${fundData[fundName]["2021"]}" target="_blank"><span class="elementor-button-content-wrapper"><span class="elementor-button-text">Download</span></span></a></div>`
-    );
+      // Call the function to fetch data and update HTML content
+      updateHTMLContent(dataFromAPI);
 
-  // Repeat the process for other years or sections as needed
-}
+      //Investor Report Password and PDF Links SCRIPT
+      // Function to update HTML content with the received data
+      function updateHTMLContent(data) {
+        // Update VII Ventures SPC
+        updateFund(data["VII Ventures SPC"], "fundspc");
 
-// Call the function to update content when the page loads
-window.addEventListener("load", updateContent);
+        // Update VII Ventures Fund 1 SP
+        updateFund(data["Vii Ventures Fund 1 SP"], "fund1spc");
+
+        // Update VII Ventures Fund 2 SP
+        updateFund(data["Vii Ventures Fund 2 SP"], "fund2spc");
+      }
+
+      // Function to update a specific fund's data in HTML
+      function updateFund(fundData, elementClass) {
+        // Update the password
+        const passwordElement = document.querySelector(`.${elementClass} p`);
+        passwordElement.innerHTML = `<span style="font-weight: bolder; font-size: 14px;">Password:</span><span style="font-size: 14px;"> </span><span style="font-size: 14px;">${fundData.password}</span>`;
+
+        // Update the download links for 2021 and 2022
+        const downloadLinks = document.querySelectorAll(
+          `.${elementClass} .elementor-button-link`
+        );
+        downloadLinks[0].href = fundData["2021"];
+        downloadLinks[1].href = fundData["2022"];
+      }
+    },
+  });
+});
+
+// async function fetchDataAndUpdateHTML() {
+//   try {
+//     // Make an API call to the provided endpoint
+//     const response = await fetch(
+//       "https://investors-backend.viiventures.co/funds/reports?format=json"
+//     );
+//     const apiData = await response.json();
+
+//     // Update the HTML content with the received data
+//     updateHTMLContent(apiData.body);
+//   } catch (error) {
+//     console.error("Error fetching data:", error);
+//   }
+// }
