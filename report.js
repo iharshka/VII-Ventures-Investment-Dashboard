@@ -33,24 +33,19 @@ document.addEventListener("DOMContentLoaded", async function () {
       // Update the Username with the API call
       const usernameelement = document.getElementById("usernamerighttop");
       const usernameelementmbl = document.getElementById("usernamerighttopmbl");
-      usernameelement.textContent = result.body.username;
-      usernameelementmbl.textContent = result.body.username;
-
-      // Call the function to fetch data and update HTML content
-      updateHTMLContent(dataFromAPI);
+      usernameelement.textContent = dataFromAPI.username;
+      usernameelementmbl.textContent = dataFromAPI.username;
 
       //Investor Report Password and PDF Links SCRIPT
       // Function to update HTML content with the received data
-      function updateHTMLContent(data) {
-        // Update VII Ventures SPC
-        updateFund(data["VII Ventures SPC"], "fundspc");
+      // Update VII Ventures SPC
+      updateFund(dataFromAPI["VII Ventures SPC"], "fundspc");
 
-        // Update VII Ventures Fund 1 SP
-        updateFund(data["Vii Ventures Fund 1 SP"], "fund1spc");
+      // Update VII Ventures Fund 1 SP
+      updateFund(dataFromAPI["Vii Ventures Fund 1 SP"], "fund1spc");
 
-        // Update VII Ventures Fund 2 SP
-        updateFund(data["Vii Ventures Fund 2 SP"], "fund2spc");
-      }
+      // Update VII Ventures Fund 2 SP
+      updateFund(dataFromAPI["Vii Ventures Fund 2 SP"], "fund2spc");
 
       // Function to update a specific fund's data in HTML
       function updateFund(fundData, elementClass) {
