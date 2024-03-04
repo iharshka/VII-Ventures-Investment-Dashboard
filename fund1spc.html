@@ -2458,13 +2458,13 @@
             }
 
             th {
-                font-size: 1em !important;
+                font-size: 0.95em !important;
                 padding: 0.3em !important;
             }
 
             td {
                 padding: 0.4em;
-                font-size: 0.8em;
+                font-size: 0.85em;
             }
 
             #usernamelogoutpad {
@@ -2477,9 +2477,27 @@
             } */
         }
     </style>
+    <!-- For Sticky Navbar START -->
+    <style>
+        @media only screen and (max-width: 768px) {
+
+            /* Navbar was hiding the body content */
+            body {
+                padding-top: 150px !important;
+            }
+        }
+
+        .elementor-location-header {
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+        }
+    </style>
+    <!-- For Sticky Navbar ENDED -->
 </head>
 
-<body
+<body style="padding-top: 100px;"
     class="page-template page-template-elementor_header_footer page page-id-833 logged-in admin-bar no-customize-support wp-custom-logo elementor-default elementor-template-full-width elementor-kit-9 elementor-page elementor-page-833 elementor-page-221">
     <!-- Pre-loader start -->
     <div class="theme-loader">
