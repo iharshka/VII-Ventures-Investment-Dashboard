@@ -4,9 +4,15 @@ VII Ventures Investment Dashboard is a financial investment Dashboard for funds 
 
 Dashboard displays the Investor data in a visually appealing manner using JavaScript, jQuery, & Datatables libraries. The investment data can also be downloaded as a report in the PDF format from the report.html page.
 
+*Desktop*
+
 ![pc ss](demoss.png)
 
-![mbl ss](mblss1.png)![mbl ss](mblss2.png)
+*Mobile Devices*
+<p align="center">
+<img src="mblss1.png" width = 200>
+<img src="mblss2.png" width = 200>
+</center>
 
 ## Demo
 
