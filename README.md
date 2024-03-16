@@ -1,24 +1,18 @@
-
 # VII Ventures Investment Dashboard
 
-VII Ventures Investment Dashboard is a financial investment Dashboard for funds management for a Venture Capital & Investment Portfolio for Investors. The dashboard has authentication which means it can only be accessed via a UserID and Password. Dashboard has been made responsive for all devices. 
+VII Ventures Investment Dashboard is a financial investment Dashboard for funds management for a Venture Capital & Investment Portfolio for Investors. The dashboard has authentication which means it can only be accessed via a UserID and Password. Dashboard has been made responsive for all devices.
 
 Dashboard displays the Investor data in a visually appealing manner using JavaScript, jQuery, & Datatables libraries. The investment data can also be downloaded as a report in the PDF format from the report.html page.
-
-
-
 
 ![pc ss](demoss.png)
 
 ![mbl ss](mblss1.png)![mbl ss](mblss2.png)
-
 
 ## Demo
 
 Video Demo of this project: https://www.youtube.com/watch?v=x7T_jwcgw2A
 
 Doc Demo: https://bit.ly/HarshVIIVentures
-
 
 ## Installation
 
@@ -29,53 +23,56 @@ git clone github.com/iharshka/VII-Ventures-Investment-Dashboard.git test-dashboa
 
 cd test-dashboard
 ```
+
 After this, Install a Live Server extension on your code editor, for example VS Code, follow the steps:
-- Go to the *Extensions* tab
-- Search *Live Server* and Install the first result Extension
-- Now, a *Go Live* button should be visible at the right bottom corner of VS Code Window. Clicking it will open the project on your local server on your browser.
+
+- Go to the _Extensions_ tab
+- Search _Live Server_ and Install the first result Extension
+- Now, a _Go Live_ button should be visible at the right bottom corner of VS Code Window. Clicking it will open the project on your local server on your browser.
 
 *What if the *Go Live* button is not visible?*
-- Right click on the index page and choose *Open with Live Server*
-This should open the project live in your local environment on your browser.
+
+- Right click on the index page and choose _Open with Live Server_
+  This should open the project live in your local environment on your browser.
+
 ## Features
 
 - Line Charts
-- Bar charts 
+- Bar charts
 - Donut charts
 - Tables
-- Vector Maps 
+- Vector Maps
 - Authorization
 - Login/Logout
 - Profile
 - Cross platform
 - Device Responsive
 
-
 ## Tech Stack
 
 **Client Side**
+
 - HTML, CSS, JavaScript
 - APIs Integrations
 - built on top of Chart.js/Google Chart Library
 - jQuery & DataTables
 - Authorization using Ajax APIs
-**Server Side**
+  **Server Side**
 - Python
 - Django
 - MongoDB
-
 
 ## Deployment
 
 Live at: https://investors.viiventures.co
 
-- Frontend hosted on *Vercel*
-- Backend hosted on *AWS EC2*
-
+- Frontend hosted on _Vercel_
+- Backend hosted on _AWS EC2_
 
 ## Challenges
 
-*What hiccups did I face during the project development (and how did I overcome them?)*
+_What hiccups did I face during the project development (and how did I overcome them?)_
+
 - Deployment to vercel due to the messed up directory structure (put index.html on root dir)
 - Async calls handling bug due to which JS behaved unexpectedly (put the APIs data dependencies inside async function)
 - Adding authorization to the APIs sending username and password with the APIs (sent them in header)
@@ -85,7 +82,8 @@ Live at: https://investors.viiventures.co
 
 ## Lessons Learned
 
-*What did I learn while building this project?*
+_What did I learn while building this project?_
+
 - I learnt how to keep the directory structure deployment & development friendly
 - I learnt how to display data in a graph, donut, bars, pie and tabular format, which can be built on some available libraries
 - I learnt to integrate APIs into these components
@@ -94,13 +92,14 @@ Live at: https://investors.viiventures.co
 - I learnt about how to add authorization to GET APIs
 - I learnt how to understand the given codebase and contribute to it
 - I learnt to use the best possible libraries & docs to use in the project for extra functionalities e.g. jQuery used for Animated World Map for showing investment made in the regions
+
 ## Future Updates
 
 - Adding Password change functionality for users (with a dropdown in the profile section)
 - **Major change** is adding user specific dashboard, for e.g. showing fund1spc only to specific set of users
+
 ## 🚀 About Me
+
 I'm Harsh, a problem solver, frontend developer & DevOps Eg, soon to be on backend and new techs (#Web3?, adaptive, u say). I want to work on a problem statement where I can cater to hundred thousands or million people or the one which keeps me stay up all night. Thank you for showing interest on this project. Neverming connecting with me on socials. See you soon.
 
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://iharshka.vercel.app/)[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/iharshka)[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/iharshka)
-
-
