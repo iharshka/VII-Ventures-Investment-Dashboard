@@ -1,8 +1,8 @@
 # VII Ventures Investment Dashboard
 
-VII Ventures Investment Dashboard is a financial investment Dashboard for funds management for a Venture Capital & Investment Portfolio for Investors. The dashboard has authentication which means it can only be accessed via a UserID and Password. Dashboard has been made responsive for all devices.
+VII Ventures Investment Dashboard  is an Investment Dashboard for Financial Fund(s) management of a Venture Capital & individual Investment Portfolio management for Investors which keeps track of all of their investments using different metrics like MOIC, Portfolio Value, NAV, Profit/Loss, Region, Industry, Geography, Investment Cost, Current Value, Fund Percentage Distribution etc and display them in visually appealing format using JavaScript & jQuery libraries. 
 
-Dashboard displays the Investor data in a visually appealing manner using JavaScript, jQuery, & Datatables libraries. The investment data can also be downloaded as a report in the PDF format from the report.html page.
+The Dashboard has authentication which means it can only be accessed via a UserID and Password, further a user after using the Dashboard can Logout from the Dashboard which will redirect back to Login page and will clear the Login details. Dashboard has been made responsive for all devices. Investors and Portfolio Managers can download their investment detailed report in the PDF format from the report.html page.
 
 *Desktop*
 
