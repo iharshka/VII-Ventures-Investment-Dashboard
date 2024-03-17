@@ -63,7 +63,9 @@ After this, Install a Live Server extension on your code editor, for example VS 
 - built on top of Chart.js/Google Chart Library
 - jQuery & DataTables
 - Authorization using Ajax APIs
-  **Server Side**
+  
+**Server Side**
+
 - Python
 - Django
 - MongoDB
@@ -101,8 +103,8 @@ _What did I learn while building this project?_
 
 ## Future Updates
 
-- Adding Password change functionality for users (with a dropdown in the profile section)
-- **Major change** is adding user specific dashboard, for e.g. showing fund1spc only to specific set of users
+- Adding Password change functionality for users (with a dropdown in the profile section) with a password update API and a user form.
+- **Major change** is adding user specific dashboard, for e.g. showing fund1spc only to specific set of users this will be done through auth & accessibilty tokens.
 
 ## 🚀 About Me
 
