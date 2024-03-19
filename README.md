@@ -79,7 +79,7 @@ Live at: https://investors.viiventures.co
 
 ## Challenges
 
-**Developer Backstory & Motivation**: While taking on this project I was very nervous thinking whether or not I would be able to do this project or implement these functionalities because I never created these functionalities before than this project, neither I used these libraries, neither I integrated any APIs from the backend, neither did I work on Login/Logout functionalilty. I took the leap thinking I will have a good experience on JavaScript, APIs, Asycn calls etc so I accepted it without wasting much time thinking. After accepting it, in the first week, I spent my time looking for the tech stack to use where I came to know about **Chart.js**, **Google Charts** and its **Documentation**, that's when the project started to seem real, I implemented them in the website and customised them and after this came the second hump which was integrating the APIs which sailed off swiftly. After this, the third big hump was adding the Autherization to the APIs where **Stackoverflow** came into handy and past developer experiences helped a lot in crossing the sea.
+**Developer Backstory & Motivation**: While taking on this project I was very nervous thinking whether or not I would be able to do this or implement these functionalities because I never created these functionalities before than this project, neither I used these libraries, neither I integrated any APIs from the backend, neither did I work on Login/Logout functionalilty. I took the leap thinking I will have a good experience on JavaScript, APIs, Asycn calls etc so I accepted it without wasting much time thinking. After accepting it, in the first week, I spent my time looking for the tech stack to use where I came to know about **Chart.js**, **Google Charts** and its **Documentation**, that's when the project started to seem real, I implemented them in the website and customised them and after this came the second hump which was integrating the APIs which sailed off swiftly. After this, the third big hump was adding the Autherization to the APIs where **Stackoverflow** came into handy and past developer experiences helped a lot in crossing the sea.
 
 _What other hiccups did I face during the project development (and how did I overcome them?)_
 
@@ -89,6 +89,8 @@ _What other hiccups did I face during the project development (and how did I ove
 - Sharing tokens across JavaScript files on client side (used LocalStorage for now)
 - Customising the libraries code to the desired outcomes (took help of Chart.js Documentations & ChatGPT)
 - Adding hover tip to the pie charts (Added it with <div> and DOM manipulation)
+
+As the result of these steps, I was able to do the version-1 of the website within one week which on several iterations on design has reached to this state.
 
 ## Lessons Learned
 
@@ -103,7 +105,7 @@ _What did I learn while building this project?_
 - I learnt how to understand the given codebase and contribute to it
 - I learnt to use the best possible libraries & docs to use in the project for extra functionalities e.g. jQuery used for Animated World Map for showing investment made in the regions
 
-Besides these learnings, this project has evolved my mindset as a Developer. We've to keep calm & seek information on the internet about the tech stack we're working on, there is something for every thing, from **official docs** from the developers of the tech stack to **Medium Blogs** to **StackOverflow** to **Open Source Repositories** of companies can help us clear the clutter and if all these still seems jarring then it's not bad to seek guidance from someone in our network or LinkedIn who might've worked on the same functionality and can help you get ahead. I'd say, I am now confident that I've caught the Developer DNA & I can now work on any functionality, tech stack or technology that a project requires.
+Besides these learnings, this project has evolved my mindset as a Developer. We've to keep calm & seek information on the internet about the tech stack we're working on, there is something for every thing, from **official docs** from the developers of the tech stack to **Medium Blogs** to **StackOverflow** to **Open Source Repositories** of companies can help us clear the clutter and if all these still seems jarring then it's not bad to seek guidance from someone in our network or LinkedIn who might've worked on the same functionality and can help us get ahead. I am inspired to take more exciting & challenging projects and this time some bigger real life products where I can write code for thousands users. I am now confident that I've caught the Developer DNA & I can now work on any functionality, tech stack or technology that a project requires.
 
 ## Future Updates
 
