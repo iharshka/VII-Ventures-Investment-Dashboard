@@ -16,3 +16,9 @@ $(document).ready(function () {
     localStorage.removeItem("shareduserData");
   });
 });
+$(document).ready(function () {
+  $("#changepass").on("click", function () {
+    localStorage.removeItem("authData");
+    localStorage.removeItem("shareduserData");
+  });
+});
