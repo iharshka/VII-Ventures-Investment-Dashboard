@@ -205,12 +205,14 @@ document.addEventListener("DOMContentLoaded", async function () {
           },
         },
       });
+      //Code for Line Chart - 1 ENDED (MOIC Chart)
     },
-    // error: function (error) {
-    //   if (error.status_code == 401)
-    //     window.location.href = "auth-normal-sign-in.html";
-    // },
+    error: function (error) {
+      if (error.status_code == 401)
+        window.location.href = "auth-normal-sign-in.html";
+    },
   });
+
   // Fetch Overall Portfolio data from the API (for bar chart, moic chart and for cards as well)
   // const response = await fetch(
   //   "https://investors-backend.viiventures.co/funds/overall-portfolio?format=json&fundName=VII%20Ventures%20SPC"
@@ -218,15 +220,6 @@ document.addEventListener("DOMContentLoaded", async function () {
   // const responseData = await response.json();
   // const dataFromAPI = responseData.body.overall_portfolio;
 });
-// // Function to handle logout
-// function logout() {
-//   // Set null in the Authorization object
-//   Authorization.Authorization = "";
-
-//   // Redirect the user to the sign-in page or perform other logout-related actions
-//   window.location.href = "auth-normal-sign-in.html";
-// }
-//Code for Line Chart - 1 ENDED (MOIC Chart)
 
 //Code for 2023, 2022, 2021 Tables START
 document.addEventListener("DOMContentLoaded", async function () {

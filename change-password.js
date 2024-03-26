@@ -7,14 +7,6 @@ $(document).ready(function () {
     var oldpass = $("#oldpassword").val();
     var newpass = $("#newpassword").val();
 
-    // // Create the sendData object
-    // var sendUserData = {
-    //   user_id: userId,
-    //   password: oldpass,
-    //   new_password: newpass,
-    // };
-    // localStorage.setItem("shareduserData", JSON.stringify(sendUserData));
-
     // API endpoint for login
     var apiUrl =
       "https://investors-backend.viiventures.co/funds/change-password";
@@ -35,18 +27,13 @@ $(document).ready(function () {
       success: function (data) {
         // Check if the password change was successful
         if (data.success) {
-          //   // Store the auth token in a JSON file
-          //   var authToken = data.auth_token;
-          //   authData = { Authorization: authToken };
-          //   console.log(authData);
           alert("Password changed successfully! Login with new password now.");
 
+          //Remove the cookie auth token
+          localStorage.removeItem("authData");
+          localStorage.removeItem("shareduserData");
           // Redirect to the login page
           window.location.href = "auth-normal-sign-in.html";
-
-          //   //Send Data to the Investor.js
-          //   localStorage.setItem("authData", JSON.stringify(authData));
-          //   // console.log(authData);
         } else {
           // Display error message if login fails
           alert("Invalid Login ID or Password. Please try again.");
@@ -54,7 +41,9 @@ $(document).ready(function () {
       },
       error: function () {
         // Handle error case
-        alert("An error occurred while processing your request.");
+        alert(
+          "An error occurred while processing your request. Check your internet connection then refresh the page."
+        );
       },
     });
   }
