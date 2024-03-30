@@ -45,7 +45,16 @@ $(document).ready(function () {
           // link.click();
 
           // Redirect to the index.html page
-          window.location.href = "index.html";
+          $.ajax({
+            url: "https://investors-backend.viiventures.co/funds/get-allowed-funds-users",
+            method: "GET",
+            headers: {
+              Authorization: authToken,
+            },
+            success: function (result) {
+              window.location.href = result.body.allowed_funds[0].link;
+            },
+          });
           //Send Data to the Investor.js
           localStorage.setItem("authData", JSON.stringify(authData));
           // console.log(authData);

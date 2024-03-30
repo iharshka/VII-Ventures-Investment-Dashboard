@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       allowedusers.forEach(function (item, index) {
         var dropdownuser = document.getElementById("useropt" + `${index + 1}`);
         dropdownuser.innerHTML = `
-        <a style="text-decoration: none; color: #ffffff;" href="#${item.user}">${item.username}</a>`;
+        <a style="text-decoration: none; color: #ffffff;" href="index2.html#${item.user}">${item.username}</a>`;
       });
     },
   });
