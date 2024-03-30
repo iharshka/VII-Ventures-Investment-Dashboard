@@ -1,14 +1,15 @@
 # VII Ventures Investment Dashboard
 
-VII Ventures Investment Dashboard  is an Investment Dashboard for Financial Fund(s) management of a Venture Capital & individual Investment Portfolio management for Investors which keeps track of all of their investments using different metrics like MOIC, Portfolio Value, NAV, Profit/Loss, Region, Industry, Geography, Investment Cost, Current Value, Fund Percentage Distribution etc and display them in visually appealing format using JavaScript & jQuery libraries. 
+VII Ventures Investment Dashboard is an Investment Dashboard for Financial Fund(s) management of a Venture Capital & individual Investment Portfolio management for Investors which keeps track of all of their investments using different metrics like MOIC, Portfolio Value, NAV, Profit/Loss, Region, Industry, Geography, Investment Cost, Current Value, Fund Percentage Distribution etc and display them in visually appealing format using JavaScript & jQuery libraries.
 
 The Dashboard has authentication which means it can only be accessed via a UserID and Password, further a user after using the Dashboard can Logout from the Dashboard which will redirect back to Login page and will clear the Login details. Dashboard has been made responsive for all devices. Investors and Portfolio Managers can download their investment detailed report in the PDF format from the report.html page.
 
-*Desktop*
+_Desktop_
 
 ![pc ss](demoss.png)
 
-*Mobile Devices*
+_Mobile Devices_
+
 <p align="center">
 <img src="mblss1.png" width = 200>
 <img src="mblss2.png" width = 200>
@@ -63,7 +64,7 @@ After this, Install a Live Server extension on your code editor, for example VS 
 - built on top of Chart.js/Google Chart Library
 - jQuery & DataTables
 - Authorization using Ajax APIs
-  
+
 **Server Side**
 
 - Python
@@ -114,6 +115,6 @@ Besides these learnings, this project has evolved my mindset as a Developer. We'
 
 ## 🚀 About Me
 
-I'm Harsh, a problem solver, frontend developer & DevOps Eg, soon to be on backend and new techs (#Web3?, adaptive, u say). I want to work on a problem statement where I can cater to hundred thousands or million people or the one which keeps me stay up all night. Thank you for showing interest on this project. Neverming connecting with me on socials. See you soon.
+I'm Harsh, a problem solver, frontend developer & DevOps Eg, soon to be on the backend and new techs (#Web3? adaptive, you say). I want to work on a problem statement where I can cater to hundreds of thousands or millions of people or the one that keeps me staying up all night. Thank you for showing interest in this project. Never mind connecting with me on socials. See you soon.
 
 [![portfolio](https://img.shields.io/badge/my_portfolio-000?style=for-the-badge&logo=ko-fi&logoColor=white)](https://iharshka.vercel.app/)[![linkedin](https://img.shields.io/badge/linkedin-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/iharshka)[![twitter](https://img.shields.io/badge/twitter-1DA1F2?style=for-the-badge&logo=twitter&logoColor=white)](https://twitter.com/iharshka)

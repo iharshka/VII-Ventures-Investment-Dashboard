@@ -6,20 +6,66 @@ if (!sharedauthtoken) {
   };
 } else Authorization = JSON.parse(sharedauthtoken);
 // console.log(Authorization);
+
+//Code for DYNAMIC nav dropdown, limited Allowed page Access
+document.addEventListener("DOMContentLoaded", async function () {
+  $.ajax({
+    url: "https://investors-backend.viiventures.co/funds/get-allowed-funds-users",
+    method: "GET",
+    headers: {
+      Authorization: Authorization.Authorization,
+    },
+    success: function (result) {
+      // console.log(result.body); //working fine
+      var allowedfunds = result.body.allowed_funds;
+      var allowedusers = result.body.allowed_users;
+
+      allowedfunds.forEach(function (item, index) {
+        var dropdownoption = document.getElementById(
+          "fundopt" + `${index + 1}`
+        );
+        dropdownoption.innerHTML = `
+        <a style="text-decoration: none; color: #ffffff;"href="${item.link}">${item.name}</a>
+        <ul class="sub-menu for-hover"
+            style="background-color: #2f455c; border-radius: 0.1em;">
+            <li
+                class="menu-item menu-item-type-post_type menu-item-object-page">
+                <a style="text-decoration: none; color: #ffffff;"
+                    href="${item.link}#2023">2023</a>
+            </li>
+            <li
+                class="menu-item menu-item-type-post_type menu-item-object-page">
+                <a style="text-decoration: none; color: #ffffff;"
+                    href="${item.link}#2022">2022</a>
+            </li>
+            <li
+                class="menu-item menu-item-type-post_type menu-item-object-page">
+                <a style="text-decoration: none; color: #ffffff;"
+                    href="${item.link}#2021">2021</a>
+            </li>
+        </ul>`;
+        // console.log(index);
+      });
+
+      allowedusers.forEach(function (item, index) {
+        var dropdownuser = document.getElementById("useropt" + `${index + 1}`);
+        dropdownuser.innerHTML = `
+        <a style="text-decoration: none; color: #ffffff;" href="#${item.user}">${item.username}</a>`;
+      });
+    },
+  });
+});
+
 var responseData;
 var dataFromAPI;
 // Function to format numbers in American number system
 function formatAmericanNumber(number) {
   return number.toLocaleString("en-US");
 }
+
 // //BARGRAPH START
 document.addEventListener("DOMContentLoaded", async function () {
   // Fetch Overall Portfolio data from the API (for bar chart, moic chart and for cards as well)
-  // const response = await fetch(
-  //   "https://investors-backend.viiventures.co/funds/overall-portfolio?format=json&fundName=VII%20Ventures%20FUND%201%20SP"
-  // );
-  // const responseData = await response.json();
-  // const dataFromAPI = responseData.body.overall_portfolio;
   $.ajax({
     url: "https://investors-backend.viiventures.co/funds/overall-portfolio?format=json&fundName=VII%20Ventures%20FUND%201%20SP",
     type: "GET",
