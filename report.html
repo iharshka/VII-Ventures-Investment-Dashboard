@@ -24,8 +24,9 @@
     <script type="application/ld+json"
         class="yoast-schema-graph">{"@context":"https://schema.org","@graph":[{"@type":"WebPage","@id":"https://viiventures.co/reports/","url":"https://viiventures.co/reports/","name":"Reports - VII Ventures","isPartOf":{"@id":"https://viiventures.co/#website"},"datePublished":"2021-09-06T13:32:33+00:00","dateModified":"2023-08-28T10:18:07+00:00","breadcrumb":{"@id":"https://viiventures.co/reports/#breadcrumb"},"inLanguage":"en-US","potentialAction":[{"@type":"ReadAction","target":["https://viiventures.co/reports/"]}]},{"@type":"BreadcrumbList","@id":"https://viiventures.co/reports/#breadcrumb","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"https://viiventures.co/"},{"@type":"ListItem","position":2,"name":"Reports"}]},{"@type":"WebSite","@id":"https://viiventures.co/#website","url":"https://viiventures.co/","name":"VII Ventures","description":"","publisher":{"@id":"https://viiventures.co/#organization"},"potentialAction":[{"@type":"SearchAction","target":{"@type":"EntryPoint","urlTemplate":"https://viiventures.co/?s={search_term_string}"},"query-input":"required name=search_term_string"}],"inLanguage":"en-US"},{"@type":"Organization","@id":"https://viiventures.co/#organization","name":"VII Ventures","url":"https://viiventures.co/","logo":{"@type":"ImageObject","inLanguage":"en-US","@id":"https://viiventures.co/#/schema/logo/image/","url":"https://viiventures.co/wp-content/uploads/2020/12/Logo.svg","contentUrl":"https://viiventures.co/wp-content/uploads/2020/12/Logo.svg","caption":"VII Ventures"},"image":{"@id":"https://viiventures.co/#/schema/logo/image/"}}]}</script>
     <!-- / Yoast SEO plugin. -->
-
-
+    <!-- Google font-->
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans" rel="stylesheet">
+    <link href='https://fonts.googleapis.com/css?family=Nunito' rel='stylesheet'>
     <link rel="alternate" type="application/rss+xml" title="VII Ventures &raquo; Feed"
         href="https://viiventures.co/feed/" />
     <!-- This site uses the Google Analytics by MonsterInsights plugin v8.23.1 - Using Analytics tracking - https://www.monsterinsights.com/ -->
@@ -459,13 +460,13 @@
             --e-global-color-secondary: #59D79E;
             --e-global-color-text: #111821;
             --e-global-color-accent: #ACD6E0;
-            --e-global-typography-primary-font-family: "Raleway";
+            /* --e-global-typography-primary-font-family: "Nunito"; */
             --e-global-typography-primary-font-weight: 600;
-            --e-global-typography-secondary-font-family: "Raleway";
+            --e-global-typography-secondary-font-family: "Nunito";
             --e-global-typography-secondary-font-weight: 400;
-            --e-global-typography-text-font-family: "Raleway";
+            --e-global-typography-text-font-family: "Nunito";
             --e-global-typography-text-font-weight: 400;
-            --e-global-typography-accent-font-family: "Raleway";
+            --e-global-typography-accent-font-family: "Nunito";
             --e-global-typography-accent-font-weight: 500;
             color: var(--e-global-color-text);
             font-family: "Nunito", Sans-serif;
@@ -486,8 +487,8 @@
             color: var(--e-global-color-text);
             font-family: "Open Sans", Sans-serif;
             font-size: 52px;
-            font-weight: 400;
-            text-transform: uppercase;
+            /* font-weight: 400; */
+            /* text-transform: uppercase; */
             letter-spacing: 8px;
         }
 
@@ -495,8 +496,8 @@
             color: var(--e-global-color-text);
             font-family: "Open Sans", Sans-serif;
             font-size: 50px;
-            font-weight: 400;
-            text-transform: uppercase;
+            /* font-weight: 400; */
+            /* text-transform: uppercase; */
             letter-spacing: 8px;
         }
 
@@ -1599,8 +1600,8 @@
         }
 
         .elementor-29 .elementor-element.elementor-element-68da110 .elementor-nav-menu .elementor-item {
-            font-family: "Raleway", Sans-serif;
-            text-transform: uppercase;
+            font-family: "Nunito", Sans-serif;
+            /* text-transform: uppercase; */
             text-decoration: none;
         }
 
@@ -1732,8 +1733,8 @@
         }
 
         .elementor-29 .elementor-element.elementor-element-7568c2f .elementor-nav-menu .elementor-item {
-            font-family: "Raleway", Sans-serif;
-            text-transform: uppercase;
+            font-family: "Nunito", Sans-serif;
+            /* text-transform: uppercase; */
             text-decoration: none;
         }
 
@@ -2437,8 +2438,7 @@
                                                         </li>
                                                         <li
                                                             class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-833 current_page_item menu-item-835">
-                                                            <a href="https://investors.viiventures.co/report.html"
-                                                                aria-current="page"
+                                                            <a href="report.html" aria-current="page"
                                                                 class="elementor-item elementor-item-active">Reports</a>
                                                         </li>
                                                         <!-- New menu item: Fund with dropdown -->
@@ -2447,86 +2447,108 @@
                                                             <a href="#" class="elementor-item">Fund</a>
                                                             <ul class="sub-menu for-hover"
                                                                 style="background-color: #2f455c; border-radius: 0.1em;">
-                                                                <!-- Add your Fund-related submenu items here -->
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt3"></li>
+                                                                <!-- DYNAMIC DROP DOWN -->
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt1"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt2"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt3"></li>
+                                                                <!-- Add your Fund-related submenu items here
                                                                 <li
                                                                     class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                     <a style="text-decoration: none; color: #ffffff;"
-                                                                        href="https://investors.viiventures.co/index.html">VII
+                                                                        href="index.html">VII
                                                                         Ventures SPC</a>
                                                                     <ul class="sub-menu for-hover"
                                                                         style="background-color: #2f455c; border-radius: 0.1em;">
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/index.html#2023">2023</a>
+                                                                                href="index.html#2023">2023</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/index.html#2022">2022</a>
+                                                                                href="index.html#2022">2022</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/index.html#2021">2021</a>
+                                                                                href="index.html#2021">2021</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
                                                                 <li
                                                                     class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                     <a style="text-decoration: none; color: #ffffff;"
-                                                                        href="https://investors.viiventures.co/fund1spc.html">VII
+                                                                        href="fund1spc.html">VII
                                                                         Ventures Fund 1 SP</a>
                                                                     <ul class="sub-menu for-hover"
                                                                         style="background-color: #2f455c; border-radius: 0.1em;">
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund1spc.html#2023">2023</a>
+                                                                                href="fund1spc.html#2023">2023</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund1spc.html#2022">2022</a>
+                                                                                href="fund1spc.html#2022">2022</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund1spc.html#2021">2021</a>
+                                                                                href="fund1spc.html#2021">2021</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
                                                                 <li
                                                                     class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                     <a style="text-decoration: none; color: #ffffff;"
-                                                                        href="https://investors.viiventures.co/fund2spc.html">VII
+                                                                        href="fund2spc.html">VII
                                                                         Ventures Fund 2 SP</a>
                                                                     <ul class="sub-menu for-hover"
                                                                         style="background-color: #2f455c; border-radius: 0.1em;">
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund2spc.html#2023">2023</a>
+                                                                                href="fund2spc.html#2023">2023</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund2spc.html#2022">2022</a>
+                                                                                href="fund2spc.html#2022">2022</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund2spc.html#2021">2021</a>
+                                                                                href="fund2spc.html#2021">2021</a>
                                                                         </li>
                                                                     </ul>
-                                                                </li>
+                                                                </li> -->
                                                             </ul>
                                                         </li>
 
                                                         <li
                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                            <a href="https://investors.viiventures.co/index2.html"
-                                                                class="elementor-item">Investors</a>
+                                                            <a href="index2.html" class="elementor-item">Investors</a>
+                                                            <!-- DYNAMIC DROPDOWN -->
+                                                            <ul class="sub-menu for-hover"
+                                                                style="background-color: #2f455c; border-radius: 0.1em;">
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt1"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt2"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt3"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt4"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt5"></li>
+                                                            </ul>
                                                         </li>
 
                                                     </ul>
@@ -2574,8 +2596,7 @@
                                                         </li>
                                                         <li
                                                             class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-833 current_page_item menu-item-835">
-                                                            <a href="https://investors.viiventures.co/report.html"
-                                                                aria-current="page"
+                                                            <a href="report.html" aria-current="page"
                                                                 class="elementor-item elementor-item-active"
                                                                 tabindex="-1">Reports</a>
                                                         </li>
@@ -2584,86 +2605,106 @@
                                                             <a href="#" class="elementor-item">Fund</a>
                                                             <ul class="sub-menu for-hover"
                                                                 style="background-color: #2f455c; border-radius: 0.1em;">
-                                                                <!-- Add your Fund-related submenu items here -->
+                                                                <!-- DYNAMIC DROP DOWN -->
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt1"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt2"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt3"></li>
+                                                                <!-- Add your Fund-related submenu items here
                                                                 <li
                                                                     class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                     <a style="text-decoration: none; color: #ffffff;"
-                                                                        href="https://investors.viiventures.co/index.html">VII
+                                                                        href="index.html">VII
                                                                         Ventures SPC</a>
                                                                     <ul class="sub-menu for-hover"
                                                                         style="background-color: #2f455c; border-radius: 0.1em;">
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/index.html#2023">2023</a>
+                                                                                href="index.html#2023">2023</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/index.html#2022">2022</a>
+                                                                                href="index.html#2022">2022</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/index.html#2021">2021</a>
+                                                                                href="index.html#2021">2021</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
                                                                 <li
                                                                     class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                     <a style="text-decoration: none; color: #ffffff;"
-                                                                        href="https://investors.viiventures.co/fund1spc.html">VII
+                                                                        href="fund1spc.html">VII
                                                                         Ventures Fund 1 SP</a>
                                                                     <ul class="sub-menu for-hover"
                                                                         style="background-color: #2f455c; border-radius: 0.1em;">
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund1spc.html#2023">2023</a>
+                                                                                href="fund1spc.html#2023">2023</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund1spc.html#2022">2022</a>
+                                                                                href="fund1spc.html#2022">2022</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund1spc.html#2021">2021</a>
+                                                                                href="fund1spc.html#2021">2021</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
                                                                 <li
                                                                     class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                     <a style="text-decoration: none; color: #ffffff;"
-                                                                        href="https://investors.viiventures.co/fund2spc.html">VII
+                                                                        href="fund2spc.html">VII
                                                                         Ventures Fund 2 SP</a>
                                                                     <ul class="sub-menu for-hover"
                                                                         style="background-color: #2f455c; border-radius: 0.1em;">
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund2spc.html#2023">2023</a>
+                                                                                href="fund2spc.html#2023">2023</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund2spc.html#2022">2022</a>
+                                                                                href="fund2spc.html#2022">2022</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund2spc.html#2021">2021</a>
+                                                                                href="fund2spc.html#2021">2021</a>
                                                                         </li>
                                                                     </ul>
-                                                                </li>
+                                                                </li> -->
                                                             </ul>
                                                         </li>
 
                                                         <li
                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                            <a href="https://investors.viiventures.co/index2.html"
-                                                                class="elementor-item">Investors</a>
+                                                            <a href="index2.html" class="elementor-item">Investors</a>
+                                                            <!-- DYNAMIC DROPDOWN -->
+                                                            <ul class="sub-menu for-hover"
+                                                                style="background-color: #2f455c; border-radius: 0.1em;">
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt1"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt2"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt3"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt4"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt5"></li>
+                                                            </ul>
                                                         </li>
                                                     </ul>
                                                 </nav>
@@ -2770,8 +2811,7 @@
                                                         </li>
                                                         <li
                                                             class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-833 current_page_item menu-item-834">
-                                                            <a href="https://investors.viiventures.co/report.html"
-                                                                aria-current="page"
+                                                            <a href="report.html" aria-current="page"
                                                                 class="elementor-item elementor-item-active">Reports</a>
                                                         </li>
                                                         <li
@@ -2779,86 +2819,106 @@
                                                             <a href="#" class="elementor-item">Fund</a>
                                                             <ul class="sub-menu for-hover"
                                                                 style="background-color: #2f455c; border-radius: 0.1em;">
-                                                                <!-- Add your Fund-related submenu items here -->
+                                                                <!-- DYNAMIC DROP DOWN -->
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt1"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt2"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt3"></li>
+                                                                <!-- Add your Fund-related submenu items here
                                                                 <li
                                                                     class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                     <a style="text-decoration: none; color: #ffffff;"
-                                                                        href="https://investors.viiventures.co/index.html">VII
+                                                                        href="index.html">VII
                                                                         Ventures SPC</a>
                                                                     <ul class="sub-menu for-hover"
                                                                         style="background-color: #2f455c; border-radius: 0.1em;">
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/index.html#2023">2023</a>
+                                                                                href="index.html#2023">2023</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/index.html#2022">2022</a>
+                                                                                href="index.html#2022">2022</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/index.html#2021">2021</a>
+                                                                                href="index.html#2021">2021</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
                                                                 <li
                                                                     class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                     <a style="text-decoration: none; color: #ffffff;"
-                                                                        href="https://investors.viiventures.co/fund1spc.html">VII
+                                                                        href="fund1spc.html">VII
                                                                         Ventures Fund 1 SP</a>
                                                                     <ul class="sub-menu for-hover"
                                                                         style="background-color: #2f455c; border-radius: 0.1em;">
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund1spc.html#2023">2023</a>
+                                                                                href="fund1spc.html#2023">2023</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund1spc.html#2022">2022</a>
+                                                                                href="fund1spc.html#2022">2022</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund1spc.html#2021">2021</a>
+                                                                                href="fund1spc.html#2021">2021</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
                                                                 <li
                                                                     class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                     <a style="text-decoration: none; color: #ffffff;"
-                                                                        href="https://investors.viiventures.co/fund2spc.html">VII
+                                                                        href="fund2spc.html">VII
                                                                         Ventures Fund 2 SP</a>
                                                                     <ul class="sub-menu for-hover"
                                                                         style="background-color: #2f455c; border-radius: 0.1em;">
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund2spc.html#2023">2023</a>
+                                                                                href="fund2spc.html#2023">2023</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund2spc.html#2022">2022</a>
+                                                                                href="fund2spc.html#2022">2022</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund2spc.html#2021">2021</a>
+                                                                                href="fund2spc.html#2021">2021</a>
                                                                         </li>
                                                                     </ul>
-                                                                </li>
+                                                                </li> -->
                                                             </ul>
                                                         </li>
 
                                                         <li
                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                            <a href="https://investors.viiventures.co/index2.html"
-                                                                class="elementor-item">Investors</a>
+                                                            <a href="index2.html" class="elementor-item">Investors</a>
+                                                            <!-- DYNAMIC DROPDOWN -->
+                                                            <ul class="sub-menu for-hover"
+                                                                style="background-color: #2f455c; border-radius: 0.1em;">
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt1"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt2"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt3"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt4"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt5"></li>
+                                                            </ul>
                                                         </li>
                                                     </ul>
                                                 </nav>
@@ -2905,8 +2965,7 @@
                                                         </li>
                                                         <li
                                                             class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-833 current_page_item menu-item-834">
-                                                            <a href="https://investors.viiventures.co/report.html"
-                                                                aria-current="page"
+                                                            <a href="report.html" aria-current="page"
                                                                 class="elementor-item elementor-item-active"
                                                                 tabindex="-1">Reports</a>
                                                         </li>
@@ -2915,86 +2974,106 @@
                                                             <a href="#" class="elementor-item">Fund</a>
                                                             <ul class="sub-menu for-hover"
                                                                 style="background-color: #2f455c; border-radius: 0.1em;">
-                                                                <!-- Add your Fund-related submenu items here -->
+                                                                <!-- DYNAMIC DROP DOWN -->
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt1"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt2"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="fundopt3"></li>
+                                                                <!-- Add your Fund-related submenu items here
                                                                 <li
                                                                     class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                     <a style="text-decoration: none; color: #ffffff;"
-                                                                        href="https://investors.viiventures.co/index.html">VII
+                                                                        href="index.html">VII
                                                                         Ventures SPC</a>
                                                                     <ul class="sub-menu for-hover"
                                                                         style="background-color: #2f455c; border-radius: 0.1em;">
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/index.html#2023">2023</a>
+                                                                                href="index.html#2023">2023</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/index.html#2022">2022</a>
+                                                                                href="index.html#2022">2022</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/index.html#2021">2021</a>
+                                                                                href="index.html#2021">2021</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
                                                                 <li
                                                                     class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                     <a style="text-decoration: none; color: #ffffff;"
-                                                                        href="https://investors.viiventures.co/fund1spc.html">VII
+                                                                        href="fund1spc.html">VII
                                                                         Ventures Fund 1 SP</a>
                                                                     <ul class="sub-menu for-hover"
                                                                         style="background-color: #2f455c; border-radius: 0.1em;">
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund1spc.html#2023">2023</a>
+                                                                                href="fund1spc.html#2023">2023</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund1spc.html#2022">2022</a>
+                                                                                href="fund1spc.html#2022">2022</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund1spc.html#2021">2021</a>
+                                                                                href="fund1spc.html#2021">2021</a>
                                                                         </li>
                                                                     </ul>
                                                                 </li>
                                                                 <li
                                                                     class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                     <a style="text-decoration: none; color: #ffffff;"
-                                                                        href="https://investors.viiventures.co/fund2spc.html">VII
+                                                                        href="fund2spc.html">VII
                                                                         Ventures Fund 2 SP</a>
                                                                     <ul class="sub-menu for-hover"
                                                                         style="background-color: #2f455c; border-radius: 0.1em;">
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund2spc.html#2023">2023</a>
+                                                                                href="fund2spc.html#2023">2023</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund2spc.html#2022">2022</a>
+                                                                                href="fund2spc.html#2022">2022</a>
                                                                         </li>
                                                                         <li
                                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
                                                                             <a style="text-decoration: none; color: #ffffff;"
-                                                                                href="https://investors.viiventures.co/fund2spc.html#2021">2021</a>
+                                                                                href="fund2spc.html#2021">2021</a>
                                                                         </li>
                                                                     </ul>
-                                                                </li>
+                                                                </li> -->
                                                             </ul>
                                                         </li>
 
                                                         <li
                                                             class="menu-item menu-item-type-post_type menu-item-object-page">
-                                                            <a href="https://investors.viiventures.co/index2.html"
-                                                                class="elementor-item">Investors</a>
+                                                            <a href="index2.html" class="elementor-item">Investors</a>
+                                                            <!-- DYNAMIC DROPDOWN -->
+                                                            <ul class="sub-menu for-hover"
+                                                                style="background-color: #2f455c; border-radius: 0.1em;">
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt1"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt2"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt3"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt4"></li>
+                                                                <li class="menu-item menu-item-type-post_type menu-item-object-page"
+                                                                    id="useropt5"></li>
+                                                            </ul>
                                                         </li>
 
                                                         <!-- <li

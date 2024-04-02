@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       var allowedusers = result.body.allowed_users;
 
       allowedfunds.forEach(function (item, index) {
-        var dropdownoption = document.getElementById(
+        var dropdownoption = document.getElementsByClassName(
           "fundopt" + `${index + 1}`
         );
         dropdownoption.innerHTML = `
@@ -48,7 +48,9 @@ document.addEventListener("DOMContentLoaded", async function () {
       });
 
       allowedusers.forEach(function (item, index) {
-        var dropdownuser = document.getElementById("useropt" + `${index + 1}`);
+        var dropdownuser = document.getElementsByClassName(
+          "useropt" + `${index + 1}`
+        );
         dropdownuser.innerHTML = `
         <a style="text-decoration: none; color: #ffffff;" href="index2.html#${item.user}">${item.username}</a>`;
       });
