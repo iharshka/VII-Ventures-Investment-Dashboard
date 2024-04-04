@@ -22,11 +22,11 @@ document.addEventListener("DOMContentLoaded", async function () {
       var allowedusers = result.body.allowed_users;
 
       allowedfunds.forEach(function (item, index) {
-        var dropdownoption = document.getElementsByClassName(
-          "fundopt" + `${index + 1}`
+        var dropdownoption = document.querySelectorAll(
+          ".fundopt" + `${index + 1}`
         );
-        dropdownoption.innerHTML = `
-        <a style="text-decoration: none; color: #ffffff;"href="${item.link}">${item.name}</a>
+        dropdownoption.forEach(function (addoption) {
+          addoption.innerHTML = `<a style="text-decoration: none; color: #ffffff;"href="${item.link}">${item.name}</a>
         <ul class="sub-menu for-hover"
             style="background-color: #2f455c; border-radius: 0.1em;">
             <li
@@ -45,20 +45,24 @@ document.addEventListener("DOMContentLoaded", async function () {
                     href="${item.link}#2021">2021</a>
             </li>
         </ul>`;
-        // console.log(index);
+          // console.log(index);
+        });
       });
 
       allowedusers.forEach(function (item, index) {
-        var dropdownuser = document.getElementsByClassName(
-          "useropt" + `${index + 1}`
+        var dropdownusers = document.querySelectorAll(
+          ".useropt" + `${index + 1}`
         );
-        dropdownuser.innerHTML = `
-        <a style="text-decoration: none; color: #ffffff;" href="index2.html#${item.user}">${item.username}</a>`;
+        dropdownusers.forEach(function (adduser) {
+          adduser.innerHTML = `
+          <a style="text-decoration: none; color: #ffffff;" href="index2.html#${item.user}">${item.username}</a>`;
+        });
       });
     },
   });
 });
 
+//Code for the body Continued
 var responseData;
 var dataFromAPI;
 // Function to format numbers in American number system
