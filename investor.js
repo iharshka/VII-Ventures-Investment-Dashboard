@@ -27,6 +27,13 @@ document.addEventListener("DOMContentLoaded", async function () {
       var allowedfunds = result.body.allowed_funds;
       var allowedusers = result.body.allowed_users;
 
+      // Update the Username with the API call and Sending the username for other pages
+      sharedusername = result.body.username;
+      const usernameelement = document.getElementById("usernamerighttop");
+      const usernameelementmbl = document.getElementById("usernamerighttopmbl");
+      usernameelement.textContent = sharedusername;
+      usernameelementmbl.textContent = sharedusername;
+
       allowedfunds.forEach(function (item, index) {
         var dropdownoption = document.querySelectorAll(
           ".fundopt" + `${index + 1}`
@@ -85,14 +92,6 @@ document.addEventListener(
         userId
     );
     const apiData = await response.json();
-
-    // Update the Username with the API call and Sending the username for other pages
-    // localStorage.setItem("sharedapiData", JSON.stringify(apiData));
-    sharedusername = apiData.body.username;
-    const usernameelement = document.getElementById("usernamerighttop");
-    const usernameelementmbl = document.getElementById("usernamerighttopmbl");
-    usernameelement.textContent = sharedusername;
-    usernameelementmbl.textContent = sharedusername;
 
     // Update the User heading with the API call
     const investornameheadElement = document.getElementById("investornamehead");

@@ -54,7 +54,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         );
         dropdownusers.forEach(function (adduser) {
           adduser.innerHTML = `
-          <a style="text-decoration: none; color: #ffffff;" href="index2.html#${item.user}">${item.username}</a>`;
+          <a style="text-decoration: none; color: #ffffff;" href="index2.html?id=${item.user}">${item.username}</a>`;
         });
       });
     },
