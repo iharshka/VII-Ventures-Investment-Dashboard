@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         );
         dropdownusers.forEach(function (adduser) {
           adduser.innerHTML = `
-          <a style="text-decoration: none; color: #ffffff;" href="https://investors.viiventures.co/index2.html#${item.user}">${item.username}</a>`;
+          <a style="text-decoration: none; color: #ffffff;" href="index2.html?id=${item.user}">${item.username}</a>`;
         });
       });
     },
@@ -72,16 +72,17 @@ document.addEventListener("DOMContentLoaded", async function () {
 document.addEventListener(
   "DOMContentLoaded",
   async function fetchinvestordata() {
-    // Get the URL fragment
-    var getuseridfromurl = window.location.hash;
-    // Remove the leading '#'
-    var useridvalue = getuseridfromurl.slice(1);
-    // console.log(useridvalue);
+    // Get the URLSearchParams object from the current URL
+    const params = new URLSearchParams(window.location.search);
+
+    // Get the value of the 'id' parameter
+    const userId = params.get("id");
+    console.log(userId);
 
     const response = await fetch(
       "https://investors-backend.viiventures.co/funds/investor-table?format=json" +
         "&userId=" +
-        useridvalue
+        userId
     );
     const apiData = await response.json();
 
