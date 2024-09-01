@@ -115,6 +115,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         );
         downloadLinks[0].href = fundData["2021"];
         downloadLinks[1].href = fundData["2022"];
+        downloadLinks[2].href = fundData["2023"];
       }
     },
   });
