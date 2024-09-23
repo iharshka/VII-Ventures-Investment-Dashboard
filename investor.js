@@ -30,9 +30,7 @@ document.addEventListener("DOMContentLoaded", async function () {
       // Update the Username with the API call and Sending the username for other pages
       sharedusername = result.body.username;
       const usernameelement = document.getElementById("usernamerighttop");
-      const usernameelementmbl = document.getElementById("usernamerighttopmbl");
       usernameelement.textContent = sharedusername;
-      usernameelementmbl.textContent = sharedusername;
 
       allowedfunds.forEach(function (item, index) {
         var dropdownoption = document.querySelectorAll(
@@ -40,20 +38,16 @@ document.addEventListener("DOMContentLoaded", async function () {
         );
         dropdownoption.forEach(function (addoption) {
           addoption.innerHTML = `<a style="text-decoration: none; color: #ffffff;"href="${item.link}">${item.name}</a>
-        <ul class="sub-menu for-hover"
-            style="background-color: #2f455c; border-radius: 0.1em;">
-            <li
-                class="menu-item menu-item-type-post_type menu-item-object-page">
+        <ul class="dropdown-menu" style="right: 0; display: none; position: absolute;">
+            <li>
                 <a style="text-decoration: none; color: #ffffff;"
                     href="${item.link}#2023">2023</a>
             </li>
-            <li
-                class="menu-item menu-item-type-post_type menu-item-object-page">
+            <li>
                 <a style="text-decoration: none; color: #ffffff;"
                     href="${item.link}#2022">2022</a>
             </li>
-            <li
-                class="menu-item menu-item-type-post_type menu-item-object-page">
+            <li>
                 <a style="text-decoration: none; color: #ffffff;"
                     href="${item.link}#2021">2021</a>
             </li>
