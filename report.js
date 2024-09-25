@@ -9,6 +9,16 @@ if (!sharedauthtoken) {
 } else Authorization = JSON.parse(sharedauthtoken);
 // console.log(Authorization);
 
+//New Navbar mobile toggle
+document.addEventListener("DOMContentLoaded", function() {
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const navMenu = document.getElementById('nav-menu');
+
+  mobileMenuToggle.addEventListener('click', function() {
+      navMenu.classList.toggle('active');
+  });
+});
+
 //Code for DYNAMIC nav dropdown, limited Allowed page Access
 document.addEventListener("DOMContentLoaded", async function () {
   $.ajax({
