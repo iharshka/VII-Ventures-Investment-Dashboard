@@ -36,7 +36,7 @@ document.addEventListener("DOMContentLoaded", async function () {
         );
 
         dropdownoption.forEach(function (addoption) {
-          addoption.innerHTML = `<a class="dropdown-toggle" style="text-decoration: none; color: #ffffff;"href="${item.link}">${item.name}</a>
+          addoption.innerHTML = `<a class="dropdown-toggle" style="text-decoration: none; color: #ffffff;" href="#">${item.name}</a>
             <ul class="dropdown-menu" style="display: none; position: absolute; right: 0;">
                 <li>
                     <a style="text-decoration: none; color: #ffffff;"
