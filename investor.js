@@ -75,6 +75,17 @@ document.addEventListener("DOMContentLoaded", async function () {
           <a style="text-decoration: none; color: #ffffff;" href="index2.html?id=${item.user}">${item.username}</a>`;
         });
       });
+
+      // Add hover event listeners to display side dropdowns on hover
+      var fundDropdowns = document.querySelectorAll('.fundopt1, .fundopt2, .fundopt3');
+      fundDropdowns.forEach(function (dropdown) {
+        dropdown.addEventListener('mouseenter', function () {
+          this.querySelector('.dropdown-menu').style.display = 'block';
+        });
+        dropdown.addEventListener('mouseleave', function () {
+          this.querySelector('.dropdown-menu').style.display = 'none';
+        });
+      });
     },
   });
 });

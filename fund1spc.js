@@ -36,21 +36,21 @@ document.addEventListener("DOMContentLoaded", async function () {
         );
 
         dropdownoption.forEach(function (addoption) {
-          addoption.innerHTML = `<a style="text-decoration: none; color: #ffffff;"href="${item.link}">${item.name}</a>
-        <ul class="dropdown-menu" style="right: 0; display: none; position: absolute;">
-            <li>
-                <a style="text-decoration: none; color: #ffffff;"
-                    href="${item.link}#2023">2023</a>
-            </li>
-            <li>
-                <a style="text-decoration: none; color: #ffffff;"
-                    href="${item.link}#2022">2022</a>
-            </li>
-            <li>
-                <a style="text-decoration: none; color: #ffffff;"
-                    href="${item.link}#2021">2021</a>
-            </li>
-        </ul>`;
+          addoption.innerHTML = `<a class="dropdown-toggle" style="text-decoration: none; color: #ffffff;"href="${item.link}">${item.name}</a>
+            <ul class="dropdown-menu" style="display: none; position: absolute; right: 0;">
+                <li>
+                    <a style="text-decoration: none; color: #ffffff;"
+                        href="${item.link}#2023">2023</a>
+                </li>
+                <li>
+                    <a style="text-decoration: none; color: #ffffff;"
+                        href="${item.link}#2022">2022</a>
+                </li>
+                <li>
+                    <a style="text-decoration: none; color: #ffffff;"
+                        href="${item.link}#2021">2021</a>
+                </li>
+          </ul>`;
         });
       });
 
@@ -61,6 +61,17 @@ document.addEventListener("DOMContentLoaded", async function () {
         dropdownusers.forEach(function (adduser) {
           adduser.innerHTML = `
           <a style="text-decoration: none; color: #ffffff;" href="index2.html?id=${item.user}">${item.username}</a>`;
+        });
+      });
+            
+      // Add hover event listeners to display side dropdowns on hover
+      var fundDropdowns = document.querySelectorAll('.fundopt1, .fundopt2, .fundopt3');
+      fundDropdowns.forEach(function (dropdown) {
+        dropdown.addEventListener('mouseenter', function () {
+          this.querySelector('.dropdown-menu').style.display = 'block';
+        });
+        dropdown.addEventListener('mouseleave', function () {
+          this.querySelector('.dropdown-menu').style.display = 'none';
         });
       });
     },
